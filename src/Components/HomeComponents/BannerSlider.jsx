@@ -29,8 +29,13 @@ const BannerSlider = () => {
       >
         <SwiperSlide>
           <div className="flex">
-            <img src={img1} className="w-1/2" />
-            <div className="w-1/2 bg-bannerBg bg-cover bg-no-repeat">
+            <div className="w-full md:w-1/2 relative md:static">
+              <img src={img1} className="w-full" />
+              <h1 className="absolute top-1/2 right-0 left-0 text-center font-barlow text-3xl font-bold text-[#ff4838] mb-3 block md:hidden">
+                Travel & <span className=" text-white">Adventure</span>
+              </h1>
+            </div>
+            <div className="w-1/2 bg-bannerBg bg-cover bg-no-repeat hidden md:block">
               <div className="bg-[#131D4E] h-full bg-opacity-50 flex items-center pl-16">
                 <div>
                   <h1 className=" font-barlow text-6xl font-bold text-[#ff4838] mb-3">
@@ -62,8 +67,13 @@ const BannerSlider = () => {
         </SwiperSlide>
         <SwiperSlide>
           <div className="flex">
-            <img src={img2} className="w-1/2" />
-            <div className="w-1/2 bg-bannerBg bg-cover bg-no-repeat">
+            <div className="w-full md:w-1/2 relative md:static">
+              <img src={img2} className="w-full" />
+              <h1 className="absolute top-1/2 right-0 left-0 text-center font-barlow text-3xl font-bold text-[#ff4838] mb-3 block md:hidden">
+                Move The <span className=" text-white">Earth</span>
+              </h1>
+            </div>
+            <div className="w-1/2 bg-bannerBg bg-cover bg-no-repeat hidden md:block">
               <div className="bg-[#131D4E] h-full bg-opacity-50 flex items-center pl-16">
                 <div>
                   <h1 className=" font-barlow text-6xl font-bold text-[#ff4838] mb-3">
@@ -92,8 +102,13 @@ const BannerSlider = () => {
         </SwiperSlide>
         <SwiperSlide>
           <div className="flex">
-            <img src={img3} className="w-1/2" />
-            <div className="w-1/2 bg-bannerBg bg-cover bg-no-repeat">
+            <div className="w-full md:w-1/2 relative md:static">
+              <img src={img3} className="w-full" />
+              <h1 className="absolute top-1/2 right-0 left-0 text-center font-barlow text-3xl font-bold text-[#ff4838] mb-3 block md:hidden">
+                Explore New <span className=" text-white">People</span>
+              </h1>
+            </div>
+            <div className="w-1/2 bg-bannerBg bg-cover bg-no-repeat hidden md:block">
               <div className="bg-[#131D4E] h-full bg-opacity-50 flex items-center pl-16">
                 <div>
                   <h1 className=" font-barlow text-6xl font-bold text-[#ff4838] mb-3">
@@ -124,8 +139,13 @@ const BannerSlider = () => {
         </SwiperSlide>
         <SwiperSlide>
           <div className="flex">
-            <img src={img4} className="w-1/2" />
-            <div className="w-1/2 bg-bannerBg bg-cover bg-no-repeat">
+            <div className="w-full md:w-1/2 relative md:static">
+              <img src={img4} className="w-full" />
+              <h1 className="absolute top-1/2 right-0 left-0 text-center font-barlow text-3xl font-bold text-[#ff4838] mb-3 block md:hidden">
+                Discover New <span className=" text-white">Places</span>
+              </h1>
+            </div>
+            <div className="w-1/2 bg-bannerBg bg-cover bg-no-repeat hidden md:block">
               <div className="bg-[#131D4E] h-full bg-opacity-50 flex items-center pl-16">
                 <div>
                   <h1 className=" font-barlow text-6xl font-bold text-[#ff4838] mb-3">

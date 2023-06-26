@@ -66,7 +66,7 @@ const Navbar = () => {
           </nav>
         </div>
         {/* small screen nav */}
-        <div className="block md:hidden lg:hidden xl:hidden 2xl:hidden w-full">
+        <div className="block md:hidden lg:hidden xl:hidden 2xl:hidden w-full z-10">
           <nav className="text-white -ml-3">
             <ul
               className={`bg-[#131D4E] absolute w-full flex flex-col items-start pl-12 pb-5 gap-3 duration-500 ${
