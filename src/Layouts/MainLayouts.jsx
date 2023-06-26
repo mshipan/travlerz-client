@@ -1,7 +1,7 @@
 import { Outlet } from "react-router-dom";
 import Navbar from "../Components/SharedCpmponents/Navbar";
 import TopInfo from "../Components/TopInfo";
-
+import Footer from "../Components/SharedCpmponents/Footer";
 const MainLayouts = () => {
   return (
     <div>
@@ -10,7 +10,7 @@ const MainLayouts = () => {
       </div>
       <Navbar />
       <Outlet></Outlet>
-      <h1>Footer</h1>
+      <Footer />
     </div>
   );
 };
