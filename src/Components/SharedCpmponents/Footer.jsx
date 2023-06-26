@@ -29,9 +29,9 @@ const Footer = () => {
     <div className="flex flex-col bg-footerBg bg-no-repeat bg-cover bg-bottom">
       <div className="bg-[#131D4E] bg-opacity-70 text-white font-barlow">
         <div className="container mx-auto flex flex-col">
-          <div className="flex flex-col md:flex-row lg:flex-row xl:flex-row 2xl:flex-row md:justify-between lg:justify-between xl:justify-between 2xl:justify-between py-16">
-            <div className="max-w-xs">
-              <h1 className="text-xs text-justify mb-5">
+          <div className="flex flex-col md:flex-row lg:flex-row xl:flex-row 2xl:flex-row items-center md:items-start lg:items-start xl:items-start 2xl:items-start md:justify-between lg:justify-between xl:justify-between 2xl:justify-between py-16">
+            <div className="max-w-xs flex flex-col items-center md:items-start lg:items-start xl:items-start 2xl:items-start">
+              <h1 className="text-xs text-center md:text-justify mb-5">
                 &quot;Travlerz&quot; – your ultimate travel planning companion.
                 Explore, plan, and share your adventures with ease. Discover
                 destinations, create itineraries, access travel tips, and
@@ -60,9 +60,11 @@ const Footer = () => {
                 </Link>
               </div>
             </div>
-            <div className="w-36">
-              <h1 className="text-xl font-bold mb-3">Quick Link</h1>
-              <ul className="flex flex-col gap-2">
+            <div className="md:w-36 my-5 md:my-0">
+              <h1 className="text-xl font-bold mb-3 text-center md:text-left">
+                Quick Link
+              </h1>
+              <ul className="flex flex-col gap-2 items-center md:items-start">
                 <li
                   onMouseOver={() => handleMouseOver("aboutUs")}
                   onMouseOut={handleMouseOut}
@@ -118,9 +120,11 @@ const Footer = () => {
                 </li>
               </ul>
             </div>
-            <div className="w-44">
-              <h1 className="text-xl font-bold mb-3">Tour Type</h1>
-              <ul className="flex flex-col gap-2">
+            <div className="md:w-44 mb-5 md:mb-0">
+              <h1 className="text-xl font-bold mb-3 text-center md:text-left">
+                Tour Type
+              </h1>
+              <ul className="flex flex-col gap-2 items-center md:items-start">
                 <li
                   onMouseOver={() => handleMouseOver("wildAdventure")}
                   onMouseOut={handleMouseOut}
@@ -176,9 +180,9 @@ const Footer = () => {
               </ul>
             </div>
             <div>
-              <h1 className="text-xl font-bold mb-3 text-center">Gallery</h1>
+              <h1 className="text-xl font-bold text-center mb-5">Gallery</h1>
 
-              <div>
+              <div className="w-2/3 md:w-full mx-auto">
                 <SlideshowLightbox className="grid grid-cols-3 gap-2">
                   <img
                     src={img1}
@@ -219,7 +223,7 @@ const Footer = () => {
               </div>
             </div>
           </div>
-          <div className="flex items-center justify-between border-t border-white py-4">
+          <div className="flex flex-col md:flex-row items-center justify-between border-t border-white py-4">
             <h1 className="text-xl font-bold">Contact Us:</h1>
             <div className="flex items-center gap-1">
               <FiPhoneMissed />
@@ -236,7 +240,7 @@ const Footer = () => {
           </div>
         </div>
         <div className="bg-[#131D4E]">
-          <div className="container mx-auto flex items-center justify-between py-5">
+          <div className="container mx-auto flex flex-col md:flex-row items-center justify-center md:justify-between py-5">
             <p>
               <small>Copyright 2023 Travlerz | Design By Shipan Mallik</small>
             </p>
