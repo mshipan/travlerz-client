@@ -8,6 +8,7 @@ export default {
       },
       backgroundImage: {
         footerBg: "url('./src/assets/footer-bg.jpg')",
+        bannerBg: "url('./src/assets/bannerBg.jpg')",
       },
     },
   },
