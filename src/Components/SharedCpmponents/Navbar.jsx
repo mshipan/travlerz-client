@@ -3,9 +3,11 @@ import logo from "../../assets/travlerz-logo.png";
 import { HiMenu } from "react-icons/hi";
 import { FaXmark } from "react-icons/fa6";
 import { useState } from "react";
+import userImg from "../../assets/user.png";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isSubOpen, setIsSubOpen] = useState(false);
   const navItems = (
     <>
       <li>
@@ -50,8 +52,14 @@ const Navbar = () => {
       </li>
     </>
   );
+  const handleToggle = () => {
+    setIsOpen((prevState) => {
+      setIsSubOpen(false); // Set isSubOpen to false when isOpen is toggled
+      return !prevState;
+    });
+  };
   return (
-    <div className="bg-[#131D4E] flex items-start px-3 md:px-0 lg:px-0 xl:px-0 2xl:px-0">
+    <div className="bg-[#131D4E] flex items-center px-3 md:px-0 lg:px-0 xl:px-0 2xl:px-0 gap-5">
       <div className="container mx-auto py-2 flex flex-col md:flex-row lg:flex-row xl:flex-row 2xl:flex-row items-start md:items-center justify-between">
         <div>
           <img src={logo} alt="Website Logo" className="w-36" />
@@ -79,9 +87,52 @@ const Navbar = () => {
           </nav>
         </div>
       </div>
+      {/* avatar */}
+      <div className="md:mr-5">
+        <div onClick={() => setIsSubOpen(!isSubOpen)}>
+          <img
+            src={userImg}
+            className="w-10 rounded-full cursor-pointer"
+            alt=""
+          />
+        </div>
+        <nav className="z-40 text-white -ml-20">
+          <ul
+            className={`bg-[#131D4E] absolute flex flex-col items-start pl-3 pr-8 pb-5 gap-3 duration-500 z-40 ${
+              isSubOpen ? "top-12 md:top-20" : "-top-64"
+            }`}
+          >
+            <li>
+              <NavLink
+                to="/profile"
+                className={({ isActive }) =>
+                  isActive ? " text-[#ff4838] navClass" : "navClass"
+                }
+              >
+                profile
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/dashboard"
+                className={({ isActive }) =>
+                  isActive ? " text-[#ff4838] navClass" : "navClass"
+                }
+              >
+                Dashboard
+              </NavLink>
+            </li>
+            <li>
+              <button className="font-barlow font-semibold hover:text-[#ff4838] duration-300">
+                Logout
+              </button>
+            </li>
+          </ul>
+        </nav>
+      </div>
       <div
         className=" block md:hidden lg:hidden xl:hidden 2xl:hidden text-white text-2xl py-3 transform hover:rotate-180 transition duration-300 cursor-pointer"
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={handleToggle}
       >
         {isOpen === true ? <FaXmark /> : <HiMenu />}
       </div>
