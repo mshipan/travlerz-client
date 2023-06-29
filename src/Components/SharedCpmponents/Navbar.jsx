@@ -52,6 +52,9 @@ const Navbar = () => {
       </li>
     </>
   );
+  // logged user
+  const user = "false";
+
   const handleToggle = () => {
     setIsOpen((prevState) => {
       setIsSubOpen(false); // Set isSubOpen to false when isOpen is toggled
@@ -88,48 +91,78 @@ const Navbar = () => {
         </div>
       </div>
       {/* avatar */}
-      <div className="md:mr-5">
-        <div onClick={() => setIsSubOpen(!isSubOpen)}>
-          <img
-            src={userImg}
-            className="w-10 rounded-full cursor-pointer"
-            alt=""
-          />
-        </div>
-        <nav className="z-40 text-white -ml-20">
-          <ul
-            className={`bg-[#131D4E] absolute flex flex-col items-start pl-3 pr-8 pb-5 gap-3 duration-500 z-40 ${
-              isSubOpen ? "top-12 md:top-20" : "-top-64"
-            }`}
-          >
+      {user === "true" ? (
+        <>
+          <div className="md:mr-5">
+            <div onClick={() => setIsSubOpen(!isSubOpen)}>
+              <img
+                src={userImg}
+                className="w-10 rounded-full cursor-pointer"
+                alt=""
+              />
+            </div>
+            <nav className="z-40 text-white -ml-20">
+              <ul
+                className={`bg-[#131D4E] absolute flex flex-col items-start pl-3 pr-8 pb-5 gap-3 duration-500 z-40 ${
+                  isSubOpen ? "top-12 md:top-20" : "-top-64"
+                }`}
+              >
+                <li>
+                  <NavLink
+                    to="/profile"
+                    className={({ isActive }) =>
+                      isActive ? " text-[#ff4838] navClass" : "navClass"
+                    }
+                  >
+                    profile
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to="/dashboard"
+                    className={({ isActive }) =>
+                      isActive ? " text-[#ff4838] navClass" : "navClass"
+                    }
+                  >
+                    Dashboard
+                  </NavLink>
+                </li>
+                <li>
+                  <button className="font-barlow font-semibold hover:text-[#ff4838] duration-300">
+                    Logout
+                  </button>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </>
+      ) : (
+        <>
+          <ul className="flex gap-7 md:mr-5">
             <li>
               <NavLink
-                to="/profile"
+                to="/login"
                 className={({ isActive }) =>
-                  isActive ? " text-[#ff4838] navClass" : "navClass"
+                  isActive ? " text-[#ff4838] navClass" : "text-white navClass"
                 }
               >
-                profile
+                Login
               </NavLink>
             </li>
             <li>
               <NavLink
-                to="/dashboard"
+                to="/registration"
                 className={({ isActive }) =>
-                  isActive ? " text-[#ff4838] navClass" : "navClass"
+                  isActive ? " text-[#ff4838] navClass" : "text-white navClass"
                 }
               >
-                Dashboard
+                Registration
               </NavLink>
-            </li>
-            <li>
-              <button className="font-barlow font-semibold hover:text-[#ff4838] duration-300">
-                Logout
-              </button>
             </li>
           </ul>
-        </nav>
-      </div>
+        </>
+      )}
+
       <div
         className=" block md:hidden lg:hidden xl:hidden 2xl:hidden text-white text-2xl py-3 transform hover:rotate-180 transition duration-300 cursor-pointer"
         onClick={handleToggle}
