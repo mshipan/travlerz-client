@@ -3,7 +3,8 @@ import logo from "../../assets/travlerz-logo.png";
 import { HiMenu } from "react-icons/hi";
 import { FaXmark } from "react-icons/fa6";
 import { useState } from "react";
-import userImg from "../../assets/user.png";
+
+import useAuth from "../../Hooks/useAuth";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -53,7 +54,7 @@ const Navbar = () => {
     </>
   );
   // logged user
-  const user = "false";
+  const { user, logOut } = useAuth();
 
   const handleToggle = () => {
     setIsOpen((prevState) => {
@@ -61,6 +62,13 @@ const Navbar = () => {
       return !prevState;
     });
   };
+
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {})
+      .catch((error) => console.log(error));
+  };
+
   return (
     <div className="bg-[#131D4E] sticky top-0 z-50 flex items-center px-3 md:px-0 lg:px-0 xl:px-0 2xl:px-0 gap-5">
       <div className="container mx-auto py-2 flex flex-col md:flex-row lg:flex-row xl:flex-row 2xl:flex-row items-start md:items-center justify-between">
@@ -91,12 +99,12 @@ const Navbar = () => {
         </div>
       </div>
       {/* avatar */}
-      {user === "true" ? (
+      {user ? (
         <>
           <div className="md:mr-5">
             <div onClick={() => setIsSubOpen(!isSubOpen)}>
               <img
-                src={userImg}
+                src={user?.photoURL}
                 className="w-10 rounded-full cursor-pointer"
                 alt=""
               />
@@ -104,7 +112,7 @@ const Navbar = () => {
             <nav className="z-40 text-white -ml-20">
               <ul
                 className={`bg-[#131D4E] absolute flex flex-col items-start pl-3 pr-8 pb-5 gap-3 duration-500 z-40 ${
-                  isSubOpen ? "top-12 md:top-20" : "-top-64"
+                  isSubOpen ? "top-12 md:top-[3.25rem]" : "-top-64"
                 }`}
               >
                 <li>
@@ -128,7 +136,10 @@ const Navbar = () => {
                   </NavLink>
                 </li>
                 <li>
-                  <button className="font-barlow font-semibold hover:text-[#ff4838] duration-300">
+                  <button
+                    onClick={handleLogOut}
+                    className="font-barlow font-semibold hover:text-[#ff4838] duration-300"
+                  >
                     Logout
                   </button>
                 </li>

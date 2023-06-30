@@ -1,18 +1,65 @@
 import { Helmet } from "react-helmet-async";
 import logo from "../assets/travlerz-logo.png";
-import { Link } from "react-router-dom";
-import { FcGoogle } from "react-icons/fc";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import { useContext } from "react";
+import { AuthContext } from "../Providers/AuthProvider";
+import Swal from "sweetalert2";
+import SocialLogin from "../Components/SharedCpmponents/SocialLogin";
 
 const Registration = () => {
   const {
     register,
     handleSubmit,
     watch,
+    reset,
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => console.log(data);
+  const { createUser, updateUserProfile } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const onSubmit = (data) => {
+    createUser(data.email, data.password)
+      .then((result) => {
+        const loggedUser = result.user;
+        console.log(loggedUser);
+        updateUserProfile(data.name, data.photoURL).then(() => {
+          const newUser = {
+            name: data.name,
+            email: data.email,
+            photo: data.photoURL,
+            // ToDO: here i would be put password: data.password if needed
+            dob: data.dob,
+            gender: data.gender,
+            country: data.country,
+            phone: data.phone,
+          };
+          fetch("http://localhost:5000/users", {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(newUser),
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              if (data.insertedId) {
+                Swal.fire({
+                  position: "center",
+                  icon: "success",
+                  title: "Registration Successfull",
+                  showConfirmButton: false,
+                  timer: 1500,
+                });
+                reset();
+                navigate("/");
+              }
+            });
+        });
+      })
+      .catch((error) => console.log(error));
+  };
 
   return (
     <div className="bg-registerBg w-full min-h-screen bg-no-repeat bg-cover bg-center flex items-center justify-center">
@@ -27,9 +74,7 @@ const Registration = () => {
           Sign Up with
         </h1>
         <div>
-          <button className="flex items-center gap-1 text-lg bg-[#131D4E] text-white px-5 py-1">
-            <FcGoogle className="text-2xl" /> Google
-          </button>
+          <SocialLogin></SocialLogin>
         </div>
         <div className="divider w-1/2 mx-auto text-xl font-barlow my-5">OR</div>
         <div className="w-full md:mx-auto ">
@@ -37,7 +82,7 @@ const Registration = () => {
             onSubmit={handleSubmit(onSubmit)}
             className="flex flex-col gap-3 md:gap-8 px-5"
           >
-            <div className="flex flex-col md:flex-row items-center justify-center md:gap-8 w-full ">
+            <div className="flex flex-col md:flex-row justify-center md:gap-8 w-full ">
               <div className="w-full md:w-1/2 flex flex-col md:gap-3">
                 <div className="form-control">
                   <label htmlFor="name" className="font-barlow font-semibold">
@@ -107,7 +152,10 @@ const Registration = () => {
                     Confirm Password :{" "}
                     {errors.confirmPassword && (
                       <span className="text-red-500">
-                        Password Do not match
+                        {errors.confirmPassword.type === "required" &&
+                          "Confirm Password is required"}
+                        {errors.confirmPassword.type === "validate" &&
+                          errors.confirmPassword.message}
                       </span>
                     )}
                   </label>
@@ -118,7 +166,8 @@ const Registration = () => {
                     className="p-1 focus:outline-none border border-[#131D4E] placeholder:font-mono"
                     {...register("confirmPassword", {
                       required: true,
-                      validate: (value) => value === watch("password"),
+                      validate: (value) =>
+                        value === watch("password") || "Password do not match",
                     })}
                   />
                 </div>
@@ -189,6 +238,24 @@ const Registration = () => {
                     placeholder=" Your Phone Number"
                     className="p-1 focus:outline-none border border-[#131D4E] placeholder:font-mono"
                     {...register("phone", { required: true })}
+                  />
+                </div>
+                <div className="form-control">
+                  <label
+                    htmlFor="photoURL"
+                    className="font-barlow font-semibold"
+                  >
+                    Photo Url:{" "}
+                    {errors.photoURL && (
+                      <span className="text-red-500">Photo is required</span>
+                    )}
+                  </label>
+                  <input
+                    type="text"
+                    name="photoURL"
+                    placeholder=" Your Photo Url"
+                    className="p-1 focus:outline-none border border-[#131D4E] placeholder:font-mono"
+                    {...register("photoURL", { required: true })}
                   />
                 </div>
               </div>
