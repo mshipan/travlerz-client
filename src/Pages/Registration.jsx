@@ -2,8 +2,18 @@ import { Helmet } from "react-helmet-async";
 import logo from "../assets/travlerz-logo.png";
 import { Link } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
+import { useForm } from "react-hook-form";
 
 const Registration = () => {
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = (data) => console.log(data);
+
   return (
     <div className="bg-registerBg w-full min-h-screen bg-no-repeat bg-cover bg-center flex items-center justify-center">
       <Helmet>
@@ -23,29 +33,40 @@ const Registration = () => {
         </div>
         <div className="divider w-1/2 mx-auto text-xl font-barlow my-5">OR</div>
         <div className="w-full md:mx-auto ">
-          <form className="flex flex-col gap-3 md:gap-8 px-5">
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            className="flex flex-col gap-3 md:gap-8 px-5"
+          >
             <div className="flex flex-col md:flex-row items-center justify-center md:gap-8 w-full ">
               <div className="w-full md:w-1/2 flex flex-col md:gap-3">
                 <div className="form-control">
                   <label htmlFor="name" className="font-barlow font-semibold">
-                    Full Name :
+                    Full Name :{" "}
+                    {errors.name && (
+                      <span className="text-red-500">Name is required</span>
+                    )}
                   </label>
                   <input
                     type="text"
                     name="name"
                     placeholder=" Type Your Full Name"
                     className="p-1 focus:outline-none border border-[#131D4E] placeholder:font-mono"
+                    {...register("name", { required: true })}
                   />
                 </div>
                 <div className="form-control">
                   <label htmlFor="email" className="font-barlow font-semibold">
-                    Email Address :
+                    Email Address :{" "}
+                    {errors.email && (
+                      <span className="text-red-500">Email is required</span>
+                    )}
                   </label>
                   <input
                     type="email"
                     name="email"
                     placeholder=" Type Your Email"
                     className="p-1 focus:outline-none border border-[#131D4E] placeholder:font-mono"
+                    {...register("email", { required: true })}
                   />
                 </div>
                 <div className="form-control">
@@ -53,13 +74,29 @@ const Registration = () => {
                     htmlFor="password"
                     className="font-barlow font-semibold"
                   >
-                    Password :
+                    Password :{" "}
+                    {errors.password && (
+                      <span className="text-red-500">
+                        {errors.password.type === "required" &&
+                          "Password is required"}
+                        {errors.password.type === "minLength" &&
+                          "Password must be at least 6 characters long"}
+                        {errors.password.type === "pattern" &&
+                          "Password must contain at least one uppercase, one lowercase letter, one number and one special character"}
+                      </span>
+                    )}
                   </label>
                   <input
                     type="password"
                     name="password"
                     placeholder=" Type Your Password"
                     className="p-1 focus:outline-none border border-[#131D4E] placeholder:font-mono"
+                    {...register("password", {
+                      required: true,
+                      minLength: 6,
+                      pattern:
+                        /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/,
+                    })}
                   />
                 </div>
                 <div className="form-control">
@@ -67,34 +104,53 @@ const Registration = () => {
                     htmlFor="confirmPassword"
                     className="font-barlow font-semibold"
                   >
-                    Confirm Password :
+                    Confirm Password :{" "}
+                    {errors.confirmPassword && (
+                      <span className="text-red-500">
+                        Password Do not match
+                      </span>
+                    )}
                   </label>
                   <input
                     type="password"
                     name="confirmPassword"
                     placeholder=" Confirm Password"
                     className="p-1 focus:outline-none border border-[#131D4E] placeholder:font-mono"
+                    {...register("confirmPassword", {
+                      required: true,
+                      validate: (value) => value === watch("password"),
+                    })}
                   />
                 </div>
               </div>
               <div className="w-full md:w-1/2 flex flex-col md:gap-3">
                 <div className="form-control">
                   <label htmlFor="dob" className="font-barlow font-semibold">
-                    Date of Birth :
+                    Date of Birth :{" "}
+                    {errors.dob && (
+                      <span className="text-red-500">
+                        Date of Birth is required
+                      </span>
+                    )}
                   </label>
                   <input
                     type="date"
                     name="dob"
                     className="p-1 focus:outline-none border border-[#131D4E] "
+                    {...register("dob", { required: true })}
                   />
                 </div>
                 <div className="form-control">
                   <label htmlFor="gender" className="font-barlow font-semibold">
-                    Gender :
+                    Gender :{" "}
+                    {errors.gender && (
+                      <span className="text-red-500">Gender is required</span>
+                    )}
                   </label>
                   <select
                     name="gender"
                     className="p-1 focus:outline-none border border-[#131D4E] "
+                    {...register("gender", { required: true })}
                   >
                     <option value="">Select</option>
                     <option value="male">Male</option>
@@ -107,24 +163,32 @@ const Registration = () => {
                     htmlFor="country"
                     className="font-barlow font-semibold"
                   >
-                    Country :
+                    Country :{" "}
+                    {errors.country && (
+                      <span className="text-red-500">Country is required</span>
+                    )}
                   </label>
                   <input
                     type="text"
                     name="country"
                     placeholder=" Type Your Country"
                     className="p-1 focus:outline-none border border-[#131D4E] placeholder:font-mono"
+                    {...register("country", { required: true })}
                   />
                 </div>
                 <div className="form-control">
                   <label htmlFor="phone" className="font-barlow font-semibold">
-                    Phone :
+                    Phone :{" "}
+                    {errors.phone && (
+                      <span className="text-red-500">Phone is required</span>
+                    )}
                   </label>
                   <input
                     type="text"
                     name="phone"
                     placeholder=" Your Phone Number"
                     className="p-1 focus:outline-none border border-[#131D4E] placeholder:font-mono"
+                    {...register("phone", { required: true })}
                   />
                 </div>
               </div>

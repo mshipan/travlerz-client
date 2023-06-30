@@ -62,7 +62,7 @@ const Navbar = () => {
     });
   };
   return (
-    <div className="bg-[#131D4E] flex items-center px-3 md:px-0 lg:px-0 xl:px-0 2xl:px-0 gap-5">
+    <div className="bg-[#131D4E] sticky top-0 z-50 flex items-center px-3 md:px-0 lg:px-0 xl:px-0 2xl:px-0 gap-5">
       <div className="container mx-auto py-2 flex flex-col md:flex-row lg:flex-row xl:flex-row 2xl:flex-row items-start md:items-center justify-between">
         <div>
           <img src={logo} alt="Website Logo" className="w-36" />
