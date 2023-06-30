@@ -5,11 +5,11 @@ import { FcGoogle } from "react-icons/fc";
 
 const Registration = () => {
   return (
-    <div className="bg-registerBg w-full h-fit md:h-screen bg-no-repeat bg-cover bg-center flex items-center justify-center">
+    <div className="bg-registerBg w-full min-h-screen bg-no-repeat bg-cover bg-center flex items-center justify-center">
       <Helmet>
         <title>Registration | Travlerz</title>
       </Helmet>
-      <div className="bg-white bg-opacity-40 md:w-1/2 md:h-2/3 p-1 m-5 rounded-lg shadow-2xl flex flex-col items-center justify-center">
+      <div className="bg-white bg-opacity-40 md:w-4/6 lg:w-3/6 p-1 m-5 rounded-lg shadow-2xl flex flex-col items-center justify-center">
         <div className="flex items-center justify-center my-1">
           <img src={logo} alt="Website Logo" className="w-48" />
         </div>
@@ -22,7 +22,7 @@ const Registration = () => {
           </button>
         </div>
         <div className="divider w-1/2 mx-auto text-xl font-barlow my-5">OR</div>
-        <div className="w-full mx-auto">
+        <div className="w-full md:mx-auto ">
           <form className="flex flex-col gap-3 md:gap-8 px-5">
             <div className="flex flex-col md:flex-row items-center justify-center md:gap-8 w-full ">
               <div className="w-full md:w-1/2 flex flex-col md:gap-3">
