@@ -31,12 +31,12 @@ const DashboardNav = () => {
       </li>
       <li>
         <NavLink
-          to="/about-us"
+          to="all-users"
           className={({ isActive }) =>
             isActive ? " text-[#ff4838] navClass" : "navClass"
           }
         >
-          About Us
+          All Users
         </NavLink>
       </li>
       <li>

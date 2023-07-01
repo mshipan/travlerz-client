@@ -1,3 +1,7 @@
 .bg-packageBg{
     background-image: url('../../assets/packageBg.jpg');
 }
+
+.packageBannerText {
+    text-shadow: 5px 2px 1px black;
+}

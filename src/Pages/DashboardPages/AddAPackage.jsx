@@ -3,6 +3,7 @@ import { BsPlus } from "react-icons/bs";
 import { FaXmark } from "react-icons/fa6";
 import Swal from "sweetalert2";
 import "./DashboardPagesCss.css";
+import { Helmet } from "react-helmet-async";
 
 const AddAPackage = () => {
   const { register, control, handleSubmit, reset } = useForm();
@@ -35,8 +36,11 @@ const AddAPackage = () => {
 
   return (
     <div className="mb-20">
+      <Helmet>
+        <title>Add a Package | Dashboard</title>
+      </Helmet>
       <div className="bg-packageBg bg-no-repeat bg-cover bg-fixed bg-bottom w-full h-48 flex items-center justify-center ">
-        <h1 className="font-barlow text-4xl font-bold text-white drop-shadow-2xl">
+        <h1 className="packageBannerText font-barlow text-4xl font-bold text-white drop-shadow-2xl">
           Add a Package
         </h1>
       </div>

@@ -10,6 +10,7 @@ import Registration from "../Pages/Registration";
 import DashboardLayout from "../Layouts/DashboardLayout";
 import AddAPackage from "../Pages/DashboardPages/AddAPackage";
 import ViewAllPackages from "../Pages/DashboardPages/ViewAllPackages";
+import AllUsers from "../Pages/DashboardPages/AllUsers";
 
 const router = createBrowserRouter([
   {
@@ -53,6 +54,11 @@ const router = createBrowserRouter([
       {
         path: "view-packages",
         element: <ViewAllPackages></ViewAllPackages>,
+        loader: () => fetch("http://localhost:5000/packages"),
+      },
+      {
+        path: "all-users",
+        element: <AllUsers></AllUsers>,
       },
     ],
   },
