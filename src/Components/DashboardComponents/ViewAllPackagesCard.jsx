@@ -1,8 +1,9 @@
 import { BsClockHistory, BsEye } from "react-icons/bs";
 import { TbCurrencyTaka } from "react-icons/tb";
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
+import { Link } from "react-router-dom";
 const ViewAllPackagesCard = ({ singlePackage }) => {
-  const { banner, title, duration, packagePricePerPerson } = singlePackage;
+  const { _id, banner, title, duration, packagePricePerPerson } = singlePackage;
   return (
     <div className="flex flex-col md:flex-row md:items-start p-3 shadow-xl drop-shadow-2xl rounded-xl border border-blue-200">
       <img src={banner} alt="Package Banner" className="md:w-80 rounded-xl" />
@@ -24,12 +25,14 @@ const ViewAllPackagesCard = ({ singlePackage }) => {
             <p className="text-base text-red-500 font-light">/ Person</p>
           </div>
           <div className="flex flex-row gap-3">
-            <button
-              title="view"
-              className="bg-blue-500 hover:bg-white p-2 text-white hover:text-blue-500 border border-blue-500 duration-500"
-            >
-              <BsEye />
-            </button>
+            <Link to={`/dashboard/package/${_id}`}>
+              <button
+                title="view details"
+                className="bg-blue-500 hover:bg-white p-2 text-white hover:text-blue-500 border border-blue-500 duration-500"
+              >
+                <BsEye />
+              </button>
+            </Link>
             <button
               title="edit"
               className="bg-yellow-500 hover:bg-white p-2 text-white hover:text-yellow-500 border border-yellow-500 duration-500"

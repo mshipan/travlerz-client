@@ -11,6 +11,7 @@ import DashboardLayout from "../Layouts/DashboardLayout";
 import AddAPackage from "../Pages/DashboardPages/AddAPackage";
 import ViewAllPackages from "../Pages/DashboardPages/ViewAllPackages";
 import AllUsers from "../Pages/DashboardPages/AllUsers";
+import ViewSinglePackage from "../Pages/DashboardPages/ViewSinglePackage";
 
 const router = createBrowserRouter([
   {
@@ -44,8 +45,10 @@ const router = createBrowserRouter([
         element: <h1>Hello, John Doe</h1>,
       },
       {
-        path: "my-profile",
+        path: "my-profile/:email",
         element: <Profile></Profile>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/user/${params.email}`),
       },
       {
         path: "add-a-package",
@@ -56,6 +59,13 @@ const router = createBrowserRouter([
         element: <ViewAllPackages></ViewAllPackages>,
         loader: () => fetch("http://localhost:5000/packages"),
       },
+      {
+        path: "package/:id",
+        element: <ViewSinglePackage></ViewSinglePackage>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/package/${params.id}`),
+      },
+
       {
         path: "all-users",
         element: <AllUsers></AllUsers>,

@@ -7,6 +7,7 @@ import useAuth from "../../Hooks/useAuth";
 const DashboardNav = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isSubOpen, setIsSubOpen] = useState(false);
+
   const navItems = (
     <>
       <li>
@@ -51,7 +52,6 @@ const DashboardNav = () => {
       </li>
     </>
   );
-
   const { user, logOut } = useAuth();
 
   const handleToggle = () => {
@@ -117,7 +117,7 @@ const DashboardNav = () => {
               >
                 <li>
                   <NavLink
-                    to="my-profile"
+                    to="my-profile/:email"
                     className={({ isActive }) =>
                       isActive ? " text-[#ff4838] navClass" : "navClass"
                     }
