@@ -3,32 +3,30 @@ import logo from "../../assets/travlerz-logo.png";
 import { HiMenu } from "react-icons/hi";
 import { FaXmark } from "react-icons/fa6";
 import { useState } from "react";
-
 import useAuth from "../../Hooks/useAuth";
-
-const Navbar = () => {
+const DashboardNav = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isSubOpen, setIsSubOpen] = useState(false);
   const navItems = (
     <>
       <li>
         <NavLink
-          to="/"
+          to="add-a-package"
           className={({ isActive }) =>
             isActive ? " text-[#ff4838] navClass" : "navClass"
           }
         >
-          Home
+          Add a Package
         </NavLink>
       </li>
       <li>
         <NavLink
-          to="/destinations"
+          to="view-packages"
           className={({ isActive }) =>
             isActive ? " text-[#ff4838] navClass" : "navClass"
           }
         >
-          Destinations
+          View Packages
         </NavLink>
       </li>
       <li>
@@ -53,7 +51,7 @@ const Navbar = () => {
       </li>
     </>
   );
-  // logged user
+
   const { user, logOut } = useAuth();
 
   const handleToggle = () => {
@@ -119,12 +117,12 @@ const Navbar = () => {
               >
                 <li>
                   <NavLink
-                    to="/dashboard"
+                    to="my-profile"
                     className={({ isActive }) =>
                       isActive ? " text-[#ff4838] navClass" : "navClass"
                     }
                   >
-                    Dashboard
+                    My Profile
                   </NavLink>
                 </li>
                 <li>
@@ -176,4 +174,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default DashboardNav;

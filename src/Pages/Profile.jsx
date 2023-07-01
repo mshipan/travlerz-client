@@ -6,7 +6,7 @@ const Profile = () => {
       <Helmet>
         <title>Profile | Travlerz</title>
       </Helmet>
-      <h1>User Profile Page</h1>
+      <h1>User Profile Page </h1>
     </div>
   );
 };

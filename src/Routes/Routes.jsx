@@ -5,9 +5,11 @@ import Destination from "../Pages/Destination";
 import ContactUs from "../Pages/ContactUs";
 import AboutUs from "../Pages/AboutUs";
 import Profile from "../Pages/Profile";
-import Dashboard from "../Pages/Dashboard";
 import Login from "../Pages/Login";
 import Registration from "../Pages/Registration";
+import DashboardLayout from "../Layouts/DashboardLayout";
+import AddAPackage from "../Pages/DashboardPages/AddAPackage";
+import ViewAllPackages from "../Pages/DashboardPages/ViewAllPackages";
 
 const router = createBrowserRouter([
   {
@@ -30,13 +32,27 @@ const router = createBrowserRouter([
         path: "/contact-us",
         element: <ContactUs></ContactUs>,
       },
+    ],
+  },
+  {
+    path: "/dashboard",
+    element: <DashboardLayout></DashboardLayout>,
+    children: [
       {
-        path: "/profile",
+        index: true,
+        element: <h1>Hello, John Doe</h1>,
+      },
+      {
+        path: "my-profile",
         element: <Profile></Profile>,
       },
       {
-        path: "/dashboard",
-        element: <Dashboard></Dashboard>,
+        path: "add-a-package",
+        element: <AddAPackage></AddAPackage>,
+      },
+      {
+        path: "view-packages",
+        element: <ViewAllPackages></ViewAllPackages>,
       },
     ],
   },
