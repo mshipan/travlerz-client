@@ -12,6 +12,7 @@ import AddAPackage from "../Pages/DashboardPages/AddAPackage";
 import ViewAllPackages from "../Pages/DashboardPages/ViewAllPackages";
 import AllUsers from "../Pages/DashboardPages/AllUsers";
 import ViewSinglePackage from "../Pages/DashboardPages/ViewSinglePackage";
+import UpdatePackage from "../Pages/DashboardPages/UpdatePackage";
 
 const router = createBrowserRouter([
   {
@@ -62,6 +63,12 @@ const router = createBrowserRouter([
       {
         path: "package/:id",
         element: <ViewSinglePackage></ViewSinglePackage>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/package/${params.id}`),
+      },
+      {
+        path: "update-package/:id",
+        element: <UpdatePackage></UpdatePackage>,
         loader: ({ params }) =>
           fetch(`http://localhost:5000/package/${params.id}`),
       },
