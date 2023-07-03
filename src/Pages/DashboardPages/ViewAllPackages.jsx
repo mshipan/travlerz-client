@@ -2,9 +2,11 @@ import { Helmet } from "react-helmet-async";
 import { useLoaderData } from "react-router-dom";
 import ViewAllPackagesCard from "../../Components/DashboardComponents/ViewAllPackagesCard";
 import "./DashboardPagesCss.css";
+import { useState } from "react";
 
 const ViewAllPackages = () => {
-  const packages = useLoaderData();
+  const loadedPackages = useLoaderData();
+  const [packages, setPackages] = useState(loadedPackages);
   console.log("packages", packages);
   return (
     <div className="mb-20">
@@ -21,6 +23,8 @@ const ViewAllPackages = () => {
           <ViewAllPackagesCard
             key={singlePackage._id}
             singlePackage={singlePackage}
+            packages={packages}
+            setPackages={setPackages}
           ></ViewAllPackagesCard>
         ))}
       </div>

@@ -3,10 +3,39 @@ import { TbCurrencyTaka } from "react-icons/tb";
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { FaUserAlt } from "react-icons/fa";
+import Swal from "sweetalert2";
 
-const ViewAllPackagesCard = ({ singlePackage }) => {
+const ViewAllPackagesCard = ({ singlePackage, packages, setPackages }) => {
   const { _id, banner, title, duration, packagePricePerPerson, category } =
     singlePackage;
+  const handleDelete = (_id) => {
+    Swal.fire({
+      title: "Are you sure to Delete?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:5000/package/${_id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.deletedCount > 0) {
+              Swal.fire(
+                "Deleted!",
+                "This package has been deleted.",
+                "success"
+              );
+              const remaining = packages.filter((sP) => sP._id !== _id);
+              setPackages(remaining);
+            }
+          });
+      }
+    });
+  };
   return (
     <div className="flex flex-col md:flex-row md:items-start p-3 shadow-xl drop-shadow-2xl rounded-xl border border-blue-200">
       <img src={banner} alt="Package Banner" className="md:w-80 rounded-xl" />
@@ -59,6 +88,7 @@ const ViewAllPackagesCard = ({ singlePackage }) => {
             </Link>
             <button
               title="delete"
+              onClick={() => handleDelete(_id)}
               className="bg-red-500 hover:bg-white p-2 text-white hover:text-red-500 border border-red-500 duration-500"
             >
               <FaTrashAlt />
