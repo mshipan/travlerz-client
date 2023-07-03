@@ -76,6 +76,7 @@ const router = createBrowserRouter([
       {
         path: "all-users",
         element: <AllUsers></AllUsers>,
+        loader: () => fetch("http://localhost:5000/users"),
       },
     ],
   },
