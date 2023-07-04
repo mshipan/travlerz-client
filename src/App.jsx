@@ -1,35 +1,40 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState, useEffect } from "react";
+import { CircleLoader } from "react-spinners";
+import AuthProvider from "./Providers/AuthProvider";
+import { HelmetProvider } from "react-helmet-async";
+import { RouterProvider } from "react-router-dom";
+import router from "./Routes/Routes";
 
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
+  const [isLoading, setIsLoading] = useState(true);
+  const [isFirstVisit, setIsFirstVisit] = useState(true);
+
+  useEffect(() => {
+    if (isFirstVisit) {
+      setIsFirstVisit(false);
+    } else {
+      // Simulating data loading
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 2000);
+    }
+  }, [isFirstVisit]);
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <div>
+      {isLoading ? (
+        <div className="w-full h-screen flex items-center justify-center">
+          <CircleLoader color="#131D4E" size={200} loading={isLoading} />
+        </div>
+      ) : (
+        <AuthProvider>
+          <HelmetProvider>
+            <RouterProvider router={router} />
+          </HelmetProvider>
+        </AuthProvider>
+      )}
+    </div>
+  );
+};
 
-export default App
+export default App;
