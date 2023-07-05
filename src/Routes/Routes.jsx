@@ -13,6 +13,8 @@ import ViewAllPackages from "../Pages/DashboardPages/ViewAllPackages";
 import AllUsers from "../Pages/DashboardPages/AllUsers";
 import ViewSinglePackage from "../Pages/DashboardPages/ViewSinglePackage";
 import UpdatePackage from "../Pages/DashboardPages/UpdatePackage";
+import AddADestination from "../Pages/DashboardPages/AddADestination";
+import ViewAllDestination from "../Pages/DashboardPages/ViewAllDestination";
 
 const router = createBrowserRouter([
   {
@@ -77,6 +79,14 @@ const router = createBrowserRouter([
         path: "all-users",
         element: <AllUsers></AllUsers>,
         loader: () => fetch("http://localhost:5000/users"),
+      },
+      {
+        path: "add-a-destination",
+        element: <AddADestination></AddADestination>,
+      },
+      {
+        path: "view-destinations",
+        element: <ViewAllDestination></ViewAllDestination>,
       },
     ],
   },

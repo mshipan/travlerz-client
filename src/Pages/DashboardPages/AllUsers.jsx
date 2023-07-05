@@ -9,7 +9,7 @@ const AllUsers = () => {
   const [allUsers, setAllUsers] = useState(loggedUsers);
 
   return (
-    <div className="mb-20">
+    <div className="my-16">
       <Helmet>
         <title>All Users | Dashboard</title>
       </Helmet>
@@ -24,30 +24,32 @@ const AllUsers = () => {
           Scroll to right to view full data{" "}
           <BsArrowRight className="text-red-500" />
         </p>
-        <table className="table text-center">
-          <thead className="border border-black text-black font-barlow">
-            <th className="border border-black">#</th>
-            <th className="border border-black">User Photo</th>
-            <th className="border border-black">User Name</th>
-            <th className="border border-black">User Email</th>
-            <th className="border border-black">User Role</th>
-            <th className="border border-black">Manage Role</th>
-            <th>Action</th>
-          </thead>
-          <tbody>
-            <>
-              {allUsers.map((user, index) => (
-                <AllUsersTable
-                  key={index}
-                  user={user}
-                  allUsers={allUsers}
-                  setAllUsers={setAllUsers}
-                  index={index}
-                ></AllUsersTable>
-              ))}
-            </>
-          </tbody>
-        </table>
+        <div>
+          <table className="table text-center">
+            <thead className="border border-black text-black font-barlow">
+              <th className="border border-black">#</th>
+              <th className="border border-black">User Photo</th>
+              <th className="border border-black">User Name</th>
+              <th className="border border-black">User Email</th>
+              <th className="border border-black">User Role</th>
+              <th className="border border-black">Manage Role</th>
+              <th>Action</th>
+            </thead>
+            <tbody>
+              <>
+                {allUsers.map((user, index) => (
+                  <AllUsersTable
+                    key={index}
+                    user={user}
+                    allUsers={allUsers}
+                    setAllUsers={setAllUsers}
+                    index={index}
+                  ></AllUsersTable>
+                ))}
+              </>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );

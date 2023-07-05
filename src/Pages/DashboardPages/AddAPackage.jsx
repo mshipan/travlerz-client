@@ -35,7 +35,7 @@ const AddAPackage = () => {
   };
 
   return (
-    <div className="mb-20">
+    <div className="my-16">
       <Helmet>
         <title>Add a Package | Dashboard</title>
       </Helmet>

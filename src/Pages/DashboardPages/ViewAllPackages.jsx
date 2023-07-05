@@ -9,7 +9,7 @@ const ViewAllPackages = () => {
   const [packages, setPackages] = useState(loadedPackages);
   console.log("packages", packages);
   return (
-    <div className="mb-20">
+    <div className="my-16">
       <Helmet>
         <title>View all Packages | Dashboard</title>
       </Helmet>

@@ -1,15 +1,15 @@
 import { Helmet } from "react-helmet-async";
-import { useLoaderData } from "react-router-dom";
+import useAuth from "../Hooks/useAuth";
 
 const Profile = () => {
-  const user = useLoaderData();
+  const user = useAuth();
   console.log(user);
   return (
     <div>
       <Helmet>
         <title>Profile | Travlerz</title>
       </Helmet>
-      <h1>User Profile Page </h1>
+      <h1>Welcome, {user?.displayName} </h1>
     </div>
   );
 };

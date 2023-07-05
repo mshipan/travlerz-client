@@ -77,6 +77,31 @@ const AllUsersTable = ({ user, index, allUsers, setAllUsers }) => {
       });
   };
 
+  const handleDelete = (_id) => {
+    Swal.fire({
+      title: "Are you sure to Delete?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:5000/user/${_id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.deletedCount > 0) {
+              Swal.fire("Deleted!", "User has been deleted.", "success");
+              const remainingUser = allUsers.filter((aU) => aU._id !== _id);
+              setAllUsers(remainingUser);
+            }
+          });
+      }
+    });
+  };
+
   return (
     <tr className="border-b border-black last:border-b-0">
       <td>{index + 1}</td>
@@ -133,7 +158,7 @@ const AllUsersTable = ({ user, index, allUsers, setAllUsers }) => {
                 <div>
                   <img src={photo} alt="User Image" className="w-56" />
                 </div>
-                <div className="flex flex-col md;items-start">
+                <div className="flex flex-col md:items-start">
                   <h3 className="font-barlow text-xl font-semibold">
                     Name: {name}
                   </h3>
@@ -148,6 +173,7 @@ const AllUsersTable = ({ user, index, allUsers, setAllUsers }) => {
           </dialog>
           <button
             title="delete user"
+            onClick={() => handleDelete(_id)}
             className="bg-yellow-500 hover:bg-white border border-yellow-500 p-2 text-lg duration-500"
           >
             <FaRegTrashAlt />
