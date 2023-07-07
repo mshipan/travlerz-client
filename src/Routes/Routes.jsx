@@ -15,6 +15,7 @@ import ViewSinglePackage from "../Pages/DashboardPages/ViewSinglePackage";
 import UpdatePackage from "../Pages/DashboardPages/UpdatePackage";
 import AddADestination from "../Pages/DashboardPages/AddADestination";
 import ViewAllDestination from "../Pages/DashboardPages/ViewAllDestination";
+import ViewSingleDestionation from "../Pages/DashboardPages/ViewSingleDestionation";
 
 const router = createBrowserRouter([
   {
@@ -87,6 +88,20 @@ const router = createBrowserRouter([
       {
         path: "view-destinations",
         element: <ViewAllDestination></ViewAllDestination>,
+        loader: () => fetch("http://localhost:5000/destionations"),
+      },
+      {
+        path: "destination/:id",
+        element: <ViewSingleDestionation></ViewSingleDestionation>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/destination/${params.id}`),
+      },
+
+      {
+        path: "update-destination/:id",
+        element: <UpdatePackage></UpdatePackage>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/destination/${params.id}`),
       },
     ],
   },

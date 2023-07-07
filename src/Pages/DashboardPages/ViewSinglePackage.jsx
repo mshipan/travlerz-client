@@ -30,7 +30,7 @@ const ViewSinglePackage = () => {
     tourGallery,
   } = singlePackage;
   return (
-    <div>
+    <div className="my-16">
       <Helmet>
         <title> Package Details | Dashboard</title>
       </Helmet>

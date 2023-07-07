@@ -44,7 +44,7 @@ const AddADestination = () => {
 
   const onSubmit = (data) => {
     console.log(data);
-    fetch("http://localhost:5000/packages", {
+    fetch("http://localhost:5000/destinations", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(data),
@@ -53,7 +53,7 @@ const AddADestination = () => {
       .then((data) => {
         if (data.insertedId) {
           Swal.fire({
-            title: "Package Added Successfully!",
+            title: "New Destination Added Successfully!",
             text: "Press OK to continue",
             icon: "success",
             confirmButtonText: "OK",
