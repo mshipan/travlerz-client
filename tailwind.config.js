@@ -6,12 +6,6 @@ export default {
       fontFamily: {
         barlow: ["Barlow", "sans-serif"],
       },
-      backgroundImage: {
-        footerBg: "url('./src/assets/footer-bg.jpg')",
-        bannerBg: "url('./src/assets/bannerBg.jpg')",
-        loginBg: "url('./src/assets/loginBg.jpg')",
-        registerBg: "url('./src/assets/registrationBg.jpg')",
-      },
     },
   },
   plugins: [require("daisyui")],

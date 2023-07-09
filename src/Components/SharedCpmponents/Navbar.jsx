@@ -33,6 +33,16 @@ const Navbar = () => {
       </li>
       <li>
         <NavLink
+          to="/packages"
+          className={({ isActive }) =>
+            isActive ? " text-[#ff4838] navClass" : "navClass"
+          }
+        >
+          Packages
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
           to="/about-us"
           className={({ isActive }) =>
             isActive ? " text-[#ff4838] navClass" : "navClass"

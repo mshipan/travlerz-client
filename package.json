@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "animate.css": "^4.1.1",
-    "firebase": "^9.23.0",
+    "firebase": "^10.0.0",
     "lightbox.js-react": "^0.6.4",
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.1",
@@ -38,6 +38,6 @@
     "eslint-plugin-react-refresh": "^0.3.4",
     "postcss": "^8.4.24",
     "tailwindcss": "^3.3.2",
-    "vite": "^4.3.9"
+    "vite": "^4.4.2"
   }
 }

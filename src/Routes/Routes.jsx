@@ -16,6 +16,9 @@ import UpdatePackage from "../Pages/DashboardPages/UpdatePackage";
 import AddADestination from "../Pages/DashboardPages/AddADestination";
 import ViewAllDestination from "../Pages/DashboardPages/ViewAllDestination";
 import ViewSingleDestionation from "../Pages/DashboardPages/ViewSingleDestionation";
+import Packages from "../Pages/Packages";
+import SinglePackage from "../Pages/SinglePackage";
+import ViewAllBookings from "../Pages/DashboardPages/ViewAllBookings";
 
 const router = createBrowserRouter([
   {
@@ -29,6 +32,18 @@ const router = createBrowserRouter([
       {
         path: "/destinations",
         element: <Destination></Destination>,
+        loader: () => fetch("http://localhost:5000/destinations"),
+      },
+      {
+        path: "/packages",
+        element: <Packages></Packages>,
+        loader: () => fetch("http://localhost:5000/packages"),
+      },
+      {
+        path: "/package/:id",
+        element: <SinglePackage></SinglePackage>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/package/${params.id}`),
       },
       {
         path: "/about-us",
@@ -88,7 +103,7 @@ const router = createBrowserRouter([
       {
         path: "view-destinations",
         element: <ViewAllDestination></ViewAllDestination>,
-        loader: () => fetch("http://localhost:5000/destionations"),
+        loader: () => fetch("http://localhost:5000/destinations"),
       },
       {
         path: "destination/:id",
@@ -102,6 +117,11 @@ const router = createBrowserRouter([
         element: <UpdatePackage></UpdatePackage>,
         loader: ({ params }) =>
           fetch(`http://localhost:5000/destination/${params.id}`),
+      },
+      {
+        path: "view-bookings",
+        element: <ViewAllBookings></ViewAllBookings>,
+        loader: () => fetch("http://localhost:5000/bookings"),
       },
     ],
   },

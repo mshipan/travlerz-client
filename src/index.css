@@ -6,3 +6,18 @@
 .navClass {
     @apply font-barlow font-semibold hover:text-[#ff4838] duration-300
 }
+
+.bg-footerBg{
+background-image: url("./assets/footer-bg.jpg");
+}
+
+.bg-bannerBg{
+    background-image: url("./assets/bannerBg.jpg");
+}
+.bg-loginBg{
+    background-image: url("./assets/loginBg.jpg");
+}
+.bg-registerBg{
+    background-image: url("./assets/registrationBg.jpg");
+}
+
