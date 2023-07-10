@@ -11,8 +11,10 @@ import { SlideshowLightbox } from "lightbox.js-react";
 import { useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
+import useAuth from "../Hooks/useAuth";
 
 const SinglePackage = () => {
+  const { user } = useAuth();
   const modalRef = useRef(null);
   const singlePackage = useLoaderData();
   const { register, handleSubmit, watch, reset } = useForm({
@@ -74,6 +76,7 @@ const SinglePackage = () => {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify({
+        uid: user.uid,
         title: title,
         totalPrice,
         name: data.name,

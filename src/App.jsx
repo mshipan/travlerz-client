@@ -5,6 +5,10 @@ import { HelmetProvider } from "react-helmet-async";
 import { RouterProvider } from "react-router-dom";
 import router from "./Routes/Routes";
 
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
+const queryClient = new QueryClient();
+
 const App = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [isFirstVisit, setIsFirstVisit] = useState(true);
@@ -29,7 +33,9 @@ const App = () => {
       ) : (
         <AuthProvider>
           <HelmetProvider>
-            <RouterProvider router={router} />
+            <QueryClientProvider client={queryClient}>
+              <RouterProvider router={router} />
+            </QueryClientProvider>
           </HelmetProvider>
         </AuthProvider>
       )}

@@ -65,12 +65,42 @@ const DashboardNav = () => {
       </li>
       <li>
         <NavLink
-          to="ratings-and-reviews"
+          to="my-bookings"
           className={({ isActive }) =>
             isActive ? " text-[#ff4838] navClass" : "navClass"
           }
         >
-          Ratings and Reviews
+          My Bookings
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="add-a-testimonial"
+          className={({ isActive }) =>
+            isActive ? " text-[#ff4838] navClass" : "navClass"
+          }
+        >
+          Add a Testimonial
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="my-testimonial"
+          className={({ isActive }) =>
+            isActive ? " text-[#ff4838] navClass" : "navClass"
+          }
+        >
+          My Testimonials
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="view-testimonials"
+          className={({ isActive }) =>
+            isActive ? " text-[#ff4838] navClass" : "navClass"
+          }
+        >
+          Users Testimonials
         </NavLink>
       </li>
       <li>

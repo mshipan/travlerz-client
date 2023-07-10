@@ -27,13 +27,15 @@ const AllUsers = () => {
         <div>
           <table className="table text-center">
             <thead className="border border-black text-black font-barlow">
-              <th className="border border-black">#</th>
-              <th className="border border-black">User Photo</th>
-              <th className="border border-black">User Name</th>
-              <th className="border border-black">User Email</th>
-              <th className="border border-black">User Role</th>
-              <th className="border border-black">Manage Role</th>
-              <th>Action</th>
+              <tr>
+                <th className="border border-black">#</th>
+                <th className="border border-black">User Photo</th>
+                <th className="border border-black">User Name</th>
+                <th className="border border-black">User Email</th>
+                <th className="border border-black">User Role</th>
+                <th className="border border-black">Manage Role</th>
+                <th>Action</th>
+              </tr>
             </thead>
             <tbody>
               <>

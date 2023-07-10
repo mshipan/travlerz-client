@@ -19,6 +19,10 @@ import ViewSingleDestionation from "../Pages/DashboardPages/ViewSingleDestionati
 import Packages from "../Pages/Packages";
 import SinglePackage from "../Pages/SinglePackage";
 import ViewAllBookings from "../Pages/DashboardPages/ViewAllBookings";
+import SingleDestination from "../Pages/SingleDestination";
+import AddATestimonial from "../Pages/DashboardPages/AddATestimonial";
+import PrivateRoute from "./PrivateRoute";
+import MyBookings from "../Pages/DashboardPages/MyBookings";
 
 const router = createBrowserRouter([
   {
@@ -32,16 +36,28 @@ const router = createBrowserRouter([
       {
         path: "/destinations",
         element: <Destination></Destination>,
-        loader: () => fetch("http://localhost:5000/destinations"),
+      },
+      {
+        path: "/destination/:id",
+        element: (
+          <PrivateRoute>
+            <SingleDestination></SingleDestination>
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/destination/${params.id}`),
       },
       {
         path: "/packages",
         element: <Packages></Packages>,
-        loader: () => fetch("http://localhost:5000/packages"),
       },
       {
         path: "/package/:id",
-        element: <SinglePackage></SinglePackage>,
+        element: (
+          <PrivateRoute>
+            <SinglePackage></SinglePackage>
+          </PrivateRoute>
+        ),
         loader: ({ params }) =>
           fetch(`http://localhost:5000/package/${params.id}`),
       },
@@ -122,6 +138,14 @@ const router = createBrowserRouter([
         path: "view-bookings",
         element: <ViewAllBookings></ViewAllBookings>,
         loader: () => fetch("http://localhost:5000/bookings"),
+      },
+      {
+        path: "my-bookings",
+        element: <MyBookings></MyBookings>,
+      },
+      {
+        path: "add-a-testimonial",
+        element: <AddATestimonial></AddATestimonial>,
       },
     ],
   },

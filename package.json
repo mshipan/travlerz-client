@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@tanstack/react-query": "^4.29.19",
     "animate.css": "^4.1.1",
     "firebase": "^10.0.0",
     "lightbox.js-react": "^0.6.4",
