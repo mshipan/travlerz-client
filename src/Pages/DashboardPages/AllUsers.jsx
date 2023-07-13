@@ -34,7 +34,7 @@ const AllUsers = () => {
                 <th className="border border-black">User Email</th>
                 <th className="border border-black">User Role</th>
                 <th className="border border-black">Manage Role</th>
-                <th>Action</th>
+                <th className="border border-black">Action</th>
               </tr>
             </thead>
             <tbody>

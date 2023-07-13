@@ -20,9 +20,11 @@ import Packages from "../Pages/Packages";
 import SinglePackage from "../Pages/SinglePackage";
 import ViewAllBookings from "../Pages/DashboardPages/ViewAllBookings";
 import SingleDestination from "../Pages/SingleDestination";
-import AddATestimonial from "../Pages/DashboardPages/AddATestimonial";
 import PrivateRoute from "./PrivateRoute";
 import MyBookings from "../Pages/DashboardPages/MyBookings";
+import MyReviews from "../Pages/DashboardPages/MyReviews";
+import ViewAllReviews from "../Pages/DashboardPages/ViewAllReviews";
+import UpdateProfile from "../Pages/DashboardPages/UpdateProfile";
 
 const router = createBrowserRouter([
   {
@@ -80,8 +82,12 @@ const router = createBrowserRouter([
         element: <h1>Hello, John Doe</h1>,
       },
       {
-        path: "my-profile/:email",
+        path: "my-profile",
         element: <Profile></Profile>,
+      },
+      {
+        path: "update-profile",
+        element: <UpdateProfile></UpdateProfile>,
         loader: ({ params }) =>
           fetch(`http://localhost:5000/user/${params.email}`),
       },
@@ -144,8 +150,12 @@ const router = createBrowserRouter([
         element: <MyBookings></MyBookings>,
       },
       {
-        path: "add-a-testimonial",
-        element: <AddATestimonial></AddATestimonial>,
+        path: "my-reviews",
+        element: <MyReviews></MyReviews>,
+      },
+      {
+        path: "view-all-reviews",
+        element: <ViewAllReviews></ViewAllReviews>,
       },
     ],
   },

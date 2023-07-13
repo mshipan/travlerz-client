@@ -45,7 +45,7 @@ const DashboardLayout = () => {
                 >
                   <li>
                     <NavLink
-                      to="my-profile/:email"
+                      to="my-profile"
                       className={({ isActive }) =>
                         isActive ? " text-[#ff4838] navClass" : "navClass"
                       }
