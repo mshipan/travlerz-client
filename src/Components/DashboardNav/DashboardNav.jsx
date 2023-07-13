@@ -99,22 +99,22 @@ const DashboardNav = () => {
       <>
         <li>
           <NavLink
-            to="my-reviews"
-            className={({ isActive }) =>
-              isActive ? " text-[#ff4838] navClass" : "navClass"
-            }
-          >
-            My Reviews
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
             to="my-bookings"
             className={({ isActive }) =>
               isActive ? " text-[#ff4838] navClass" : "navClass"
             }
           >
             My Bookings
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="my-reviews"
+            className={({ isActive }) =>
+              isActive ? " text-[#ff4838] navClass" : "navClass"
+            }
+          >
+            My Reviews
           </NavLink>
         </li>
       </>

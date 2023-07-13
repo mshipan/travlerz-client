@@ -1,11 +1,38 @@
 import { Helmet } from "react-helmet-async";
 import useAuth from "../../Hooks/useAuth";
 import useUser from "../../Hooks/useUser";
+import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const UpdateProfile = () => {
   const { user } = useAuth();
   const [singleUser] = useUser(user?.email);
+  console.log("first", singleUser);
   const { country, dob, email, gender, name, phone, photo } = singleUser;
+  const { register, handleSubmit } = useForm();
+  const navigate = useNavigate();
+  const onSubmit = (data) => {
+    console.log(data);
+    fetch(`http://localhost:5000/user/${singleUser?.email}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.modifiedCount > 0) {
+          Swal.fire({
+            title: "Profile Updated Successfully!",
+            text: "Press OK to continue",
+            icon: "success",
+            confirmButtonText: "OK",
+          });
+        }
+        navigate("/dashboard/my-profile");
+      });
+  };
   return (
     <div className="my-16">
       <Helmet>
@@ -21,7 +48,10 @@ const UpdateProfile = () => {
           <img src={photo} alt="User Photo" className="w-56" />
         </div>
         <div className="md:w-1/3 relative">
-          <form className="border border-black p-5">
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            className="border border-black p-5"
+          >
             <div className="form-control">
               <label htmlFor="name" className="font-barlow font-semibold">
                 Name:
@@ -30,6 +60,7 @@ const UpdateProfile = () => {
                 type="text"
                 name="name"
                 defaultValue={name}
+                disabled
                 className="p-1 focus:outline-none border border-[#131D4E] placeholder:font-mono"
               />
             </div>
@@ -40,6 +71,7 @@ const UpdateProfile = () => {
               <input
                 type="email"
                 name="email"
+                disabled
                 defaultValue={email}
                 className="p-1 focus:outline-none border border-[#131D4E] placeholder:font-mono"
               />
@@ -52,6 +84,7 @@ const UpdateProfile = () => {
                 type="text"
                 name="phone"
                 defaultValue={phone}
+                {...register("phone")}
                 className="p-1 focus:outline-none border border-[#131D4E] placeholder:font-mono"
               />
             </div>
@@ -62,6 +95,7 @@ const UpdateProfile = () => {
               <select
                 name="gender"
                 defaultValue={gender}
+                {...register("gender")}
                 className="p-1 border border-black outline-none"
               >
                 <option value="">Select</option>
@@ -79,6 +113,7 @@ const UpdateProfile = () => {
                 type="date"
                 name="dob"
                 defaultValue={dob}
+                {...register("dob")}
                 className="p-1 focus:outline-none border border-[#131D4E] placeholder:font-mono"
               />
             </div>
@@ -90,6 +125,7 @@ const UpdateProfile = () => {
                 type="text"
                 name="country"
                 defaultValue={country}
+                {...register("country")}
                 className="p-1 focus:outline-none border border-[#131D4E] placeholder:font-mono"
               />
             </div>
