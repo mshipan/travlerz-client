@@ -21,3 +21,6 @@ background-image: url("./assets/footer-bg.jpg");
     background-image: url("./assets/registrationBg.jpg");
 }
 
+.bg-ourSuccessReport {
+    background-image: url("./assets/successReportBg.jpg");
+}
