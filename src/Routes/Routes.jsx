@@ -25,6 +25,9 @@ import MyBookings from "../Pages/DashboardPages/MyBookings";
 import MyReviews from "../Pages/DashboardPages/MyReviews";
 import ViewAllReviews from "../Pages/DashboardPages/ViewAllReviews";
 import UpdateProfile from "../Pages/DashboardPages/UpdateProfile";
+import AddAGuide from "../Pages/DashboardPages/AddAGuide";
+import ViewAllGuides from "../Pages/DashboardPages/ViewAllGuides";
+import UpdateGuide from "../Pages/DashboardPages/UpdateGuide";
 
 const router = createBrowserRouter([
   {
@@ -156,6 +159,20 @@ const router = createBrowserRouter([
       {
         path: "view-all-reviews",
         element: <ViewAllReviews></ViewAllReviews>,
+      },
+      {
+        path: "add-a-guide",
+        element: <AddAGuide></AddAGuide>,
+      },
+      {
+        path: "view-all-guides",
+        element: <ViewAllGuides></ViewAllGuides>,
+      },
+      {
+        path: "update-guide/:id",
+        element: <UpdateGuide></UpdateGuide>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/guide/${params.id}`),
       },
     ],
   },

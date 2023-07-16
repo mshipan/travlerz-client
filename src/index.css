@@ -24,3 +24,7 @@ background-image: url("./assets/footer-bg.jpg");
 .bg-ourSuccessReport {
     background-image: url("./assets/successReportBg.jpg");
 }
+
+.bg-clientSay{
+    background-image: url("./assets/clientSayBg.jpg");
+}

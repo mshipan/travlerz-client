@@ -4,6 +4,7 @@ import PopularPackage from "../Components/HomeComponents/PopularPackage";
 import ExploreDestination from "../Components/HomeComponents/ExploreDestination";
 import OurSuccessReport from "../Components/HomeComponents/OurSuccessReport";
 import OurGallery from "../Components/HomeComponents/OurGallery";
+import ClientSay from "../Components/HomeComponents/ClientSay";
 
 const Home = () => {
   return (
@@ -16,6 +17,7 @@ const Home = () => {
       <ExploreDestination></ExploreDestination>
       <OurSuccessReport></OurSuccessReport>
       <OurGallery></OurGallery>
+      <ClientSay></ClientSay>
     </div>
   );
 };

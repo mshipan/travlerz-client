@@ -14,7 +14,7 @@ const PopularPackage = () => {
     <div className="container mx-auto my-20 px-4">
       <div>
         <h1 className="font-barlow text-2xl font-bold">Our Popular Packages</h1>
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-10 md:gap-0 ">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 md:gap-0 mb-5">
           <p className="md:max-w-3xl text-sm font-barlow my-5">
             Discover unforgettable travel experiences with Travlerz! Our popular
             tour packages cater to diverse interests, offering thrilling

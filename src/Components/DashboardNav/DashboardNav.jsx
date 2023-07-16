@@ -86,6 +86,26 @@ const DashboardNav = () => {
         </li>
         <li>
           <NavLink
+            to="add-a-guide"
+            className={({ isActive }) =>
+              isActive ? " text-[#ff4838] navClass" : "navClass"
+            }
+          >
+            Add a Guide
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="view-all-guides"
+            className={({ isActive }) =>
+              isActive ? " text-[#ff4838] navClass" : "navClass"
+            }
+          >
+            All Guides
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
             to="ratings-and-reviews"
             className={({ isActive }) =>
               isActive ? " text-[#ff4838] navClass" : "navClass"
