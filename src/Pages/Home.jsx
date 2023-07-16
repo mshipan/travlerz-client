@@ -5,6 +5,7 @@ import ExploreDestination from "../Components/HomeComponents/ExploreDestination"
 import OurSuccessReport from "../Components/HomeComponents/OurSuccessReport";
 import OurGallery from "../Components/HomeComponents/OurGallery";
 import ClientSay from "../Components/HomeComponents/ClientSay";
+import TourGuide from "../Components/HomeComponents/TourGuide";
 
 const Home = () => {
   return (
@@ -18,6 +19,7 @@ const Home = () => {
       <OurSuccessReport></OurSuccessReport>
       <OurGallery></OurGallery>
       <ClientSay></ClientSay>
+      <TourGuide></TourGuide>
     </div>
   );
 };
