@@ -129,8 +129,7 @@ const SingleDestination = () => {
           <iframe
             title="Map"
             src={mapLink}
-            width="600"
-            height="450"
+            className="w-full h-72 md:h-96"
             frameBorder="0"
             style={{ border: 0 }}
             allowFullScreen
