@@ -31,7 +31,7 @@ const AllGuidesCard = ({ guide }) => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/tour-guides/${_id}`, {
+        fetch(`https://travlerz-server.vercel.app/tour-guides/${_id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

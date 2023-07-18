@@ -8,7 +8,7 @@ const useGuide = () => {
   } = useQuery({
     queryKey: ["guides"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/tour-guides");
+      const res = await fetch("https://travlerz-server.vercel.app/tour-guides");
       return res.json();
     },
   });

@@ -14,7 +14,7 @@ const UpdateProfile = () => {
   const navigate = useNavigate();
   const onSubmit = (data) => {
     console.log(data);
-    fetch(`http://localhost:5000/user/${singleUser?.email}`, {
+    fetch(`https://travlerz-server.vercel.app/user/${singleUser?.email}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),

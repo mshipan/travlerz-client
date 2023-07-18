@@ -23,7 +23,7 @@ const SocialLogin = () => {
         country: "",
         phone: "",
       };
-      fetch("http://localhost:5000/users", {
+      fetch("https://travlerz-server.vercel.app/users", {
         method: "POST",
         headers: {
           "content-type": "application/json",

@@ -50,7 +50,7 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/destination/${params.id}`),
+          fetch(`https://travlerz-server.vercel.app/destination/${params.id}`),
       },
       {
         path: "/packages",
@@ -64,7 +64,7 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/package/${params.id}`),
+          fetch(`https://travlerz-server.vercel.app/package/${params.id}`),
       },
       {
         path: "/about-us",
@@ -92,7 +92,7 @@ const router = createBrowserRouter([
         path: "update-profile",
         element: <UpdateProfile></UpdateProfile>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/user/${params.email}`),
+          fetch(`https://travlerz-server.vercel.app/user/${params.email}`),
       },
       {
         path: "add-a-package",
@@ -101,25 +101,25 @@ const router = createBrowserRouter([
       {
         path: "view-packages",
         element: <ViewAllPackages></ViewAllPackages>,
-        loader: () => fetch("http://localhost:5000/packages"),
+        loader: () => fetch("https://travlerz-server.vercel.app/packages"),
       },
       {
         path: "package/:id",
         element: <ViewSinglePackage></ViewSinglePackage>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/package/${params.id}`),
+          fetch(`https://travlerz-server.vercel.app/package/${params.id}`),
       },
       {
         path: "update-package/:id",
         element: <UpdatePackage></UpdatePackage>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/package/${params.id}`),
+          fetch(`https://travlerz-server.vercel.app/package/${params.id}`),
       },
 
       {
         path: "all-users",
         element: <AllUsers></AllUsers>,
-        loader: () => fetch("http://localhost:5000/users"),
+        loader: () => fetch("https://travlerz-server.vercel.app/users"),
       },
       {
         path: "add-a-destination",
@@ -128,25 +128,25 @@ const router = createBrowserRouter([
       {
         path: "view-destinations",
         element: <ViewAllDestination></ViewAllDestination>,
-        loader: () => fetch("http://localhost:5000/destinations"),
+        loader: () => fetch("https://travlerz-server.vercel.app/destinations"),
       },
       {
         path: "destination/:id",
         element: <ViewSingleDestionation></ViewSingleDestionation>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/destination/${params.id}`),
+          fetch(`https://travlerz-server.vercel.app/destination/${params.id}`),
       },
 
       {
         path: "update-destination/:id",
         element: <UpdatePackage></UpdatePackage>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/destination/${params.id}`),
+          fetch(`https://travlerz-server.vercel.app/destination/${params.id}`),
       },
       {
         path: "view-bookings",
         element: <ViewAllBookings></ViewAllBookings>,
-        loader: () => fetch("http://localhost:5000/bookings"),
+        loader: () => fetch("https://travlerz-server.vercel.app/bookings"),
       },
       {
         path: "my-bookings",
@@ -172,7 +172,7 @@ const router = createBrowserRouter([
         path: "update-guide/:id",
         element: <UpdateGuide></UpdateGuide>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/guide/${params.id}`),
+          fetch(`https://travlerz-server.vercel.app/guide/${params.id}`),
       },
     ],
   },

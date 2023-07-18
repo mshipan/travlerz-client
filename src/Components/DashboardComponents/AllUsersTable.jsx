@@ -19,7 +19,7 @@ const AllUsersTable = ({ user, index, allUsers, setAllUsers }) => {
   };
 
   const handleMakeAdmin = (_id) => {
-    fetch(`http://localhost:5000/user/${_id}`, {
+    fetch(`https://travlerz-server.vercel.app/user/${_id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -48,7 +48,7 @@ const AllUsersTable = ({ user, index, allUsers, setAllUsers }) => {
   };
 
   const handleMakeUser = (_id) => {
-    fetch(`http://localhost:5000/user/${_id}`, {
+    fetch(`https://travlerz-server.vercel.app/user/${_id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -87,7 +87,7 @@ const AllUsersTable = ({ user, index, allUsers, setAllUsers }) => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/user/${_id}`, {
+        fetch(`https://travlerz-server.vercel.app/user/${_id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

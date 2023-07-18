@@ -44,7 +44,7 @@ const UpdatePackage = () => {
 
   const onSubmit = (data) => {
     console.log(data);
-    fetch(`http://localhost:5000/package/${_id}`, {
+    fetch(`https://travlerz-server.vercel.app/package/${_id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),

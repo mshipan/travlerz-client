@@ -3,7 +3,9 @@ const useDestination = () => {
   const { data: destinations = [], isLoading: loading } = useQuery({
     queryKey: ["destinations"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/destinations");
+      const res = await fetch(
+        "https://travlerz-server.vercel.app/destinations"
+      );
       return res.json();
     },
   });

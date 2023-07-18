@@ -4,7 +4,9 @@ const useUser = (email) => {
   const { data: singleUser = {}, isLoading: loading } = useQuery({
     queryKey: ["singleUser", email],
     queryFn: async () => {
-      const res = await fetch(`http://localhost:5000/user/${email}`);
+      const res = await fetch(
+        `https://travlerz-server.vercel.app/user/${email}`
+      );
       return res.json();
     },
   });

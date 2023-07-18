@@ -3,7 +3,9 @@ const useMyBooking = (id) => {
   const { data: booking = {}, isLoading: loading } = useQuery({
     queryKey: ["booking", id],
     queryFn: async () => {
-      const res = await fetch(`http://localhost:5000/bookings/${id}`);
+      const res = await fetch(
+        `https://travlerz-server.vercel.app/bookings/${id}`
+      );
       return res.json();
     },
   });

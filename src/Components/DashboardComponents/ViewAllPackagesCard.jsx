@@ -18,7 +18,7 @@ const ViewAllPackagesCard = ({ singlePackage, packages, setPackages }) => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/package/${_id}`, {
+        fetch(`https://travlerz-server.vercel.app/package/${_id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
