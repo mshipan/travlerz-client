@@ -15,7 +15,7 @@ const AddAPackage = () => {
 
   const onSubmit = (data) => {
     console.log(data);
-    fetch("https://travlerz-server-5s80t1gwz-mshipan.vercel.app/packages", {
+    fetch("http://localhost:5000/packages", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(data),

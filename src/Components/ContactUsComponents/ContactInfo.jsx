@@ -7,11 +7,11 @@ const ContactInfo = () => {
         <img src={man} alt="man photo" className="w-full" />
       </div>
       <div className="py-3 md:py-5 px-3 md:px-10 shadow-2xl md:w-[40%] border border-gray-100 rounded-md md:relative md:right-20 bg-white">
-        <h1 className="text-3xl font-barlow font-bold underline underline-offset-8 decoration-2 decoration-red-500 mt-5 mb-10">
+        <h1 className="text-3xl font-barlow font-bold underline underline-offset-8 decoration-2 decoration-red-500 mt-5 mb-10 text-black">
           Contact info
         </h1>
         <div className="flex flex-col gap-5 my-5">
-          <div className=" border border-gray-200 rounded-tl-md rounded-tr-3xl rounded-b-md group overflow-hidden">
+          <div className=" border border-gray-200 rounded-tl-md rounded-tr-3xl rounded-b-md group overflow-hidden text-black">
             <div className="group-hover:bg-[#131D4E] p-5 transition duration-300 ease-in-out transform-gpu">
               <h1 className="text-sm font-barlow font-semibold group-hover:text-white transition duration-300 ease-in-out transform-gpu">
                 Let&apos;s Talk
@@ -24,7 +24,7 @@ const ContactInfo = () => {
               </p>
             </div>
           </div>
-          <div className=" border border-gray-200 rounded-tl-md rounded-tr-3xl rounded-b-md group overflow-hidden">
+          <div className=" border border-gray-200 rounded-tl-md rounded-tr-3xl rounded-b-md group overflow-hidden text-black">
             <div className="group-hover:bg-[#131D4E] p-5 transition duration-300 ease-in-out transform-gpu">
               <h1 className="text-sm font-barlow font-semibold group-hover:text-white transition duration-300 ease-in-out transform-gpu">
                 Location
@@ -37,7 +37,7 @@ const ContactInfo = () => {
               </p>
             </div>
           </div>
-          <div className=" border border-gray-200 rounded-tl-md rounded-tr-3xl rounded-b-md group overflow-hidden">
+          <div className=" border border-gray-200 rounded-tl-md rounded-tr-3xl rounded-b-md group overflow-hidden text-black">
             <div className="group-hover:bg-[#131D4E] p-5 transition duration-300 ease-in-out transform-gpu">
               <h1 className="text-sm font-barlow font-semibold group-hover:text-white transition duration-300 ease-in-out transform-gpu">
                 Visit Us

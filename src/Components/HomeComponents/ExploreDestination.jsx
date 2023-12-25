@@ -1,19 +1,31 @@
-import useDestination from "../../Hooks/useDestination";
 import Marquee from "react-fast-marquee";
 import ExploreDestinationCard from "./ExploreDestinationCard";
 import { Link } from "react-router-dom";
+import { useGetAllDestinationsQuery } from "../../redux/features/api/baseApi";
 
 const ExploreDestination = () => {
-  const [destinations] = useDestination();
+  const {
+    data: allDestinations,
+    isLoading,
+    isError,
+    error,
+  } = useGetAllDestinationsQuery();
+  if (isLoading) {
+    return <p>Loading...</p>;
+  }
+
+  if (isError) {
+    return <p>Error: {error.message}</p>;
+  }
 
   return (
     <div className="my-20 px-4">
       <div className="container mx-auto">
-        <h1 className="font-barlow text-2xl font-bold">
+        <h1 className="font-barlow text-2xl font-bold text-white">
           Explore our Destinations
         </h1>
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-10 md:gap-0 my-5">
-          <p className="md:max-w-3xl text-sm font-barlow my-5">
+          <p className="md:max-w-3xl text-sm font-barlow my-5 text-slate-400">
             Explore our top destinations and indulge in unforgettable
             experiences. Immerse yourself in vibrant cultures, awe-inspiring
             landscapes, and iconic landmarks. From exotic beaches to majestic
@@ -31,7 +43,7 @@ const ExploreDestination = () => {
       <div className="my-5 overflow-hidden">
         <Marquee>
           <div className="flex space-x-5 w-2/3">
-            {destinations.map((destination) => (
+            {allDestinations.map((destination) => (
               <ExploreDestinationCard
                 key={destination._id}
                 destination={destination}

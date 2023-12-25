@@ -16,7 +16,7 @@ const PopularPackageCard = ({ newPackage }) => {
         <p className="font-barlow font-semibold text-white bg-red-500 p-2 w-1/2 text-center inline-flex items-center gap-2">
           <BsClockHistory /> {duration}
         </p>
-        <h1 className="font-barlow font-bold text-lg leading-6 my-3">
+        <h1 className="font-barlow font-bold text-lg leading-6 my-3 text-white">
           {title}
         </h1>
         <div className="flex items-center justify-between">
@@ -25,11 +25,11 @@ const PopularPackageCard = ({ newPackage }) => {
               View details <BsArrowRightShort />
             </button>
           </Link>
-          <p className="flex flex-col leading-3">
+          <p className="flex flex-col leading-3 text-white">
             From
             <span className="text-lg font-bold font-barlow text-red-500">
               {packagePricePerPerson} Tk {""}
-              <small className="font-normal text-black text-xs">
+              <small className="font-normal text-white text-xs">
                 Per Person
               </small>{" "}
             </span>

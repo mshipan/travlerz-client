@@ -1,9 +1,22 @@
 import PackageCard from "../Components/PackagePageComponent/PackageCard";
 import { Helmet } from "react-helmet-async";
-import usePackage from "../Hooks/usePackage";
+import { useGetAllPackagesQuery } from "../redux/features/api/baseApi";
 
 const Packages = () => {
-  const [packages] = usePackage(); // tanstack query used
+  const {
+    data: allPackages,
+    isLoading,
+    isError,
+    error,
+  } = useGetAllPackagesQuery();
+
+  if (isLoading) {
+    return <p>Loading...</p>;
+  }
+
+  if (isError) {
+    return <p>Error: {error.message}</p>;
+  }
   return (
     <div>
       <Helmet>
@@ -15,7 +28,7 @@ const Packages = () => {
         </h1>
       </div>
       <div className="my-20 w-3/5 mx-auto grid grid-cols-3 gap-5">
-        {packages.map((singlePackage) => (
+        {allPackages.map((singlePackage) => (
           <PackageCard
             key={singlePackage._id}
             singlePackage={singlePackage}

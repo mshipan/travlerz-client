@@ -14,14 +14,11 @@ const UpdateProfile = () => {
   const navigate = useNavigate();
   const onSubmit = (data) => {
     console.log(data);
-    fetch(
-      `https://travlerz-server-5s80t1gwz-mshipan.vercel.app/user/${singleUser?.email}`,
-      {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      }
-    )
+    fetch(`http://localhost:5000/user/${singleUser?.email}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    })
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

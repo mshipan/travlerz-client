@@ -21,7 +21,11 @@ const ClientSayCard = ({ review, index }) => {
       </p>
       <div className="flex items-center justify-between gap-32">
         <h1 className="font-barlow text-xl font-bold">{name}</h1>
-        <StarRatingComponent starCount={5} value={serviceRating} />
+        <StarRatingComponent
+          name="serviceRating"
+          starCount={5}
+          value={serviceRating}
+        />
       </div>
     </div>
   );

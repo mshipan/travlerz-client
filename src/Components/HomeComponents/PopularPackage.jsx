@@ -1,21 +1,36 @@
 import { Link } from "react-router-dom";
-import usePackage from "../../Hooks/usePackage";
 import PopularPackageCard from "./PopularPackageCard";
+import { useGetAllPackagesQuery } from "../../redux/features/api/baseApi";
 
 const PopularPackage = () => {
-  const [packages] = usePackage();
+  const {
+    data: allPackages,
+    isLoading,
+    isError,
+    error,
+  } = useGetAllPackagesQuery();
+
+  if (isLoading) {
+    return <p>Loading...</p>;
+  }
+
+  if (isError) {
+    return <p>Error: {error.message}</p>;
+  }
 
   const popularCategory = "popular";
-  const popularPackages = packages.filter(
+  const popularPackages = allPackages.filter(
     (myPackage) => myPackage.category === popularCategory
   );
 
   return (
     <div className="container mx-auto my-20 px-4">
       <div>
-        <h1 className="font-barlow text-2xl font-bold">Our Popular Packages</h1>
+        <h1 className="font-barlow text-2xl font-bold text-white">
+          Our Popular Packages
+        </h1>
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 md:gap-0 mb-5">
-          <p className="md:max-w-3xl text-sm font-barlow my-5">
+          <p className="md:max-w-3xl text-sm font-barlow my-5 text-slate-400">
             Discover unforgettable travel experiences with Travlerz! Our popular
             tour packages cater to diverse interests, offering thrilling
             adventures, cultural immersions, and tranquil retreats. Explore

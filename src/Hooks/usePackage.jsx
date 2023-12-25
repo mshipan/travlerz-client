@@ -4,9 +4,7 @@ const usePackage = () => {
   const { data: packages = [], isLoading: loading } = useQuery({
     queryKey: ["packages"],
     queryFn: async () => {
-      const res = await fetch(
-        "https://travlerz-server-5s80t1gwz-mshipan.vercel.app/packages"
-      );
+      const res = await fetch("http://localhost:5000/packages");
       return res.json();
     },
   });

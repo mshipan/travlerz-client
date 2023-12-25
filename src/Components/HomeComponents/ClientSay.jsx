@@ -1,15 +1,24 @@
 import { Swiper, SwiperSlide } from "swiper/react";
-import useReview from "../../Hooks/useReview";
 import ClientSayCard from "./ClientSayCard";
 import "swiper/css";
 import "swiper/css/pagination";
 import { Pagination, Autoplay } from "swiper";
+import { useGetAllReviewsQuery } from "../../redux/features/api/baseApi";
 
 const ClientSay = () => {
-  const [reviews, , loading] = useReview();
+  const {
+    data: allReviews,
+    isLoading,
+    isError,
+    error,
+  } = useGetAllReviewsQuery();
 
-  if (loading) {
-    return <p>Loading reviews...</p>;
+  if (isLoading) {
+    return <p>Loading...</p>;
+  }
+
+  if (isError) {
+    return <p>Error: {error.message}</p>;
   }
 
   return (
@@ -53,7 +62,7 @@ const ClientSay = () => {
               },
             }}
           >
-            {reviews.map((review, index) => (
+            {allReviews.map((review, index) => (
               <SwiperSlide key={review._id}>
                 <ClientSayCard review={review} index={index}></ClientSayCard>
               </SwiperSlide>

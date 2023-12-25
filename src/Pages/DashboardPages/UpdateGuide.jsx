@@ -18,7 +18,7 @@ const UpdateGuide = () => {
   const navigate = useNavigate();
   const onSubmit = (data) => {
     console.log(data);
-    fetch(`https://travlerz-server-5s80t1gwz-mshipan.vercel.app/guide/${_id}`, {
+    fetch(`http://localhost:5000/guide/${_id}`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),

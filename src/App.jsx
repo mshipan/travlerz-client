@@ -27,7 +27,7 @@ const App = () => {
   }, [isFirstVisit]);
 
   return (
-    <div>
+    <div className="bg-[#1d232a]">
       {isLoading ? (
         <div className="w-full h-screen flex items-center justify-center">
           <CircleLoader color="#131D4E" size={200} loading={isLoading} />

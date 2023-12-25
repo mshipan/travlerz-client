@@ -108,7 +108,7 @@ const DashboardLayout = () => {
       </div>
       <div className="drawer lg:drawer-open">
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-        <div className="drawer-content flex flex-col ">
+        <div className="drawer-content flex flex-col bg-[#1d232a]">
           {/* Page content here */}
 
           <Outlet></Outlet>

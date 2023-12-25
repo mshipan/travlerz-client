@@ -3,10 +3,10 @@ const ContactForm = () => {
     <div className="container mx-auto mt-20 p-2 md:p-0">
       <div className="shadow-xl p-10 rounded-md border border-red-100 md:w-[65%] mx-auto">
         <div className="mb-5">
-          <h1 className="text-xl font-barlow font-bold">
+          <h1 className="text-xl font-barlow font-bold text-white">
             Feel free to contact with us
           </h1>
-          <p className="text-sm font-barlow">
+          <p className="text-sm font-barlow text-slate-400">
             Your emil address is secure to us.
           </p>
         </div>
@@ -15,7 +15,9 @@ const ContactForm = () => {
             <div className="flex flex-col md:flex-row  gap-5">
               <div className="form-control">
                 <div className="flex flex-col gap-2">
-                  <label htmlFor="name">Name:</label>
+                  <label htmlFor="name" className="text-white">
+                    Name:
+                  </label>
                   <input
                     type="text"
                     placeholder="Your Name"
@@ -25,7 +27,9 @@ const ContactForm = () => {
               </div>
               <div className="form-control">
                 <div className="flex flex-col gap-2">
-                  <label htmlFor="name">Email:</label>
+                  <label htmlFor="name" className="text-white">
+                    Email:
+                  </label>
                   <input
                     type="text"
                     placeholder="Your Name"

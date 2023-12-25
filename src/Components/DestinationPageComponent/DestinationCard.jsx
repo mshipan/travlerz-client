@@ -5,7 +5,11 @@ const DestinationCard = ({ destination }) => {
   return (
     <div className="relative overflow-hidden group rounded-xl">
       <div className="transition duration-300 ease-in-out transform-gpu group-hover:scale-110">
-        <img src={banner} alt="Destination Image" className="rounded-xl" />
+        <img
+          src={banner}
+          alt="Destination Image"
+          className="rounded-xl h-64 w-full"
+        />
         <div className="bg-black absolute inset-0 z-10 opacity-30 rounded-xl"></div>
       </div>
       <Link to={`/destination/${_id}`}>

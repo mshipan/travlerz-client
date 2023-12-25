@@ -4,9 +4,7 @@ const useMyReview = (id) => {
   const { data: review = {}, isLoading: loading } = useQuery({
     queryKey: ["review", id],
     queryFn: async () => {
-      const res = await fetch(
-        `https://travlerz-server-5s80t1gwz-mshipan.vercel.app/reviews/${id}`
-      );
+      const res = await fetch(`http://localhost:5000/reviews/${id}`);
       return res.json();
     },
   });

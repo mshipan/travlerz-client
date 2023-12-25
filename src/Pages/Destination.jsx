@@ -1,9 +1,22 @@
 import { Helmet } from "react-helmet-async";
 import DestinationCard from "../Components/DestinationPageComponent/DestinationCard";
-import useDestination from "../Hooks/useDestination";
+import { useGetAllDestinationsQuery } from "../redux/features/api/baseApi";
 
 const Destination = () => {
-  const [destinations] = useDestination(); // tanstack query used
+  const {
+    data: allDestinations,
+    isLoading,
+    isError,
+    error,
+  } = useGetAllDestinationsQuery();
+
+  if (isLoading) {
+    return <p>Loading...</p>;
+  }
+
+  if (isError) {
+    return <p>Error: {error.message}</p>;
+  }
 
   return (
     <div>
@@ -17,7 +30,7 @@ const Destination = () => {
       </div>
 
       <div className="my-20 w-3/5 mx-auto grid grid-cols-3 gap-5">
-        {destinations.map((destination) => (
+        {allDestinations.map((destination) => (
           <DestinationCard
             key={destination._id}
             destination={destination}
