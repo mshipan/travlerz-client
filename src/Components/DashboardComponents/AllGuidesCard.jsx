@@ -59,31 +59,31 @@ const AllGuidesCard = ({ guide }) => {
           <div className="w-2/3 flex items-center justify-center gap-5 bg-gray-500 p-1 rounded-lg">
             <Link to={instagramURL}>
               <div className="bg-white hover:bg-red-500 duration-500 w-7 h-7 rounded-full flex items-center justify-center">
-                <FaInstagram className=" text-lg hover:text-white" />
+                <FaInstagram className=" text-lg hover:text-white text-black" />
               </div>
             </Link>
             <Link to={facebookURL}>
               <div className="bg-white hover:bg-red-500 duration-500 w-7 h-7 rounded-full flex items-center justify-center">
-                <FaFacebookF className=" text-lg hover:text-white" />
+                <FaFacebookF className=" text-lg hover:text-white text-black" />
               </div>
             </Link>
             <Link to={twitterURL}>
               <div className="bg-white hover:bg-red-500 duration-500 w-7 h-7 rounded-full flex items-center justify-center">
-                <FaTwitter className=" text-lg hover:text-white" />
+                <FaTwitter className=" text-lg hover:text-white text-black" />
               </div>
             </Link>
 
             <Link to={whatsappURL}>
               <div className="bg-white hover:bg-red-500 duration-500 w-7 h-7 rounded-full flex items-center justify-center">
-                <FaWhatsapp className=" text-lg hover:text-white" />
+                <FaWhatsapp className=" text-lg hover:text-white text-black" />
               </div>
             </Link>
           </div>
         </div>
       </div>
       <div className="flex flex-col items-center p-3">
-        <h1 className="text-lg font-barlow font-bold">{name}</h1>
-        <p className="font-barlow text-sm">{designation}</p>
+        <h1 className="text-lg font-barlow font-bold text-white">{name}</h1>
+        <p className="font-barlow text-sm text-slate-400">{designation}</p>
       </div>
       <div className="bg-blue-500 p-3 flex items-center justify-center gap-5">
         <Link
@@ -91,11 +91,11 @@ const AllGuidesCard = ({ guide }) => {
           className="flex items-center justify-center"
         >
           <button title="edit">
-            <FaRegEdit className="text-xl hover:text-white duration-500" />
+            <FaRegEdit className="text-xl text-slate-400 hover:text-white duration-500" />
           </button>
         </Link>
         <button onClick={() => handleDelete(_id)} title="delete">
-          <FaRegTrashAlt className="text-xl hover:text-white duration-500" />
+          <FaRegTrashAlt className="text-xl text-slate-400 hover:text-white duration-500" />
         </button>
       </div>
     </div>

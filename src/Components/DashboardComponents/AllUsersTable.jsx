@@ -104,7 +104,7 @@ const AllUsersTable = ({ user, index, allUsers, setAllUsers }) => {
 
   return (
     <tr className="border-b border-black last:border-b-0">
-      <td>{index + 1}</td>
+      <td className="text-white">{index + 1}</td>
       <td>
         <div className="flex items-center justify-center space-x-3">
           <div className="avatar">
@@ -114,16 +114,16 @@ const AllUsersTable = ({ user, index, allUsers, setAllUsers }) => {
           </div>
         </div>
       </td>
-      <td>{name}</td>
-      <td>{email}</td>
-      <td>{role}</td>
+      <td className="text-white">{name}</td>
+      <td className="text-white">{email}</td>
+      <td className="text-white">{role}</td>
       <td>
         <div className="flex items-center justify-center gap-3">
           <button
             title={role === "admin" ? "button disabled" : "make admin"}
             onClick={() => handleMakeAdmin(_id)}
             disabled={role === "admin"}
-            className="bg-green-500 hover:bg-white border border-green-500 p-2 text-lg duration-500 disabled:opacity-30 disabled:bg-green-500"
+            className="bg-green-500 hover:bg-white border border-green-500 p-2 text-lg duration-500 disabled:opacity-30 disabled:bg-green-500 text-white hover:text-slate-400"
           >
             <FaUserShield />
           </button>
@@ -131,7 +131,7 @@ const AllUsersTable = ({ user, index, allUsers, setAllUsers }) => {
             title={role === "user" ? "button disabled" : "make user"}
             onClick={() => handleMakeUser(_id)}
             disabled={role === "user"}
-            className="bg-yellow-500 hover:bg-white border border-yellow-500 p-2 text-lg duration-500 disabled:opacity-30 disabled:bg-yellow-500"
+            className="bg-yellow-500 hover:bg-white border border-yellow-500 p-2 text-lg duration-500 disabled:opacity-30 disabled:bg-yellow-500 text-white hover:text-slate-400"
           >
             <FaUser />
           </button>
@@ -142,7 +142,7 @@ const AllUsersTable = ({ user, index, allUsers, setAllUsers }) => {
           <button
             title="view user"
             onClick={openModal}
-            className="bg-green-500 hover:bg-white border border-green-500 p-2 text-lg duration-500"
+            className="bg-green-500 hover:bg-white border border-green-500 p-2 text-lg duration-500 text-white hover:text-slate-400"
           >
             <FaRegEye />
           </button>
@@ -174,7 +174,7 @@ const AllUsersTable = ({ user, index, allUsers, setAllUsers }) => {
           <button
             title="delete user"
             onClick={() => handleDelete(_id)}
-            className="bg-yellow-500 hover:bg-white border border-yellow-500 p-2 text-lg duration-500"
+            className="bg-yellow-500 hover:bg-white border border-yellow-500 p-2 text-lg duration-500 text-white hover:text-slate-400"
           >
             <FaRegTrashAlt />
           </button>

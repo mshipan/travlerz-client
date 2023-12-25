@@ -115,18 +115,18 @@ const AllBookingsTable = ({ booking, bookings, setBookings, index }) => {
 
   return (
     <tr className="border-b border-black last:border-b-0">
-      <td>{index + 1}</td>
-      <td className="text-left">{title}</td>
-      <td className="text-left">{name}</td>
-      <td>{totalPrice}</td>
-      <td>{status}</td>
+      <td className="text-white">{index + 1}</td>
+      <td className="text-left text-white">{title}</td>
+      <td className="text-left text-white">{name}</td>
+      <td className="text-white">{totalPrice}</td>
+      <td className="text-white">{status}</td>
       <td>
         <div className="flex items-center justify-center gap-3">
           <button
             title={status === "approved" ? "button disabled" : "approve"}
             onClick={() => handleApprove(_id)}
             disabled={status === "approved"}
-            className="bg-green-500 hover:bg-white border border-green-500 p-2 text-lg duration-500 disabled:opacity-30 disabled:bg-green-500"
+            className="bg-green-500 hover:bg-white border border-green-500 p-2 text-lg duration-500 disabled:opacity-30 disabled:bg-green-500 text-white hover:text-slate-400"
           >
             <FaCheck />
           </button>
@@ -134,7 +134,7 @@ const AllBookingsTable = ({ booking, bookings, setBookings, index }) => {
             title={status === "denied" ? "button disabled" : "deny"}
             onClick={() => handleDeny(_id)}
             disabled={status === "denied"}
-            className="bg-yellow-500 hover:bg-white border border-yellow-500 p-2 text-lg duration-500 disabled:opacity-30 disabled:bg-yellow-500"
+            className="bg-yellow-500 hover:bg-white border border-yellow-500 p-2 text-lg duration-500 disabled:opacity-30 disabled:bg-yellow-500 text-white hover:text-slate-400"
           >
             <FaXmark />
           </button>
@@ -145,7 +145,7 @@ const AllBookingsTable = ({ booking, bookings, setBookings, index }) => {
           <button
             title="view booking"
             onClick={openModal}
-            className="bg-green-500 hover:bg-white border border-green-500 p-2 text-lg duration-500"
+            className="bg-green-500 hover:bg-white border border-green-500 p-2 text-lg duration-500 text-white hover:text-slate-400"
           >
             <FaRegEye />
           </button>
@@ -177,7 +177,7 @@ const AllBookingsTable = ({ booking, bookings, setBookings, index }) => {
           <button
             title="delete booking"
             onClick={() => handleDelete(_id)}
-            className="bg-yellow-500 hover:bg-white border border-yellow-500 p-2 text-lg duration-500"
+            className="bg-yellow-500 hover:bg-white border border-yellow-500 p-2 text-lg duration-500 text-white hover:text-slate-400"
           >
             <FaRegTrashAlt />
           </button>

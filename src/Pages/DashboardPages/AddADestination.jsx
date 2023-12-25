@@ -79,7 +79,10 @@ const AddADestination = () => {
         <div className="flex flex-col md:flex-row justify-center md:gap-8 w-full ">
           <div className="w-full md:w-1/2 flex flex-col md:gap-3">
             <div className="form-control">
-              <label htmlFor="title" className="font-barlow font-semibold">
+              <label
+                htmlFor="title"
+                className="font-barlow font-semibold text-white"
+              >
                 Destination Title :{" "}
               </label>
               <input
@@ -91,7 +94,10 @@ const AddADestination = () => {
               />
             </div>
             <div className="form-control">
-              <label htmlFor="banner" className="font-barlow font-semibold">
+              <label
+                htmlFor="banner"
+                className="font-barlow font-semibold text-white"
+              >
                 Banner Image URL :{" "}
               </label>
               <input
@@ -103,7 +109,10 @@ const AddADestination = () => {
               />
             </div>
             <div className="form-control">
-              <label htmlFor="location" className="font-barlow font-semibold">
+              <label
+                htmlFor="location"
+                className="font-barlow font-semibold text-white"
+              >
                 Location :{" "}
               </label>
               <input
@@ -115,7 +124,10 @@ const AddADestination = () => {
               />
             </div>
             <div className="form-control">
-              <label htmlFor="duration" className="font-barlow font-semibold">
+              <label
+                htmlFor="duration"
+                className="font-barlow font-semibold text-white"
+              >
                 Map Link :{" "}
               </label>
               <input
@@ -129,7 +141,7 @@ const AddADestination = () => {
             <div className="form-control">
               <label
                 htmlFor="packageDetails"
-                className="font-barlow font-semibold"
+                className="font-barlow font-semibold text-white"
               >
                 Destination Description :{" "}
               </label>
@@ -145,7 +157,7 @@ const AddADestination = () => {
             <div className="form-control">
               <label
                 htmlFor="climateAndWeather"
-                className="font-barlow font-semibold"
+                className="font-barlow font-semibold text-white"
               >
                 Climate & Weather Description :{" "}
               </label>
@@ -164,7 +176,7 @@ const AddADestination = () => {
             <div className="form-control">
               <label
                 htmlFor="localCuisine"
-                className="font-barlow font-semibold"
+                className="font-barlow font-semibold text-white"
               >
                 Local Cuisine Description :{" "}
               </label>
@@ -180,7 +192,7 @@ const AddADestination = () => {
             <div className="form-control">
               <label
                 htmlFor="transportation"
-                className="font-barlow font-semibold"
+                className="font-barlow font-semibold text-white"
               >
                 Transportation Description :{" "}
               </label>
@@ -197,7 +209,7 @@ const AddADestination = () => {
             <div className="form-control">
               <label
                 htmlFor="destinationGallery"
-                className="font-barlow font-semibold"
+                className="font-barlow font-semibold text-white"
               >
                 Gallery Image URL : <br />
                 <small>Click the Add more images button to add images</small>
@@ -238,7 +250,7 @@ const AddADestination = () => {
             <div className="form-control">
               <label
                 htmlFor="attractions"
-                className="font-barlow font-semibold"
+                className="font-barlow font-semibold text-white"
               >
                 Attractions : <br />
                 <small>Click the Add more button to add more attractions</small>
@@ -277,7 +289,10 @@ const AddADestination = () => {
             </div>
 
             <div className="form-control">
-              <label htmlFor="travelTips" className="font-barlow font-semibold">
+              <label
+                htmlFor="travelTips"
+                className="font-barlow font-semibold text-white"
+              >
                 Travel Tips : <br />
                 <small>Click the Add more button to add more Travel Tips</small>
               </label>
@@ -317,7 +332,7 @@ const AddADestination = () => {
             <div className="form-control">
               <label
                 htmlFor="accommodation"
-                className="font-barlow font-semibold"
+                className="font-barlow font-semibold text-white"
               >
                 Accommodation : <br />
                 <small>

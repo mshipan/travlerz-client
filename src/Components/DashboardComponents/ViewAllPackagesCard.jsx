@@ -58,12 +58,12 @@ const ViewAllPackagesCard = ({ singlePackage, packages, setPackages }) => {
             </div>
           </div>
 
-          <h1 className="text-base font-barlow font-bold leading-none">
+          <h1 className="text-base font-barlow font-bold leading-none text-white">
             {title}
           </h1>
-          <p className="text-sm font-barlow font-bold leading-none mt-3">
+          <p className="text-sm font-barlow font-bold leading-none mt-3 text-slate-400">
             Category:{" "}
-            <span className="font-normal outline px-1 ml-1 outline-1 outline-black">
+            <span className="font-normal outline px-1 ml-1 outline-1 outline-black text-white">
               {category}
             </span>
           </p>

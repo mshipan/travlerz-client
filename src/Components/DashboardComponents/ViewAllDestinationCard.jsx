@@ -49,7 +49,7 @@ const ViewAllDestinationCard = ({
             </p>
           </div>
 
-          <h1 className="text-base font-barlow font-bold leading-none">
+          <h1 className="text-base font-barlow font-bold leading-none text-white">
             {location}
           </h1>
         </div>

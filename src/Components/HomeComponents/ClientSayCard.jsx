@@ -16,11 +16,11 @@ const ClientSayCard = ({ review, index }) => {
           {index + 1}
         </h1>
       </div>
-      <p className="font-barlow max-w-xl text-center text-sm">
+      <p className="font-barlow max-w-xl text-center text-sm text-black">
         {description.slice(0, 90)}...
       </p>
       <div className="flex items-center justify-between gap-32">
-        <h1 className="font-barlow text-xl font-bold">{name}</h1>
+        <h1 className="font-barlow text-xl font-bold text-black">{name}</h1>
         <StarRatingComponent
           name="serviceRating"
           starCount={5}

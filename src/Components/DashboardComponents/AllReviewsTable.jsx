@@ -60,17 +60,17 @@ const AllReviewsTable = ({ singleReview, index }) => {
       <td>
         <img src={photoURL} alt="User Image" className="w-16" />
       </td>
-      <td className="text-left">{title}</td>
-      <td className="text-left">{name}</td>
-      <td className="text-left">{qualityRating}</td>
-      <td className="text-left">{priceRating}</td>
-      <td className="text-left">{serviceRating}</td>
+      <td className="text-left text-white">{title}</td>
+      <td className="text-left text-white">{name}</td>
+      <td className="text-left text-white">{qualityRating}</td>
+      <td className="text-left text-white">{priceRating}</td>
+      <td className="text-left text-white">{serviceRating}</td>
       <td>
         <div className="flex items-center justify-center gap-3">
           <button
             title="view booking"
             onClick={openViewModal}
-            className="bg-green-500 hover:bg-white border border-green-500 p-2 text-lg duration-500"
+            className="bg-green-500 hover:bg-white border border-green-500 p-2 text-lg duration-500 text-white hover:text-slate-400"
           >
             <FaRegEye />
           </button>
@@ -123,7 +123,7 @@ const AllReviewsTable = ({ singleReview, index }) => {
           <button
             title="delete booking"
             onClick={() => handleDelete(_id)}
-            className="bg-yellow-500 hover:bg-white border border-yellow-500 p-2 text-lg duration-500"
+            className="bg-yellow-500 hover:bg-white border border-yellow-500 p-2 text-lg duration-500 text-white hover:text-slate-400"
           >
             <FaRegTrashAlt />
           </button>

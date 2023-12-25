@@ -41,7 +41,10 @@ const AddAGuide = () => {
         <div className="flex flex-col md:flex-row justify-center md:gap-8 w-full ">
           <div className="w-full md:w-1/2 flex flex-col md:gap-3">
             <div className="form-control">
-              <label htmlFor="name" className="font-barlow font-semibold">
+              <label
+                htmlFor="name"
+                className="font-barlow font-semibold text-white"
+              >
                 Guide Name :{" "}
               </label>
               <input
@@ -53,7 +56,10 @@ const AddAGuide = () => {
               />
             </div>
             <div className="form-control">
-              <label htmlFor="guideImage" className="font-barlow font-semibold">
+              <label
+                htmlFor="guideImage"
+                className="font-barlow font-semibold text-white"
+              >
                 Guide Image URL :{" "}
               </label>
               <input
@@ -67,7 +73,7 @@ const AddAGuide = () => {
             <div className="form-control">
               <label
                 htmlFor="facebookURL"
-                className="font-barlow font-semibold"
+                className="font-barlow font-semibold text-white"
               >
                 Facebook URL :{" "}
               </label>
@@ -82,7 +88,7 @@ const AddAGuide = () => {
             <div className="form-control">
               <label
                 htmlFor="instagramURL"
-                className="font-barlow font-semibold"
+                className="font-barlow font-semibold text-white"
               >
                 Instagram URL :{" "}
               </label>
@@ -95,7 +101,10 @@ const AddAGuide = () => {
               />
             </div>
             <div className="form-control">
-              <label htmlFor="twitterURL" className="font-barlow font-semibold">
+              <label
+                htmlFor="twitterURL"
+                className="font-barlow font-semibold text-white"
+              >
                 Twitter URL :{" "}
               </label>
               <input
@@ -109,7 +118,7 @@ const AddAGuide = () => {
             <div className="form-control">
               <label
                 htmlFor="whatsappURL"
-                className="font-barlow font-semibold"
+                className="font-barlow font-semibold text-white"
               >
                 What&apos;s App URL :{" "}
               </label>

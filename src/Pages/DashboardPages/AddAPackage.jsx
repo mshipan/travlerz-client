@@ -51,7 +51,10 @@ const AddAPackage = () => {
         <div className="flex flex-col md:flex-row justify-center md:gap-8 w-full ">
           <div className="w-full md:w-1/2 flex flex-col md:gap-3">
             <div className="form-control">
-              <label htmlFor="title" className="font-barlow font-semibold">
+              <label
+                htmlFor="title"
+                className="font-barlow font-semibold text-white"
+              >
                 Tour Title :{" "}
               </label>
               <input
@@ -63,7 +66,10 @@ const AddAPackage = () => {
               />
             </div>
             <div className="form-control">
-              <label htmlFor="banner" className="font-barlow font-semibold">
+              <label
+                htmlFor="banner"
+                className="font-barlow font-semibold text-white"
+              >
                 Banner Image URL :{" "}
               </label>
               <input
@@ -75,7 +81,10 @@ const AddAPackage = () => {
               />
             </div>
             <div className="form-control">
-              <label htmlFor="location" className="font-barlow font-semibold">
+              <label
+                htmlFor="location"
+                className="font-barlow font-semibold text-white"
+              >
                 Location :{" "}
               </label>
               <input
@@ -87,7 +96,10 @@ const AddAPackage = () => {
               />
             </div>
             <div className="form-control">
-              <label htmlFor="duration" className="font-barlow font-semibold">
+              <label
+                htmlFor="duration"
+                className="font-barlow font-semibold text-white"
+              >
                 Duration :{" "}
               </label>
               <input
@@ -99,7 +111,10 @@ const AddAPackage = () => {
               />
             </div>
             <div className="form-control">
-              <label htmlFor="tourType" className="font-barlow font-semibold">
+              <label
+                htmlFor="tourType"
+                className="font-barlow font-semibold text-white"
+              >
                 Tour Type :{" "}
               </label>
               <input
@@ -114,7 +129,7 @@ const AddAPackage = () => {
               <div className="form-control w-full">
                 <label
                   htmlFor="groupSize"
-                  className="font-barlow font-semibold"
+                  className="font-barlow font-semibold text-white"
                 >
                   Group Size :{" "}
                 </label>
@@ -129,7 +144,7 @@ const AddAPackage = () => {
               <div className="form-control w-full">
                 <label
                   htmlFor="tourGuide"
-                  className="font-barlow font-semibold"
+                  className="font-barlow font-semibold text-white"
                 >
                   Tour Guide :{" "}
                 </label>
@@ -144,7 +159,7 @@ const AddAPackage = () => {
               <div className="form-control w-full">
                 <label
                   htmlFor="packagePricePerPerson"
-                  className="font-barlow font-semibold"
+                  className="font-barlow font-semibold text-white"
                 >
                   Package Price Per Person:{" "}
                 </label>
@@ -160,7 +175,7 @@ const AddAPackage = () => {
             <div className="form-control">
               <label
                 htmlFor="destination"
-                className="font-barlow font-semibold"
+                className="font-barlow font-semibold text-white"
               >
                 Destination:{" "}
               </label>
@@ -173,7 +188,10 @@ const AddAPackage = () => {
               />
             </div>
             <div className="form-control">
-              <label htmlFor="departure" className="font-barlow font-semibold">
+              <label
+                htmlFor="departure"
+                className="font-barlow font-semibold text-white"
+              >
                 Departure :{" "}
               </label>
               <input
@@ -186,7 +204,7 @@ const AddAPackage = () => {
             <div className="form-control">
               <label
                 htmlFor="departureTime"
-                className="font-barlow font-semibold"
+                className="font-barlow font-semibold text-white"
               >
                 Departure Time:{" "}
               </label>
@@ -198,7 +216,10 @@ const AddAPackage = () => {
               />
             </div>
             <div className="form-control">
-              <label htmlFor="returnTime" className="font-barlow font-semibold">
+              <label
+                htmlFor="returnTime"
+                className="font-barlow font-semibold text-white"
+              >
                 Return Time:{" "}
               </label>
               <input
@@ -215,7 +236,7 @@ const AddAPackage = () => {
             <div className="form-control">
               <label
                 htmlFor="packageDetails"
-                className="font-barlow font-semibold"
+                className="font-barlow font-semibold text-white"
               >
                 Package Details :{" "}
               </label>
@@ -230,7 +251,10 @@ const AddAPackage = () => {
             </div>
 
             <div className="form-control">
-              <label htmlFor="included" className="font-barlow font-semibold">
+              <label
+                htmlFor="included"
+                className="font-barlow font-semibold text-white"
+              >
                 Included :{" "}
                 <small>
                   Press{" "}
@@ -256,7 +280,10 @@ const AddAPackage = () => {
               </select>
             </div>
             <div className="form-control">
-              <label htmlFor="excluded" className="font-barlow font-semibold">
+              <label
+                htmlFor="excluded"
+                className="font-barlow font-semibold text-white"
+              >
                 Excluded :{" "}
                 <small>
                   Press{" "}
@@ -283,7 +310,7 @@ const AddAPackage = () => {
             <div className="form-control">
               <label
                 htmlFor="tourGallery"
-                className="font-barlow font-semibold"
+                className="font-barlow font-semibold text-white"
               >
                 Gallery Image URL : <br />
                 <small>Click the Add more images button to add images</small>

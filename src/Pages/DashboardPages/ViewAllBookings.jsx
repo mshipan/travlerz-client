@@ -25,7 +25,7 @@ const ViewAllBookings = () => {
         </p>
         <div>
           <table className="table text-center">
-            <thead className="border border-black text-black font-barlow">
+            <thead className="border border-black text-white font-barlow">
               <tr>
                 <th className="border border-black">#</th>
                 <th className="border border-black">Package Title</th>
