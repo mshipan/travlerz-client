@@ -4,7 +4,7 @@ const useDestination = () => {
     queryKey: ["destinations"],
     queryFn: async () => {
       const res = await fetch(
-        "https://travlerz-server.vercel.app/destinations"
+        "https://travlerz-server-5s80t1gwz-mshipan.vercel.app/destinations"
       );
       return res.json();
     },

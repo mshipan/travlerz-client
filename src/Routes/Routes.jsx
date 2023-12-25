@@ -50,7 +50,9 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`https://travlerz-server.vercel.app/destination/${params.id}`),
+          fetch(
+            `https://travlerz-server-5s80t1gwz-mshipan.vercel.app/destination/${params.id}`
+          ),
       },
       {
         path: "/packages",
@@ -64,7 +66,9 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`https://travlerz-server.vercel.app/package/${params.id}`),
+          fetch(
+            `https://travlerz-server-5s80t1gwz-mshipan.vercel.app/package/${params.id}`
+          ),
       },
       {
         path: "/about-us",
@@ -92,7 +96,9 @@ const router = createBrowserRouter([
         path: "update-profile",
         element: <UpdateProfile></UpdateProfile>,
         loader: ({ params }) =>
-          fetch(`https://travlerz-server.vercel.app/user/${params.email}`),
+          fetch(
+            `https://travlerz-server-5s80t1gwz-mshipan.vercel.app/user/${params.email}`
+          ),
       },
       {
         path: "add-a-package",
@@ -101,25 +107,33 @@ const router = createBrowserRouter([
       {
         path: "view-packages",
         element: <ViewAllPackages></ViewAllPackages>,
-        loader: () => fetch("https://travlerz-server.vercel.app/packages"),
+        loader: () =>
+          fetch(
+            "https://travlerz-server-5s80t1gwz-mshipan.vercel.app/packages"
+          ),
       },
       {
         path: "package/:id",
         element: <ViewSinglePackage></ViewSinglePackage>,
         loader: ({ params }) =>
-          fetch(`https://travlerz-server.vercel.app/package/${params.id}`),
+          fetch(
+            `https://travlerz-server-5s80t1gwz-mshipan.vercel.app/package/${params.id}`
+          ),
       },
       {
         path: "update-package/:id",
         element: <UpdatePackage></UpdatePackage>,
         loader: ({ params }) =>
-          fetch(`https://travlerz-server.vercel.app/package/${params.id}`),
+          fetch(
+            `https://travlerz-server-5s80t1gwz-mshipan.vercel.app/package/${params.id}`
+          ),
       },
 
       {
         path: "all-users",
         element: <AllUsers></AllUsers>,
-        loader: () => fetch("https://travlerz-server.vercel.app/users"),
+        loader: () =>
+          fetch("https://travlerz-server-5s80t1gwz-mshipan.vercel.app/users"),
       },
       {
         path: "add-a-destination",
@@ -128,25 +142,35 @@ const router = createBrowserRouter([
       {
         path: "view-destinations",
         element: <ViewAllDestination></ViewAllDestination>,
-        loader: () => fetch("https://travlerz-server.vercel.app/destinations"),
+        loader: () =>
+          fetch(
+            "https://travlerz-server-5s80t1gwz-mshipan.vercel.app/destinations"
+          ),
       },
       {
         path: "destination/:id",
         element: <ViewSingleDestionation></ViewSingleDestionation>,
         loader: ({ params }) =>
-          fetch(`https://travlerz-server.vercel.app/destination/${params.id}`),
+          fetch(
+            `https://travlerz-server-5s80t1gwz-mshipan.vercel.app/destination/${params.id}`
+          ),
       },
 
       {
         path: "update-destination/:id",
         element: <UpdatePackage></UpdatePackage>,
         loader: ({ params }) =>
-          fetch(`https://travlerz-server.vercel.app/destination/${params.id}`),
+          fetch(
+            `https://travlerz-server-5s80t1gwz-mshipan.vercel.app/destination/${params.id}`
+          ),
       },
       {
         path: "view-bookings",
         element: <ViewAllBookings></ViewAllBookings>,
-        loader: () => fetch("https://travlerz-server.vercel.app/bookings"),
+        loader: () =>
+          fetch(
+            "https://travlerz-server-5s80t1gwz-mshipan.vercel.app/bookings"
+          ),
       },
       {
         path: "my-bookings",
@@ -172,7 +196,9 @@ const router = createBrowserRouter([
         path: "update-guide/:id",
         element: <UpdateGuide></UpdateGuide>,
         loader: ({ params }) =>
-          fetch(`https://travlerz-server.vercel.app/guide/${params.id}`),
+          fetch(
+            `https://travlerz-server-5s80t1gwz-mshipan.vercel.app/guide/${params.id}`
+          ),
       },
     ],
   },

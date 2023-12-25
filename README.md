@@ -8,7 +8,7 @@
 
 ## Travlerz Client: https://travlerz.web.app/
 
-## Travlerz Server: https://travlerz-server.vercel.app/
+## Travlerz Server: https://travlerz-server-5s80t1gwz-mshipan.vercel.app/
 
 ---
 

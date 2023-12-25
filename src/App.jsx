@@ -6,6 +6,8 @@ import { RouterProvider } from "react-router-dom";
 import router from "./Routes/Routes";
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { Provider } from "react-redux";
+import Store from "./redux/Store";
 
 const queryClient = new QueryClient();
 
@@ -34,7 +36,9 @@ const App = () => {
         <AuthProvider>
           <HelmetProvider>
             <QueryClientProvider client={queryClient}>
-              <RouterProvider router={router} />
+              <Provider store={Store}>
+                <RouterProvider router={router} />
+              </Provider>
             </QueryClientProvider>
           </HelmetProvider>
         </AuthProvider>

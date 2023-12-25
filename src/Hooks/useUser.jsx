@@ -5,7 +5,7 @@ const useUser = (email) => {
     queryKey: ["singleUser", email],
     queryFn: async () => {
       const res = await fetch(
-        `https://travlerz-server.vercel.app/user/${email}`
+        `https://travlerz-server-5s80t1gwz-mshipan.vercel.app/user/${email}`
       );
       return res.json();
     },

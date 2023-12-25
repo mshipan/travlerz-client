@@ -7,7 +7,9 @@ const useReview = () => {
   } = useQuery({
     queryKey: ["reviews"],
     queryFn: async () => {
-      const res = await fetch("https://travlerz-server.vercel.app/reviews");
+      const res = await fetch(
+        "https://travlerz-server-5s80t1gwz-mshipan.vercel.app/reviews"
+      );
       return res.json();
     },
   });

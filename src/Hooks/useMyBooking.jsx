@@ -4,7 +4,7 @@ const useMyBooking = (id) => {
     queryKey: ["booking", id],
     queryFn: async () => {
       const res = await fetch(
-        `https://travlerz-server.vercel.app/bookings/${id}`
+        `https://travlerz-server-5s80t1gwz-mshipan.vercel.app/bookings/${id}`
       );
       return res.json();
     },

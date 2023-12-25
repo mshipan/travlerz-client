@@ -72,7 +72,7 @@ const SinglePackage = () => {
 
   const handleFormSubmit = (data) => {
     console.log(data);
-    fetch("https://travlerz-server.vercel.app/bookings", {
+    fetch("https://travlerz-server-5s80t1gwz-mshipan.vercel.app/bookings", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify({

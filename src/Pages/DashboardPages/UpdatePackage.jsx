@@ -44,11 +44,14 @@ const UpdatePackage = () => {
 
   const onSubmit = (data) => {
     console.log(data);
-    fetch(`https://travlerz-server.vercel.app/package/${_id}`, {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data),
-    })
+    fetch(
+      `https://travlerz-server-5s80t1gwz-mshipan.vercel.app/package/${_id}`,
+      {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

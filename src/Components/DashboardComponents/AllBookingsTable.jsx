@@ -30,13 +30,16 @@ const AllBookingsTable = ({ booking, bookings, setBookings, index }) => {
   };
 
   const handleApprove = (_id) => {
-    fetch(`https://travlerz-server.vercel.app/booking/${_id}`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ status: "approved" }),
-    })
+    fetch(
+      `https://travlerz-server-5s80t1gwz-mshipan.vercel.app/booking/${_id}`,
+      {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ status: "approved" }),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.modifiedCount) {
@@ -59,13 +62,16 @@ const AllBookingsTable = ({ booking, bookings, setBookings, index }) => {
   };
 
   const handleDeny = (_id) => {
-    fetch(`https://travlerz-server.vercel.app/booking/${_id}`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ status: "denied" }),
-    })
+    fetch(
+      `https://travlerz-server-5s80t1gwz-mshipan.vercel.app/booking/${_id}`,
+      {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ status: "denied" }),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -98,9 +104,12 @@ const AllBookingsTable = ({ booking, bookings, setBookings, index }) => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`https://travlerz-server.vercel.app/booking/${_id}`, {
-          method: "DELETE",
-        })
+        fetch(
+          `https://travlerz-server-5s80t1gwz-mshipan.vercel.app/booking/${_id}`,
+          {
+            method: "DELETE",
+          }
+        )
           .then((res) => res.json())
           .then((data) => {
             if (data.deletedCount > 0) {

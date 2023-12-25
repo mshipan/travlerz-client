@@ -46,7 +46,7 @@ const MyBookingTable = ({ book, index }) => {
 
   const onSubmit = (data) => {
     console.log(data);
-    fetch("https://travlerz-server.vercel.app/reviews", {
+    fetch("https://travlerz-server-5s80t1gwz-mshipan.vercel.app/reviews", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify({

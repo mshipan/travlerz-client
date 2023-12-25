@@ -35,7 +35,7 @@ const Registration = () => {
             country: data.country,
             phone: data.phone,
           };
-          fetch("https://travlerz-server.vercel.app/users", {
+          fetch("https://travlerz-server-5s80t1gwz-mshipan.vercel.app/users", {
             method: "POST",
             headers: {
               "content-type": "application/json",
