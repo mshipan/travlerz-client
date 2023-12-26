@@ -11,6 +11,7 @@ import img1 from "../../assets/footerImages/image1.jpg";
 import img2 from "../../assets/footerImages/image2.jpg";
 import img3 from "../../assets/footerImages/image3.jpg";
 import img4 from "../../assets/footerImages/image4.jpg";
+import { Link } from "react-router-dom";
 
 const BannerSlider = () => {
   return (
@@ -53,12 +54,16 @@ const BannerSlider = () => {
                     next adventure today!
                   </p>
                   <div className="flex gap-8">
-                    <button className="bg-[#ff4838] hover:bg-transparent border border-[#ff4838] text-white hover:text-[#ff4838] font-bold px-10 py-2 duration-500">
-                      View Adventure
-                    </button>
-                    <button className="hover:bg-[#ff4838] border border-[#ff4838] text-[#ff4838] hover:text-white font-bold px-10 py-2 duration-500">
-                      Take a Tour
-                    </button>
+                    <Link to="/destinations">
+                      <button className="bg-[#ff4838] hover:bg-transparent border border-[#ff4838] text-white hover:text-[#ff4838] font-bold px-10 py-2 duration-500">
+                        View Adventure
+                      </button>
+                    </Link>
+                    <Link to="/packages">
+                      <button className="hover:bg-[#ff4838] border border-[#ff4838] text-[#ff4838] hover:text-white font-bold px-10 py-2 duration-500">
+                        Take a Tour
+                      </button>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -88,12 +93,16 @@ const BannerSlider = () => {
                     your guide on the journey of a lifetime
                   </p>
                   <div className="flex gap-8">
-                    <button className="bg-[#ff4838] hover:bg-transparent border border-[#ff4838] text-white hover:text-[#ff4838] font-bold px-10 py-2 duration-500">
-                      View Adventure
-                    </button>
-                    <button className="hover:bg-[#ff4838] border border-[#ff4838] text-[#ff4838] hover:text-white font-bold px-10 py-2 duration-500">
-                      Take a Tour
-                    </button>
+                    <Link to="/destinations">
+                      <button className="bg-[#ff4838] hover:bg-transparent border border-[#ff4838] text-white hover:text-[#ff4838] font-bold px-10 py-2 duration-500">
+                        View Adventure
+                      </button>
+                    </Link>
+                    <Link to="/packages">
+                      <button className="hover:bg-[#ff4838] border border-[#ff4838] text-[#ff4838] hover:text-white font-bold px-10 py-2 duration-500">
+                        Take a Tour
+                      </button>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -125,12 +134,16 @@ const BannerSlider = () => {
                     passion for travel and discovery.
                   </p>
                   <div className="flex gap-8">
-                    <button className="bg-[#ff4838] hover:bg-transparent border border-[#ff4838] text-white hover:text-[#ff4838] font-bold px-10 py-2 duration-500">
-                      View Adventure
-                    </button>
-                    <button className="hover:bg-[#ff4838] border border-[#ff4838] text-[#ff4838] hover:text-white font-bold px-10 py-2 duration-500">
-                      Take a Tour
-                    </button>
+                    <Link to="/destinations">
+                      <button className="bg-[#ff4838] hover:bg-transparent border border-[#ff4838] text-white hover:text-[#ff4838] font-bold px-10 py-2 duration-500">
+                        View Adventure
+                      </button>
+                    </Link>
+                    <Link to="/packages">
+                      <button className="hover:bg-[#ff4838] border border-[#ff4838] text-[#ff4838] hover:text-white font-bold px-10 py-2 duration-500">
+                        Take a Tour
+                      </button>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -162,12 +175,16 @@ const BannerSlider = () => {
                     experiences.
                   </p>
                   <div className="flex gap-8">
-                    <button className="bg-[#ff4838] hover:bg-transparent border border-[#ff4838] text-white hover:text-[#ff4838] font-bold px-10 py-2 duration-500">
-                      View Adventure
-                    </button>
-                    <button className="hover:bg-[#ff4838] border border-[#ff4838] text-[#ff4838] hover:text-white font-bold px-10 py-2 duration-500">
-                      Take a Tour
-                    </button>
+                    <Link to="/destinations">
+                      <button className="bg-[#ff4838] hover:bg-transparent border border-[#ff4838] text-white hover:text-[#ff4838] font-bold px-10 py-2 duration-500">
+                        View Adventure
+                      </button>
+                    </Link>
+                    <Link to="/packages">
+                      <button className="hover:bg-[#ff4838] border border-[#ff4838] text-[#ff4838] hover:text-white font-bold px-10 py-2 duration-500">
+                        Take a Tour
+                      </button>
+                    </Link>
                   </div>
                 </div>
               </div>

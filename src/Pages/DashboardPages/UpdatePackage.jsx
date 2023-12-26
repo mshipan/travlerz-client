@@ -333,7 +333,7 @@ const UpdatePackage = () => {
                 <small>Click the Add more images button to add images</small>
               </label>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-1">
-                {tourGallery.map((field, index) => (
+                {tourGallery?.map((field, index) => (
                   <div key={index} className="flex justify-between gap-3">
                     <input
                       type="text"

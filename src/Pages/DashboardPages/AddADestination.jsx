@@ -215,7 +215,7 @@ const AddADestination = () => {
                 <small>Click the Add more images button to add images</small>
               </label>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-1">
-                {destinationGalleryFields.map((field, index) => (
+                {destinationGalleryFields?.map((field, index) => (
                   <div key={field.id} className="flex justify-between gap-3">
                     <input
                       type="text"
@@ -256,7 +256,7 @@ const AddADestination = () => {
                 <small>Click the Add more button to add more attractions</small>
               </label>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-1">
-                {attractionsFields.map((field, index) => (
+                {attractionsFields?.map((field, index) => (
                   <div key={field.id} className="flex justify-between gap-3">
                     <input
                       type="text"
@@ -297,7 +297,7 @@ const AddADestination = () => {
                 <small>Click the Add more button to add more Travel Tips</small>
               </label>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-1">
-                {travelTipsFields.map((field, index) => (
+                {travelTipsFields?.map((field, index) => (
                   <div key={field.id} className="flex justify-between gap-3">
                     <input
                       type="text"
@@ -340,7 +340,7 @@ const AddADestination = () => {
                 </small>
               </label>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-1">
-                {accommodationFields.map((field, index) => (
+                {accommodationFields?.map((field, index) => (
                   <div key={field.id} className="flex justify-between gap-3">
                     <input
                       type="text"

@@ -45,7 +45,7 @@ const PopularPackage = () => {
         </div>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 justify-items-center gap-5 md:gap-10">
-        {popularPackages.map((newPackage) => (
+        {popularPackages?.map((newPackage) => (
           <PopularPackageCard
             key={newPackage._id}
             newPackage={newPackage}

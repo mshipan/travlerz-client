@@ -315,37 +315,41 @@ const AddAPackage = () => {
                 Gallery Image URL : <br />
                 <small>Click the Add more images button to add images</small>
               </label>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-1">
-                {fields.map((field, index) => (
-                  <div key={field.id} className="flex justify-between gap-3">
-                    <input
-                      type="text"
-                      name={`tourGallery[${index}].url`}
-                      placeholder={`Gallery Image URL ${index + 1}`}
-                      defaultValue={field.url}
-                      className="p-1 focus:outline-none border border-[#131D4E] placeholder:font-mono w-full"
-                      {...register(`tourGallery[${index}].url`)}
-                    />
-                    <button
-                      type="button"
-                      onClick={() => remove(index)}
-                      className="border border-[#131D4E] p-2 "
-                      title="Remove image"
-                    >
-                      <FaXmark className="text-[#131D4E] text-lg" />
-                    </button>
-                  </div>
-                ))}
+              <div className="flex flex-col">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-1">
+                  {fields?.map((field, index) => (
+                    <div key={field.id} className="flex justify-between gap-3">
+                      <input
+                        type="text"
+                        name={`tourGallery[${index}].url`}
+                        placeholder={`Gallery Image URL ${index + 1}`}
+                        defaultValue={field.url}
+                        className="p-1 focus:outline-none border border-[#131D4E] placeholder:font-mono w-full"
+                        {...register(`tourGallery[${index}].url`)}
+                      />
+                      <button
+                        type="button"
+                        onClick={() => remove(index)}
+                        className="border border-[#131D4E] p-2 bg-white"
+                        title="Remove image"
+                      >
+                        <FaXmark className="text-[#131D4E] text-lg" />
+                      </button>
+                    </div>
+                  ))}
+                </div>
+                <div>
+                  <button
+                    type="button"
+                    onClick={() => append({ url: "" })}
+                    className="border border-[#131D4E] px-2 py-1 mt-3 inline-flex items-center text-white hover:text-[#131D4E] hover:bg-white transition-all ease-in-out duration-300"
+                    title="Add more image"
+                  >
+                    <BsPlus className="text-[#131D4E] text-lg inline-block" />
+                    Add more images
+                  </button>
+                </div>
               </div>
-              <button
-                type="button"
-                onClick={() => append({ url: "" })}
-                className="border border-[#131D4E] p-1 mt-3 md:w-1/5 mx-auto"
-                title="Add more image"
-              >
-                <BsPlus className="text-[#131D4E] text-lg inline-block" /> Add
-                more images
-              </button>
             </div>
           </div>
         </div>

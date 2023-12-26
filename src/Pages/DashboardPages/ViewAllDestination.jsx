@@ -17,7 +17,7 @@ const ViewAllDestination = () => {
         </h1>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5 container mx-auto my-10">
-        {destinations.map((destination) => (
+        {destinations?.map((destination) => (
           <ViewAllDestinationCard
             key={destination._id}
             destination={destination}

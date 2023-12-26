@@ -32,7 +32,7 @@ const OurGallery = () => {
       </div>
       <div className="md:w-3/5 mx-auto ">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
-          {allPackages.slice(0, 6).map((myPackage, index) => (
+          {allPackages.slice(0, 6)?.map((myPackage, index) => (
             <img
               key={index}
               src={myPackage.tourGallery[3].url}

@@ -9,8 +9,14 @@ const baseApi = createApi({
     getAllPackages: builder.query({
       query: () => "/packages",
     }),
+    getPackageById: builder.query({
+      query: (id) => `/package/${id}`,
+    }),
     getAllDestinations: builder.query({
       query: () => "/destinations",
+    }),
+    getDestinationById: builder.query({
+      query: (id) => `/destination/${id}`,
     }),
     getAllReviews: builder.query({
       query: () => "/reviews",
@@ -23,7 +29,9 @@ const baseApi = createApi({
 
 export const {
   useGetAllPackagesQuery,
+  useGetPackageByIdQuery,
   useGetAllDestinationsQuery,
+  useGetDestinationByIdQuery,
   useGetAllReviewsQuery,
   useGetAllGuidesQuery,
 } = baseApi;

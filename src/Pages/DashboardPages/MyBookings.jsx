@@ -38,7 +38,7 @@ const MyBookings = () => {
             <tbody>
               <>
                 {booking.length > 0 ? (
-                  booking.map((book, index) => (
+                  booking?.map((book, index) => (
                     <MyBookingTable
                       key={book._id}
                       book={book}

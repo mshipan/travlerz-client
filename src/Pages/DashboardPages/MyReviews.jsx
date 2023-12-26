@@ -39,7 +39,7 @@ const MyReviews = () => {
             <tbody>
               <>
                 {review.length > 0 ? (
-                  review.map((singleReview, index) => (
+                  review?.map((singleReview, index) => (
                     <MyReviewTable
                       key={singleReview._id}
                       singleReview={singleReview}

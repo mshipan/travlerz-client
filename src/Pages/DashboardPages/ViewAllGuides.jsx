@@ -18,7 +18,7 @@ const ViewAllGuides = () => {
         </h1>
       </div>
       <div className="my-10 md:my-20 w-4/5 md:w-3/5 mx-auto grid grid-cols-1 md:grid-cols-3 gap-5">
-        {guides.map((guide) => (
+        {guides?.map((guide) => (
           <AllGuidesCard key={guide._id} guide={guide}></AllGuidesCard>
         ))}
       </div>

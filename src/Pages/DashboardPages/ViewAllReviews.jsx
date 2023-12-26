@@ -38,7 +38,7 @@ const ViewAllReviews = () => {
             <tbody>
               <>
                 {reviews.length > 0 ? (
-                  reviews.map((singleReview, index) => (
+                  reviews?.map((singleReview, index) => (
                     <AllReviewsTable
                       key={singleReview._id}
                       singleReview={singleReview}

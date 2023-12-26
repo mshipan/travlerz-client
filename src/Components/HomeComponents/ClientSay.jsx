@@ -62,7 +62,7 @@ const ClientSay = () => {
               },
             }}
           >
-            {allReviews.map((review, index) => (
+            {allReviews?.map((review, index) => (
               <SwiperSlide key={review._id}>
                 <ClientSayCard review={review} index={index}></ClientSayCard>
               </SwiperSlide>

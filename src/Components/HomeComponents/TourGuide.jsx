@@ -29,7 +29,7 @@ const TourGuide = () => {
         </p>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:w-[73%] mx-auto">
-        {allGuides.slice(0, 6).map((guide) => (
+        {allGuides.slice(0, 6)?.map((guide) => (
           <TourGuideCard key={guide._id} guide={guide}></TourGuideCard>
         ))}
       </div>

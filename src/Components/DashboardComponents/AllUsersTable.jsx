@@ -36,7 +36,7 @@ const AllUsersTable = ({ user, index, allUsers, setAllUsers }) => {
             showConfirmButton: false,
             timer: 1500,
           });
-          const updateUsers = allUsers.map((user) => {
+          const updateUsers = allUsers?.map((user) => {
             if (user._id === _id) {
               return { ...user, role: "admin" };
             }
@@ -66,7 +66,7 @@ const AllUsersTable = ({ user, index, allUsers, setAllUsers }) => {
             showConfirmButton: false,
             timer: 1500,
           });
-          const updateUsers = allUsers.map((user) => {
+          const updateUsers = allUsers?.map((user) => {
             if (user._id === _id) {
               return { ...user, role: "user" };
             }

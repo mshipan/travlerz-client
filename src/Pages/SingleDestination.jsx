@@ -1,10 +1,25 @@
 import { SlideshowLightbox } from "lightbox.js-react";
 import { Helmet } from "react-helmet-async";
 import { BiMap } from "react-icons/bi";
-import { useLoaderData } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import { useGetDestinationByIdQuery } from "../redux/features/api/baseApi";
 
 const SingleDestination = () => {
-  const singleDestination = useLoaderData();
+  const { id } = useParams();
+  const {
+    data: singleDestination,
+    isLoading,
+    isError,
+    error,
+  } = useGetDestinationByIdQuery(id);
+
+  if (isLoading) {
+    return <p>Loading...</p>;
+  }
+
+  if (isError) {
+    return <p>Error: {error}</p>;
+  }
   const {
     title,
     banner,
@@ -56,7 +71,7 @@ const SingleDestination = () => {
           </h1>
           <div>
             <SlideshowLightbox className="grid grid-cols-2 gap-2 ">
-              {destinationGallery.map((gallery, index) => (
+              {destinationGallery?.map((gallery, index) => (
                 <img
                   key={index}
                   src={gallery.url}
@@ -72,7 +87,7 @@ const SingleDestination = () => {
         <div className="my-10">
           <h1 className="text-2xl font-barlow font-bold mb-5">Attractions</h1>
           <div>
-            {attractions.map((attraction, index) => (
+            {attractions?.map((attraction, index) => (
               <ul key={index}>
                 <li>
                   {index + 1}. {attraction.attraction}
@@ -84,7 +99,7 @@ const SingleDestination = () => {
         <div className="my-10">
           <h1 className="text-2xl font-barlow font-bold mb-5">Accommodation</h1>
           <div>
-            {accommodation.map((ac, index) => (
+            {accommodation?.map((ac, index) => (
               <ul key={index}>
                 <li>
                   {index + 1}. {ac.accommodation}
@@ -106,7 +121,7 @@ const SingleDestination = () => {
         <div className="my-10">
           <h1 className="text-2xl font-barlow font-bold mb-5">Travel Tips</h1>
           <div>
-            {travelTips.map((travelTip, index) => (
+            {travelTips?.map((travelTip, index) => (
               <ul key={index}>
                 <li>
                   {index + 1}. {travelTip.travelTips}

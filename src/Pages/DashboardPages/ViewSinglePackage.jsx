@@ -149,7 +149,7 @@ const ViewSinglePackage = () => {
                   Included
                 </td>
                 <td>
-                  {included.map((incld, index) => (
+                  {included?.map((incld, index) => (
                     <div key={index}>
                       <div className="inline-flex items-center gap-1">
                         <BsCheck2 className="text-sky-500" /> {incld}
@@ -163,7 +163,7 @@ const ViewSinglePackage = () => {
                   Excluded
                 </td>
                 <td>
-                  {excluded.map((incld, index) => (
+                  {excluded?.map((incld, index) => (
                     <div key={index}>
                       <div className="inline-flex items-center gap-1">
                         <LiaTimesSolid className="text-red-500" /> {incld}
@@ -179,7 +179,7 @@ const ViewSinglePackage = () => {
           <h1 className="text-2xl font-barlow font-bold mb-5">Tour Gallery</h1>
           <div>
             <SlideshowLightbox className="grid grid-cols-2 gap-2 ">
-              {tourGallery.map((gallery, index) => (
+              {tourGallery?.map((gallery, index) => (
                 <img
                   key={index}
                   src={gallery.url}

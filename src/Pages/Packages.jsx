@@ -28,7 +28,7 @@ const Packages = () => {
         </h1>
       </div>
       <div className="my-20 w-3/5 mx-auto grid grid-cols-3 gap-5">
-        {allPackages.map((singlePackage) => (
+        {allPackages?.map((singlePackage) => (
           <PackageCard
             key={singlePackage._id}
             singlePackage={singlePackage}

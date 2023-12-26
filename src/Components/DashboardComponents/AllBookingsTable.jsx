@@ -47,7 +47,7 @@ const AllBookingsTable = ({ booking, bookings, setBookings, index }) => {
             showConfirmButton: false,
             timer: 1500,
           });
-          const updateBookings = bookings.map((booking) => {
+          const updateBookings = bookings?.map((booking) => {
             if (booking._id === _id) {
               return { ...booking, status: "approved" };
             }
@@ -77,7 +77,7 @@ const AllBookingsTable = ({ booking, bookings, setBookings, index }) => {
             showConfirmButton: false,
             timer: 1500,
           });
-          const updateBookings = bookings.map((booking) => {
+          const updateBookings = bookings?.map((booking) => {
             if (booking._id === _id) {
               return { ...booking, status: "denied" };
             }

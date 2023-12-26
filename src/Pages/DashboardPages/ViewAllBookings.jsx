@@ -38,7 +38,7 @@ const ViewAllBookings = () => {
             </thead>
             <tbody>
               <>
-                {bookings.map((booking, index) => (
+                {bookings?.map((booking, index) => (
                   <AllBookingsTable
                     key={booking._id}
                     booking={booking}

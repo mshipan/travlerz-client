@@ -58,7 +58,7 @@ const ViewSingleDestionation = () => {
           </h1>
           <div>
             <SlideshowLightbox className="grid grid-cols-2 gap-2 ">
-              {destinationGallery.map((gallery, index) => (
+              {destinationGallery?.map((gallery, index) => (
                 <img
                   key={index}
                   src={gallery.url}
@@ -74,7 +74,7 @@ const ViewSingleDestionation = () => {
         <div className="my-10">
           <h1 className="text-2xl font-barlow font-bold mb-5">Attractions</h1>
           <div>
-            {attractions.map((attraction, index) => (
+            {attractions?.map((attraction, index) => (
               <ul key={index}>
                 <li>
                   {index + 1}. {attraction.attraction}
@@ -86,7 +86,7 @@ const ViewSingleDestionation = () => {
         <div className="my-10">
           <h1 className="text-2xl font-barlow font-bold mb-5">Accommodation</h1>
           <div>
-            {accommodation.map((ac, index) => (
+            {accommodation?.map((ac, index) => (
               <ul key={index}>
                 <li>
                   {index + 1}. {ac.accommodation}
@@ -108,7 +108,7 @@ const ViewSingleDestionation = () => {
         <div className="my-10">
           <h1 className="text-2xl font-barlow font-bold mb-5">Travel Tips</h1>
           <div>
-            {travelTips.map((travelTip, index) => (
+            {travelTips?.map((travelTip, index) => (
               <ul key={index}>
                 <li>
                   {index + 1}. {travelTip.travelTips}

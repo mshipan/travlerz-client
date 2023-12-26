@@ -19,7 +19,7 @@ const ViewAllPackages = () => {
         </h1>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5 container mx-auto my-10">
-        {packages.map((singlePackage) => (
+        {packages?.map((singlePackage) => (
           <ViewAllPackagesCard
             key={singlePackage._id}
             singlePackage={singlePackage}

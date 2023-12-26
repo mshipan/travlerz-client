@@ -43,7 +43,7 @@ const ExploreDestination = () => {
       <div className="my-5 overflow-hidden">
         <Marquee>
           <div className="flex space-x-5 w-2/3">
-            {allDestinations.map((destination) => (
+            {allDestinations?.map((destination) => (
               <ExploreDestinationCard
                 key={destination._id}
                 destination={destination}

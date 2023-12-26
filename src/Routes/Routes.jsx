@@ -49,8 +49,6 @@ const router = createBrowserRouter([
             <SingleDestination></SingleDestination>
           </PrivateRoute>
         ),
-        loader: ({ params }) =>
-          fetch(`http://localhost:5000/destination/${params.id}`),
       },
       {
         path: "/packages",
@@ -63,8 +61,6 @@ const router = createBrowserRouter([
             <SinglePackage></SinglePackage>
           </PrivateRoute>
         ),
-        loader: ({ params }) =>
-          fetch(`http://localhost:5000/package/${params.id}`),
       },
       {
         path: "/about-us",
@@ -78,7 +74,11 @@ const router = createBrowserRouter([
   },
   {
     path: "/dashboard",
-    element: <DashboardLayout></DashboardLayout>,
+    element: (
+      <PrivateRoute>
+        <DashboardLayout></DashboardLayout>
+      </PrivateRoute>
+    ),
     children: [
       {
         index: true,
