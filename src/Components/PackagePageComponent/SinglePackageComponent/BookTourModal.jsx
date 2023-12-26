@@ -2,9 +2,11 @@ import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import useAuth from "../../../Hooks/useAuth";
 import Swal from "sweetalert2";
+import { useBookTourMutation } from "../../../redux/features/api/baseApi";
 
 const BookTourModal = ({ modalRef, closeModal, singlePackage }) => {
   const { user } = useAuth();
+  const [bookTour] = useBookTourMutation();
   const [totalPrice, setTotalPrice] = useState(0);
   const { register, handleSubmit, watch, reset } = useForm({
     defaultValues: {
@@ -22,12 +24,10 @@ const BookTourModal = ({ modalRef, closeModal, singlePackage }) => {
     }
   }, [yourGroupSize, packagePricePerPerson]);
 
-  const handleFormSubmit = (data) => {
-    fetch("http://localhost:5000/bookings", {
-      method: "POST",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify({
-        uid: user.uid,
+  const handleFormSubmit = async (data) => {
+    try {
+      const result = await bookTour({
+        uid: user.id,
         title: title,
         totalPrice,
         name: data.name,
@@ -35,21 +35,29 @@ const BookTourModal = ({ modalRef, closeModal, singlePackage }) => {
         phone: data.phone,
         yourGroupSize: data.yourGroupSize,
         specialRequests: data.specialRequests,
-      }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.insertedId) {
-          Swal.fire({
-            position: "top-end",
-            title: "Booking Added Successfully!",
-            text: "Please visit your dashboard / my booking for finalize the booking",
-            icon: "success",
-            confirmButtonText: "OK",
-          });
-          reset();
-        }
       });
+
+      if (result.data) {
+        Swal.fire({
+          position: "top-end",
+          title: "Booking Added Successfully!",
+          text: "Please visit your dashboard / my booking for finalize the booking",
+          icon: "success",
+          confirmButtonText: "OK",
+        });
+        reset();
+      } else {
+        Swal.fire({
+          position: "top-end",
+          title: "Book Tour Failed!",
+          text: result.error,
+          icon: "error",
+          confirmButtonText: "OK",
+        });
+      }
+    } catch (error) {
+      console.error("An unexpected error occurred", error);
+    }
   };
 
   return (

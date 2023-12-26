@@ -146,7 +146,6 @@ const router = createBrowserRouter([
       {
         path: "view-bookings",
         element: <ViewAllBookings></ViewAllBookings>,
-        loader: () => fetch("http://localhost:5000/bookings"),
       },
       {
         path: "my-bookings",
