@@ -52,21 +52,21 @@ const SingleDestination = () => {
               <BiMap />{" "}
               <span className="font-barlow font-bold">{location}</span>
             </p>
-            <h1 className="text-xl md:text-3xl font-bold font-barlow">
+            <h1 className="text-xl md:text-3xl font-bold font-barlow text-white">
               {title}
             </h1>
           </div>
         </div>
         <div className="divider"></div>
         <div>
-          <h1 className="text-2xl font-barlow font-bold mb-3">
+          <h1 className="text-2xl font-barlow font-bold mb-3 text-white">
             Destination Details
           </h1>
-          <p className="font-barlow">{destinationDescription}</p>
+          <p className="font-barlow text-slate-400">{destinationDescription}</p>
         </div>
 
         <div className="my-10">
-          <h1 className="text-2xl font-barlow font-bold mb-5">
+          <h1 className="text-2xl font-barlow font-bold mb-5 text-white">
             Destination Gallery
           </h1>
           <div>
@@ -85,11 +85,13 @@ const SingleDestination = () => {
           </div>
         </div>
         <div className="my-10">
-          <h1 className="text-2xl font-barlow font-bold mb-5">Attractions</h1>
+          <h1 className="text-2xl font-barlow font-bold mb-5 text-white">
+            Attractions
+          </h1>
           <div>
             {attractions?.map((attraction, index) => (
               <ul key={index}>
-                <li>
+                <li className="text-slate-400">
                   {index + 1}. {attraction.attraction}
                 </li>
               </ul>
@@ -97,11 +99,13 @@ const SingleDestination = () => {
           </div>
         </div>
         <div className="my-10">
-          <h1 className="text-2xl font-barlow font-bold mb-5">Accommodation</h1>
+          <h1 className="text-2xl font-barlow font-bold mb-5 text-white">
+            Accommodation
+          </h1>
           <div>
             {accommodation?.map((ac, index) => (
               <ul key={index}>
-                <li>
+                <li className="text-slate-400">
                   {index + 1}. {ac.accommodation}
                 </li>
               </ul>
@@ -109,21 +113,25 @@ const SingleDestination = () => {
           </div>
         </div>
         <div className="mb-10">
-          <h1 className="text-2xl font-barlow font-bold mb-3">
+          <h1 className="text-2xl font-barlow font-bold mb-3 text-white">
             Climate And Weather Details
           </h1>
-          <p className="font-barlow">{climateAndWeather}</p>
+          <p className="font-barlow text-slate-400">{climateAndWeather}</p>
         </div>
         <div className="mb-10">
-          <h1 className="text-2xl font-barlow font-bold mb-3">Local Cuisine</h1>
-          <p className="font-barlow">{localCuisine}</p>
+          <h1 className="text-2xl font-barlow font-bold mb-3 text-white">
+            Local Cuisine
+          </h1>
+          <p className="font-barlow text-slate-400">{localCuisine}</p>
         </div>
         <div className="my-10">
-          <h1 className="text-2xl font-barlow font-bold mb-5">Travel Tips</h1>
+          <h1 className="text-2xl font-barlow font-bold mb-5 text-white">
+            Travel Tips
+          </h1>
           <div>
             {travelTips?.map((travelTip, index) => (
               <ul key={index}>
-                <li>
+                <li className="text-slate-400">
                   {index + 1}. {travelTip.travelTips}
                 </li>
               </ul>
@@ -131,10 +139,10 @@ const SingleDestination = () => {
           </div>
         </div>
         <div className="mb-10">
-          <h1 className="text-2xl font-barlow font-bold mb-3">
+          <h1 className="text-2xl font-barlow font-bold mb-3 text-white">
             Transportation
           </h1>
-          <p className="font-barlow">{transportation}</p>
+          <p className="font-barlow text-slate-400">{transportation}</p>
         </div>
         <div className="mb-10">
           <h1 className="text-2xl font-barlow font-bold mb-10">

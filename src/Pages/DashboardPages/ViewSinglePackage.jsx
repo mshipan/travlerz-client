@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { BiMap } from "react-icons/bi";
 import { Helmet } from "react-helmet-async";
 import { BsClockHistory, BsCheck2 } from "react-icons/bs";
@@ -8,9 +8,30 @@ import { GoPeople } from "react-icons/go";
 import { HiMiniCurrencyBangladeshi } from "react-icons/hi2";
 import { LiaTimesSolid } from "react-icons/lia";
 import { SlideshowLightbox } from "lightbox.js-react";
+import { useGetPackageByIdQuery } from "../../redux/features/api/baseApi";
 
 const ViewSinglePackage = () => {
-  const singlePackage = useLoaderData();
+  const { id } = useParams();
+
+  const {
+    data: singlePackage,
+    isLoading,
+    isError,
+    error,
+  } = useGetPackageByIdQuery(id);
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (isError) {
+    return <div>Error loading package: {error.message}</div>;
+  }
+
+  if (!singlePackage) {
+    return <div>Package not found</div>;
+  }
+
   const {
     banner,
     location,
@@ -29,6 +50,7 @@ const ViewSinglePackage = () => {
     excluded,
     tourGallery,
   } = singlePackage;
+
   return (
     <div className="my-16">
       <Helmet>
@@ -44,8 +66,10 @@ const ViewSinglePackage = () => {
           <div className="flex items-center gap-3">
             <BsClockHistory className="text-3xl text-red-500" />
             <div className="font-barlow">
-              <p className="leading-none text-base font-medium">Duration</p>
-              <p className="leading-none mt-1">
+              <p className="leading-none text-base font-medium text-white">
+                Duration
+              </p>
+              <p className="leading-none mt-1 text-slate-400">
                 <small>{duration}</small>
               </p>
             </div>
@@ -53,8 +77,10 @@ const ViewSinglePackage = () => {
           <div className="flex items-center gap-3">
             <LuFootprints className="text-3xl text-red-500" />
             <div className="font-barlow">
-              <p className="leading-none text-base font-medium">Tour Types</p>
-              <p className="leading-none mt-1">
+              <p className="leading-none text-base font-medium text-white">
+                Tour Types
+              </p>
+              <p className="leading-none mt-1 text-slate-400">
                 <small>{tourType}</small>
               </p>
             </div>
@@ -62,8 +88,10 @@ const ViewSinglePackage = () => {
           <div className="flex items-center gap-3">
             <MdGroups className="text-3xl text-red-500" />
             <div className="font-barlow">
-              <p className="leading-none text-base font-medium">Group Size</p>
-              <p className="leading-none mt-1">
+              <p className="leading-none text-base font-medium text-white">
+                Group Size
+              </p>
+              <p className="leading-none mt-1 text-slate-400">
                 <small>{groupSize} People</small>
               </p>
             </div>
@@ -71,8 +99,10 @@ const ViewSinglePackage = () => {
           <div className="flex items-center gap-3">
             <GoPeople className="text-3xl text-red-500" />
             <div className="font-barlow">
-              <p className="leading-none text-base font-medium">Tour Guide</p>
-              <p className="leading-none mt-1">
+              <p className="leading-none text-base font-medium text-white">
+                Tour Guide
+              </p>
+              <p className="leading-none mt-1 text-slate-400">
                 <small>{tourGuide} People</small>
               </p>
             </div>
@@ -80,8 +110,10 @@ const ViewSinglePackage = () => {
           <div className="flex items-center gap-3">
             <HiMiniCurrencyBangladeshi className="text-3xl text-red-500" />
             <div className="font-barlow">
-              <p className="leading-none text-base font-medium">Price</p>
-              <p className="leading-none mt-1">
+              <p className="leading-none text-base font-medium text-white">
+                Price
+              </p>
+              <p className="leading-none mt-1 text-slate-400">
                 <small>{packagePricePerPerson} Tk / Person</small>
               </p>
             </div>
@@ -94,37 +126,37 @@ const ViewSinglePackage = () => {
               <BiMap />{" "}
               <span className="font-barlow font-bold">{location}</span>
             </p>
-            <h1 className="text-xl md:text-3xl font-bold font-barlow">
+            <h1 className="text-xl md:text-3xl font-bold font-barlow text-white">
               {title}
             </h1>
           </div>
-          <div>
+          {/* <div>
             <button className="bg-red-500 hover:bg-white px-5 py-2 text-white hover:text-red-500 border border-red-500 duration-500 text-lg font-medium font-barlow">
               Book this Tour
             </button>
-          </div>
+          </div> */}
         </div>
         <div className="divider"></div>
         <div>
-          <h1 className="text-2xl font-barlow font-bold mb-3">
+          <h1 className="text-2xl font-barlow font-bold text-white mb-3">
             Package Details
           </h1>
-          <p className="font-barlow">{packageDetails}</p>
+          <p className="font-barlow text-slate-400">{packageDetails}</p>
         </div>
         <div className="shadow-lg my-5">
           <table className="table border border-black">
             <tbody>
               <tr className="border border-black">
-                <td className="font-barlow font-bold border border-black">
+                <td className="font-barlow font-bold border border-black text-white">
                   Destination
                 </td>
-                <td>{destination}</td>
+                <td className="text-slate-400">{destination}</td>
               </tr>
               <tr className="border border-black">
-                <td className="font-barlow font-bold border border-black">
+                <td className="font-barlow font-bold border border-black text-white">
                   Departure
                 </td>
-                <td>
+                <td className="text-slate-400">
                   {new Date(departure).toLocaleDateString("en-US", {
                     day: "numeric",
                     month: "long",
@@ -133,22 +165,22 @@ const ViewSinglePackage = () => {
                 </td>
               </tr>
               <tr className="border border-black">
-                <td className="font-barlow font-bold border border-black">
+                <td className="font-barlow font-bold border border-black text-white">
                   Departure Time
                 </td>
-                <td>{departureTime}</td>
+                <td className="text-slate-400">{departureTime}</td>
               </tr>
               <tr className="border border-black">
-                <td className="font-barlow font-bold border border-black">
+                <td className="font-barlow font-bold border border-black text-white">
                   Return Time
                 </td>
-                <td>{returnTime}</td>
+                <td className="text-slate-400">{returnTime}</td>
               </tr>
               <tr className="border border-black">
-                <td className="font-barlow font-bold border border-black">
+                <td className="font-barlow font-bold border border-black text-white">
                   Included
                 </td>
-                <td>
+                <td className="text-slate-400">
                   {included?.map((incld, index) => (
                     <div key={index}>
                       <div className="inline-flex items-center gap-1">
@@ -159,10 +191,10 @@ const ViewSinglePackage = () => {
                 </td>
               </tr>
               <tr className="border border-black">
-                <td className="font-barlow font-bold border border-black">
+                <td className="font-barlow font-bold border border-black text-white">
                   Excluded
                 </td>
-                <td>
+                <td className="text-slate-400">
                   {excluded?.map((incld, index) => (
                     <div key={index}>
                       <div className="inline-flex items-center gap-1">
@@ -176,7 +208,9 @@ const ViewSinglePackage = () => {
           </table>
         </div>
         <div className="my-10">
-          <h1 className="text-2xl font-barlow font-bold mb-5">Tour Gallery</h1>
+          <h1 className="text-2xl font-barlow font-bold text-white mb-5">
+            Tour Gallery
+          </h1>
           <div>
             <SlideshowLightbox className="grid grid-cols-2 gap-2 ">
               {tourGallery?.map((gallery, index) => (

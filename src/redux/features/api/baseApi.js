@@ -13,6 +13,15 @@ const baseApi = createApi({
     }),
     getPackageById: builder.query({
       query: (id) => `/package/${id}`,
+      invalidatesTags: ["Packages"],
+    }),
+    addPackage: builder.mutation({
+      query: (data) => ({
+        url: "/packages",
+        method: "POST",
+        body: data,
+      }),
+      invalidatesTags: ["Packages"],
     }),
     getAllDestinations: builder.query({
       query: () => "/destinations",
@@ -44,6 +53,7 @@ const baseApi = createApi({
 export const {
   useGetAllPackagesQuery,
   useGetPackageByIdQuery,
+  useAddPackageMutation,
   useGetAllDestinationsQuery,
   useGetDestinationByIdQuery,
   useGetAllReviewsQuery,

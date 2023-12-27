@@ -4,34 +4,40 @@ import { FaXmark } from "react-icons/fa6";
 import Swal from "sweetalert2";
 import "./DashboardPagesCss.css";
 import { Helmet } from "react-helmet-async";
+import { useAddPackageMutation } from "../../redux/features/api/baseApi";
 
 const AddAPackage = () => {
   const { register, control, handleSubmit, reset } = useForm();
+  const [addPackage] = useAddPackageMutation();
 
   const { fields, append, remove } = useFieldArray({
     control,
     name: "tourGallery",
   });
 
-  const onSubmit = (data) => {
-    console.log(data);
-    fetch("http://localhost:5000/packages", {
-      method: "POST",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify(data),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.insertedId) {
-          Swal.fire({
-            title: "Package Added Successfully!",
-            text: "Press OK to continue",
-            icon: "success",
-            confirmButtonText: "OK",
-          });
-          reset();
-        }
-      });
+  const onSubmit = async (data) => {
+    try {
+      const result = await addPackage(data);
+
+      if (result.data) {
+        Swal.fire({
+          title: "Package Added Successfully!",
+          text: "Press OK to continue",
+          icon: "success",
+          confirmButtonText: "OK",
+        });
+        reset();
+      } else {
+        Swal.fire({
+          title: "Package Added Failed!",
+          text: "Press OK to continue",
+          icon: "error",
+          confirmButtonText: "OK",
+        });
+      }
+    } catch (error) {
+      console.error("An unexpected error occurred", error);
+    }
   };
 
   return (

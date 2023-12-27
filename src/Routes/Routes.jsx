@@ -106,8 +106,6 @@ const router = createBrowserRouter([
       {
         path: "package/:id",
         element: <ViewSinglePackage></ViewSinglePackage>,
-        loader: ({ params }) =>
-          fetch(`http://localhost:5000/package/${params.id}`),
       },
       {
         path: "update-package/:id",
