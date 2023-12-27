@@ -1,13 +1,28 @@
 import { Helmet } from "react-helmet-async";
-import { useLoaderData } from "react-router-dom";
 import ViewAllPackagesCard from "../../Components/DashboardComponents/ViewAllPackagesCard";
 import "./DashboardPagesCss.css";
-import { useState } from "react";
+import { useGetAllPackagesQuery } from "../../redux/features/api/baseApi";
 
 const ViewAllPackages = () => {
-  const loadedPackages = useLoaderData();
-  const [packages, setPackages] = useState(loadedPackages);
-  console.log("packages", packages);
+  const {
+    data: allPackages,
+    isLoading,
+    isError,
+    error,
+  } = useGetAllPackagesQuery();
+  // const [packages, setPackages] = useState(allPackages);
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (isError) {
+    return <div>Error loading package: {error.message}</div>;
+  }
+
+  if (!allPackages) {
+    return <div>Package not found</div>;
+  }
+
   return (
     <div className="my-16">
       <Helmet>
@@ -19,12 +34,12 @@ const ViewAllPackages = () => {
         </h1>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5 container mx-auto my-10">
-        {packages?.map((singlePackage) => (
+        {allPackages?.map((singlePackage) => (
           <ViewAllPackagesCard
             key={singlePackage._id}
             singlePackage={singlePackage}
-            packages={packages}
-            setPackages={setPackages}
+            packages={allPackages}
+            // setPackages={setPackages}
           ></ViewAllPackagesCard>
         ))}
       </div>

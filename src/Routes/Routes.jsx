@@ -101,7 +101,6 @@ const router = createBrowserRouter([
       {
         path: "view-packages",
         element: <ViewAllPackages></ViewAllPackages>,
-        loader: () => fetch("http://localhost:5000/packages"),
       },
       {
         path: "package/:id",
@@ -117,7 +116,6 @@ const router = createBrowserRouter([
       {
         path: "all-users",
         element: <AllUsers></AllUsers>,
-        loader: () => fetch("http://localhost:5000/users"),
       },
       {
         path: "add-a-destination",

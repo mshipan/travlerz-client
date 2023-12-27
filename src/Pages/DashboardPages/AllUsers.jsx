@@ -1,12 +1,24 @@
 import { Helmet } from "react-helmet-async";
-import { useLoaderData } from "react-router-dom";
 import { BsArrowRight } from "react-icons/bs";
 import AllUsersTable from "../../Components/DashboardComponents/AllUsersTable";
-import { useState } from "react";
+import { useGetAllUsersQuery } from "../../redux/features/api/baseApi";
 
 const AllUsers = () => {
-  const loggedUsers = useLoaderData();
-  const [allUsers, setAllUsers] = useState(loggedUsers);
+  // const loggedUsers = useLoaderData();
+  const { data: allUsers, isLoading, isError, error } = useGetAllUsersQuery();
+  // const [allUsers, setAllUsers] = useState(loggedUsers);
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (isError) {
+    return <div>Error loading package: {error.message}</div>;
+  }
+
+  if (!allUsers) {
+    return <div>Package not found</div>;
+  }
 
   return (
     <div className="my-16">
@@ -44,7 +56,7 @@ const AllUsers = () => {
                     key={index}
                     user={user}
                     allUsers={allUsers}
-                    setAllUsers={setAllUsers}
+                    // setAllUsers={setAllUsers}
                     index={index}
                   ></AllUsersTable>
                 ))}

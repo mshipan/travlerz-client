@@ -5,8 +5,16 @@ const baseApi = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: import.meta.env.VITE_baseApi,
   }),
-  tagTypes: ["Packages", "Bookings"],
+  tagTypes: [
+    "Packages",
+    "Destinations",
+    "Reviews",
+    "Guides",
+    "Bookings",
+    "Users",
+  ],
   endpoints: (builder) => ({
+    // packages
     getAllPackages: builder.query({
       query: () => "/packages",
       providesTags: ["Packages"],
@@ -23,18 +31,26 @@ const baseApi = createApi({
       }),
       invalidatesTags: ["Packages"],
     }),
+    //destinations
     getAllDestinations: builder.query({
       query: () => "/destinations",
+      providesTags: ["Destinations"],
     }),
     getDestinationById: builder.query({
       query: (id) => `/destination/${id}`,
+      invalidatesTags: ["Destinations"],
     }),
+    //reviews
     getAllReviews: builder.query({
       query: () => "/reviews",
+      providesTags: ["Reviews"],
     }),
+    //guides
     getAllGuides: builder.query({
       query: () => "/tour-guides",
+      providesTags: ["Guides"],
     }),
+    //bookings
     getAllBookings: builder.query({
       query: () => "/bookings",
       providesTags: ["Bookings"],
@@ -46,6 +62,11 @@ const baseApi = createApi({
         body: data,
       }),
       invalidatesTags: ["Bookings"],
+    }),
+    //users
+    getAllUsers: builder.query({
+      query: () => "/users",
+      providesTags: ["Users"],
     }),
   }),
 });
@@ -60,6 +81,7 @@ export const {
   useGetAllGuidesQuery,
   useGetAllBookingsQuery,
   useBookTourMutation,
+  useGetAllUsersQuery,
 } = baseApi;
 
 export default baseApi;
