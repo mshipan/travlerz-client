@@ -1,11 +1,27 @@
-import { useState } from "react";
 import { Helmet } from "react-helmet-async";
-import { useLoaderData } from "react-router-dom";
 import ViewAllDestinationCard from "../../Components/DashboardComponents/ViewAllDestinationCard";
+import { useGetAllDestinationsQuery } from "../../redux/features/api/baseApi";
 
 const ViewAllDestination = () => {
-  const loadedDestinations = useLoaderData();
-  const [destinations, setDestinations] = useState(loadedDestinations);
+  // const loadedDestinations = useLoaderData();
+  const {
+    data: destinations,
+    isLoading,
+    isError,
+    error,
+  } = useGetAllDestinationsQuery();
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (isError) {
+    return <div>Error loading package: {error.message}</div>;
+  }
+
+  if (!destinations) {
+    return <div>Package not found</div>;
+  }
+  // const [destinations, setDestinations] = useState(loadedDestinations);
   return (
     <div className="my-16">
       <Helmet>
@@ -22,7 +38,7 @@ const ViewAllDestination = () => {
             key={destination._id}
             destination={destination}
             destinations={destinations}
-            setDestinations={setDestinations}
+            // setDestinations={setDestinations}
           ></ViewAllDestinationCard>
         ))}
       </div>

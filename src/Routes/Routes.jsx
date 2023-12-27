@@ -124,7 +124,6 @@ const router = createBrowserRouter([
       {
         path: "view-destinations",
         element: <ViewAllDestination></ViewAllDestination>,
-        loader: () => fetch("http://localhost:5000/destinations"),
       },
       {
         path: "destination/:id",
