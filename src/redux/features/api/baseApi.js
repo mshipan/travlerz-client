@@ -58,6 +58,14 @@ const baseApi = createApi({
       query: () => "/tour-guides",
       providesTags: ["Guides"],
     }),
+    addGuide: builder.mutation({
+      query: (data) => ({
+        url: "/tour-guides",
+        method: "POST",
+        body: data,
+      }),
+      invalidatesTags: ["Guides"],
+    }),
     //bookings
     getAllBookings: builder.query({
       query: () => "/bookings",
@@ -88,6 +96,7 @@ export const {
   useAddDestinationMutation,
   useGetAllReviewsQuery,
   useGetAllGuidesQuery,
+  useAddGuideMutation,
   useGetAllBookingsQuery,
   useBookTourMutation,
   useGetAllUsersQuery,

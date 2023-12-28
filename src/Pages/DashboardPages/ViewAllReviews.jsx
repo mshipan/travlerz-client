@@ -11,11 +11,11 @@ const ViewAllReviews = () => {
   }
 
   if (isError) {
-    return <div>Error loading package: {error.message}</div>;
+    return <div>Error loading reviews: {error.message}</div>;
   }
 
   if (!reviews) {
-    return <div>Package not found</div>;
+    return <div>Reviews not found</div>;
   }
   return (
     <div className="my-16">

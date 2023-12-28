@@ -1,28 +1,34 @@
 import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
+import { useAddGuideMutation } from "../../redux/features/api/baseApi";
 
 const AddAGuide = () => {
   const { register, handleSubmit, reset } = useForm();
-  const onSubmit = (data) => {
-    console.log(data);
-    fetch("http://localhost:5000/tour-guides", {
-      method: "POST",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify(data),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.insertedId) {
-          Swal.fire({
-            title: "Guide Added Successfully!",
-            text: "Press OK to continue",
-            icon: "success",
-            confirmButtonText: "OK",
-          });
-          reset();
-        }
-      });
+  const [addGuide] = useAddGuideMutation();
+  const onSubmit = async (data) => {
+    try {
+      const result = await addGuide(data);
+
+      if (result.data) {
+        Swal.fire({
+          title: "Guide Added Successfully!",
+          text: "Press OK to continue",
+          icon: "success",
+          confirmButtonText: "OK",
+        });
+        reset();
+      } else {
+        Swal.fire({
+          title: "Destination Added Failed!",
+          text: "Press OK to continue",
+          icon: "error",
+          confirmButtonText: "OK",
+        });
+      }
+    } catch (error) {
+      console.error("An unexpected error occurred", error);
+    }
   };
   return (
     <div className="my-16">
