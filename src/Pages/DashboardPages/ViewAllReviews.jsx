@@ -1,11 +1,22 @@
 import { Helmet } from "react-helmet-async";
-import useReview from "../../Hooks/useReview";
 import { BsArrowRight } from "react-icons/bs";
 import AllReviewsTable from "../../Components/DashboardComponents/AllReviewsTable";
+import { useGetAllReviewsQuery } from "../../redux/features/api/baseApi";
 
 const ViewAllReviews = () => {
-  const [reviews] = useReview();
-  console.log("first", reviews);
+  const { data: reviews, isLoading, isError, error } = useGetAllReviewsQuery();
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (isError) {
+    return <div>Error loading package: {error.message}</div>;
+  }
+
+  if (!reviews) {
+    return <div>Package not found</div>;
+  }
   return (
     <div className="my-16">
       <Helmet>
