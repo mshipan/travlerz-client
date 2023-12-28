@@ -1,11 +1,19 @@
 import { Helmet } from "react-helmet-async";
-import useGuide from "../../Hooks/useGuide";
 import AllGuidesCard from "../../Components/DashboardComponents/AllGuidesCard";
+import { useGetAllGuidesQuery } from "../../redux/features/api/baseApi";
 
 const ViewAllGuides = () => {
-  const [, guides, loading] = useGuide();
-  if (loading) {
-    return <p>Loading guides...</p>;
+  const { data: guides, isLoading, isError, error } = useGetAllGuidesQuery();
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (isError) {
+    return <div>Error loading guides: {error.message}</div>;
+  }
+
+  if (!guides) {
+    return <div>Guides not found</div>;
   }
   return (
     <div className="my-16">
