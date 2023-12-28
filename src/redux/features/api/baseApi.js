@@ -53,6 +53,10 @@ const baseApi = createApi({
       query: () => "/reviews",
       providesTags: ["Reviews"],
     }),
+    getReviewsByUid: builder.query({
+      query: (uid) => `/reviews/${uid}`,
+      invalidatesTags: ["Reviews"],
+    }),
     //guides
     getAllGuides: builder.query({
       query: () => "/tour-guides",
@@ -99,6 +103,7 @@ export const {
   useGetDestinationByIdQuery,
   useAddDestinationMutation,
   useGetAllReviewsQuery,
+  useGetReviewsByUidQuery,
   useGetAllGuidesQuery,
   useAddGuideMutation,
   useGetAllBookingsQuery,

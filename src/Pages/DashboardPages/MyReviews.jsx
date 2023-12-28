@@ -1,12 +1,30 @@
 import { Helmet } from "react-helmet-async";
 import useAuth from "../../Hooks/useAuth";
-import useMyReview from "../../Hooks/useMyReview";
 import { BsArrowRight } from "react-icons/bs";
 import MyReviewTable from "../../Components/DashboardComponents/MyReviewTable";
+import { useGetReviewsByUidQuery } from "../../redux/features/api/baseApi";
 
 const MyReviews = () => {
   const { user } = useAuth();
-  const [review] = useMyReview(user?.uid);
+
+  const {
+    data: review,
+    isLoading,
+    isError,
+    error,
+  } = useGetReviewsByUidQuery(user?.uid);
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (isError) {
+    return <div>Error loading my reviews: {error.message}</div>;
+  }
+
+  if (!review) {
+    return <div>My Reviews not found</div>;
+  }
   return (
     <div className="my-16">
       <Helmet>
@@ -24,7 +42,7 @@ const MyReviews = () => {
         </p>
         <div>
           <table className="table text-center">
-            <thead className="border border-black text-black font-barlow">
+            <thead className="border border-black text-white font-barlow">
               <tr>
                 <th className="border border-black">#</th>
                 <th className="border border-black">User Photo</th>
