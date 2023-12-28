@@ -89,17 +89,17 @@ const MyBookingTable = ({ book, index }) => {
 
   return (
     <tr className="border-b border-black last:border-b-0">
-      <td>{index + 1}</td>
-      <td className="text-left">{title}</td>
-      <td className="text-left">{name}</td>
-      <td>{totalPrice}</td>
-      <td>{status}</td>
+      <td className="text-white">{index + 1}</td>
+      <td className="text-left text-white">{title}</td>
+      <td className="text-left text-white">{name}</td>
+      <td className="text-white">{totalPrice}</td>
+      <td className="text-white">{status}</td>
       <td>
         <div className="flex items-center justify-center gap-3">
           <button
             title="View Booking"
             onClick={openViewModal}
-            className="bg-green-500 hover:bg-white border border-green-500 p-2 text-lg duration-500 disabled:opacity-30 disabled:bg-green-500"
+            className="bg-green-500 hover:bg-white border border-green-500 p-2 text-lg duration-500 disabled:opacity-30 disabled:bg-green-500 text-white hover:text-slate-400"
           >
             <FaRegEye />
           </button>
@@ -132,7 +132,7 @@ const MyBookingTable = ({ book, index }) => {
             title="Give a Review"
             onClick={openReviewModal}
             disabled={status === "pending" || status === "denied"}
-            className="bg-yellow-500 hover:bg-white border border-yellow-500 p-2 text-lg duration-500 disabled:opacity-30 disabled:bg-yellow-500"
+            className="bg-yellow-500 hover:bg-white border border-yellow-500 p-2 text-lg duration-500 disabled:opacity-30 disabled:bg-yellow-500 text-white hover:text-slate-400"
           >
             <MdOutlineRateReview />
           </button>

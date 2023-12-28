@@ -1,12 +1,30 @@
 import { Helmet } from "react-helmet-async";
 import { BsArrowRight } from "react-icons/bs";
 import useAuth from "../../Hooks/useAuth";
-import useMyBooking from "../../Hooks/useMyBooking";
 import MyBookingTable from "../../Components/DashboardComponents/MyBookingTable";
+import { useGetBookingsByUidQuery } from "../../redux/features/api/baseApi";
 
 const MyBookings = () => {
   const { user } = useAuth();
-  const [booking] = useMyBooking(user?.uid);
+
+  const {
+    data: booking,
+    isLoading,
+    isError,
+    error,
+  } = useGetBookingsByUidQuery(user?.uid);
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (isError) {
+    return <div>Error loading my bookings: {error.message}</div>;
+  }
+
+  if (!booking) {
+    return <div>My Bookings not found</div>;
+  }
 
   return (
     <div className="my-16">
@@ -25,7 +43,7 @@ const MyBookings = () => {
         </p>
         <div>
           <table className="table text-center">
-            <thead className="border border-black text-black font-barlow">
+            <thead className="border border-black text-white font-barlow">
               <tr>
                 <th className="border border-black">#</th>
                 <th className="border border-black">Package Title</th>

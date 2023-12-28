@@ -71,6 +71,10 @@ const baseApi = createApi({
       query: () => "/bookings",
       providesTags: ["Bookings"],
     }),
+    getBookingsByUid: builder.query({
+      query: (uid) => `/bookings/${uid}`,
+      invalidatesTags: ["Bookings"],
+    }),
     bookTour: builder.mutation({
       query: (data) => ({
         url: "/bookings",
@@ -98,6 +102,7 @@ export const {
   useGetAllGuidesQuery,
   useAddGuideMutation,
   useGetAllBookingsQuery,
+  useGetBookingsByUidQuery,
   useBookTourMutation,
   useGetAllUsersQuery,
 } = baseApi;
