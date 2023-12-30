@@ -4,11 +4,41 @@ import { FaXmark } from "react-icons/fa6";
 import Swal from "sweetalert2";
 import "./DashboardPagesCss.css";
 import { Helmet } from "react-helmet-async";
-import { useLoaderData, useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import {
+  useGetPackageByIdQuery,
+  useUpdatePackageMutation,
+} from "../../redux/features/api/baseApi";
 
 const UpdatePackage = () => {
-  const singlePackage = useLoaderData();
-  console.log("first package", singlePackage);
+  const { id } = useParams();
+  const navigate = useNavigate();
+  const { register, control, handleSubmit } = useForm();
+
+  const { append, remove } = useFieldArray({
+    control,
+    name: "tourGallery",
+  });
+  const [updatePackage] = useUpdatePackageMutation();
+  const {
+    data: singlePackage,
+    isLoading,
+    isError,
+    error,
+  } = useGetPackageByIdQuery(id);
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (isError) {
+    return <div>Error loading package: {error.message}</div>;
+  }
+
+  if (!singlePackage) {
+    return <div>Package not found</div>;
+  }
+
   const {
     _id,
     banner,
@@ -33,35 +63,25 @@ const UpdatePackage = () => {
   const formattedDepartureTime = departureTime.slice(0, 5);
   const formattedRetureTime = returnTime.slice(0, 5);
 
-  const navigate = useNavigate();
-
-  const { register, control, handleSubmit } = useForm();
-
-  const { append, remove } = useFieldArray({
-    control,
-    name: "tourGallery",
-  });
-
-  const onSubmit = (data) => {
-    console.log(data);
-    fetch(`http://localhost:5000/package/${_id}`, {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        if (data.modifiedCount > 0) {
-          Swal.fire({
-            title: "Package Updated Successfully!",
-            text: "Press OK to continue",
-            icon: "success",
-            confirmButtonText: "OK",
-          });
-        }
-        navigate(`/dashboard/package/${_id}`);
+  const onSubmit = async (data) => {
+    try {
+      const result = await updatePackage({
+        id: id,
+        data: data,
       });
+      if (result.data.modifiedCount > 0) {
+        Swal.fire({
+          title: "Package Updated Successfully!",
+          text: "Press OK to continue",
+          icon: "success",
+          confirmButtonText: "OK",
+        });
+
+        navigate(`/dashboard/package/${_id}`);
+      }
+    } catch (error) {
+      console.error("Error updating package:", error);
+    }
   };
   return (
     <div className="mb-20">
