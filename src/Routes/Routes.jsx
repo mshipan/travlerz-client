@@ -128,8 +128,6 @@ const router = createBrowserRouter([
       {
         path: "destination/:id",
         element: <ViewSingleDestionation></ViewSingleDestionation>,
-        loader: ({ params }) =>
-          fetch(`http://localhost:5000/destination/${params.id}`),
       },
 
       {
