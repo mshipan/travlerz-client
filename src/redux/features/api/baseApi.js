@@ -39,6 +39,13 @@ const baseApi = createApi({
       }),
       invalidatesTags: ["Packages"],
     }),
+    deletePackage: builder.mutation({
+      query: ({ id }) => ({
+        url: `/package/${id}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["Packages"],
+    }),
     //destinations
     getAllDestinations: builder.query({
       query: () => "/destinations",
@@ -108,6 +115,7 @@ export const {
   useGetPackageByIdQuery,
   useAddPackageMutation,
   useUpdatePackageMutation,
+  useDeletePackageMutation,
   useGetAllDestinationsQuery,
   useGetDestinationByIdQuery,
   useAddDestinationMutation,

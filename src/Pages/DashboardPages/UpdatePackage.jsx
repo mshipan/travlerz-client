@@ -89,7 +89,7 @@ const UpdatePackage = () => {
         <title>Update a Package | Dashboard</title>
       </Helmet>
       <div className="bg-packageBg bg-no-repeat bg-cover bg-fixed bg-bottom w-full h-48 flex items-center justify-center ">
-        <h1 className="packageBannerText font-barlow text-4xl font-bold text-white drop-shadow-2xl">
+        <h1 className="packageBannerText font-barlow text-4xl font-bold text-white drop-shadow-2xl md:mt-10">
           Update a Package
         </h1>
       </div>
@@ -100,7 +100,10 @@ const UpdatePackage = () => {
         <div className="flex flex-col md:flex-row justify-center md:gap-8 w-full ">
           <div className="w-full md:w-1/2 flex flex-col md:gap-3">
             <div className="form-control">
-              <label htmlFor="title" className="font-barlow font-semibold">
+              <label
+                htmlFor="title"
+                className="font-barlow font-semibold text-white"
+              >
                 Tour Title :{" "}
               </label>
               <input
@@ -113,7 +116,10 @@ const UpdatePackage = () => {
               />
             </div>
             <div className="form-control">
-              <label htmlFor="banner" className="font-barlow font-semibold">
+              <label
+                htmlFor="banner"
+                className="font-barlow font-semibold text-white"
+              >
                 Banner Image URL :{" "}
               </label>
               <input
@@ -126,7 +132,10 @@ const UpdatePackage = () => {
               />
             </div>
             <div className="form-control">
-              <label htmlFor="location" className="font-barlow font-semibold">
+              <label
+                htmlFor="location"
+                className="font-barlow font-semibold text-white"
+              >
                 Location :{" "}
               </label>
               <input
@@ -139,7 +148,10 @@ const UpdatePackage = () => {
               />
             </div>
             <div className="form-control">
-              <label htmlFor="duration" className="font-barlow font-semibold">
+              <label
+                htmlFor="duration"
+                className="font-barlow font-semibold text-white"
+              >
                 Duration :{" "}
               </label>
               <input
@@ -152,7 +164,10 @@ const UpdatePackage = () => {
               />
             </div>
             <div className="form-control">
-              <label htmlFor="tourType" className="font-barlow font-semibold">
+              <label
+                htmlFor="tourType"
+                className="font-barlow font-semibold text-white"
+              >
                 Tour Type :{" "}
               </label>
               <input
@@ -168,7 +183,7 @@ const UpdatePackage = () => {
               <div className="form-control w-full">
                 <label
                   htmlFor="groupSize"
-                  className="font-barlow font-semibold"
+                  className="font-barlow font-semibold text-white"
                 >
                   Group Size :{" "}
                 </label>
@@ -184,7 +199,7 @@ const UpdatePackage = () => {
               <div className="form-control w-full">
                 <label
                   htmlFor="tourGuide"
-                  className="font-barlow font-semibold"
+                  className="font-barlow font-semibold text-white"
                 >
                   Tour Guide :{" "}
                 </label>
@@ -200,7 +215,7 @@ const UpdatePackage = () => {
               <div className="form-control w-full">
                 <label
                   htmlFor="packagePricePerPerson"
-                  className="font-barlow font-semibold"
+                  className="font-barlow font-semibold text-white"
                 >
                   Package Price Per Person:{" "}
                 </label>
@@ -217,7 +232,7 @@ const UpdatePackage = () => {
             <div className="form-control">
               <label
                 htmlFor="destination"
-                className="font-barlow font-semibold"
+                className="font-barlow font-semibold text-white"
               >
                 Destination:{" "}
               </label>
@@ -231,7 +246,10 @@ const UpdatePackage = () => {
               />
             </div>
             <div className="form-control">
-              <label htmlFor="departure" className="font-barlow font-semibold">
+              <label
+                htmlFor="departure"
+                className="font-barlow font-semibold text-white"
+              >
                 Departure :{" "}
               </label>
               <input
@@ -245,7 +263,7 @@ const UpdatePackage = () => {
             <div className="form-control">
               <label
                 htmlFor="departureTime"
-                className="font-barlow font-semibold"
+                className="font-barlow font-semibold text-white"
               >
                 Departure Time:{" "}
               </label>
@@ -258,7 +276,10 @@ const UpdatePackage = () => {
               />
             </div>
             <div className="form-control">
-              <label htmlFor="returnTime" className="font-barlow font-semibold">
+              <label
+                htmlFor="returnTime"
+                className="font-barlow font-semibold text-white"
+              >
                 Return Time:{" "}
               </label>
               <input
@@ -276,7 +297,7 @@ const UpdatePackage = () => {
             <div className="form-control">
               <label
                 htmlFor="packageDetails"
-                className="font-barlow font-semibold"
+                className="font-barlow font-semibold text-white"
               >
                 Package Details :{" "}
               </label>
@@ -292,7 +313,10 @@ const UpdatePackage = () => {
             </div>
 
             <div className="form-control">
-              <label htmlFor="included" className="font-barlow font-semibold">
+              <label
+                htmlFor="included"
+                className="font-barlow font-semibold text-white"
+              >
                 Included :{" "}
                 <small>
                   Press{" "}
@@ -319,7 +343,10 @@ const UpdatePackage = () => {
               </select>
             </div>
             <div className="form-control">
-              <label htmlFor="excluded" className="font-barlow font-semibold">
+              <label
+                htmlFor="excluded"
+                className="font-barlow font-semibold text-white"
+              >
                 Excluded :{" "}
                 <small>
                   Press{" "}
@@ -347,7 +374,7 @@ const UpdatePackage = () => {
             <div className="form-control">
               <label
                 htmlFor="tourGallery"
-                className="font-barlow font-semibold"
+                className="font-barlow font-semibold text-white"
               >
                 Gallery Image URL : <br />
                 <small>Click the Add more images button to add images</small>
@@ -385,7 +412,10 @@ const UpdatePackage = () => {
               </button>
             </div>
             <div className="form-control">
-              <label htmlFor="category" className="font-barlow font-semibold">
+              <label
+                htmlFor="category"
+                className="font-barlow font-semibold text-white"
+              >
                 Category :{" "}
               </label>
               <select

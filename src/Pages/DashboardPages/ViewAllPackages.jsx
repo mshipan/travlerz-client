@@ -10,7 +10,7 @@ const ViewAllPackages = () => {
     isError,
     error,
   } = useGetAllPackagesQuery();
-  // const [packages, setPackages] = useState(allPackages);
+
   if (isLoading) {
     return <div>Loading...</div>;
   }
@@ -38,8 +38,6 @@ const ViewAllPackages = () => {
           <ViewAllPackagesCard
             key={singlePackage._id}
             singlePackage={singlePackage}
-            packages={allPackages}
-            // setPackages={setPackages}
           ></ViewAllPackagesCard>
         ))}
       </div>

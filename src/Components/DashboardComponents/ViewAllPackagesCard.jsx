@@ -4,35 +4,30 @@ import { FaEdit, FaTrashAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { FaUserAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
+import { useDeletePackageMutation } from "../../redux/features/api/baseApi";
 
-const ViewAllPackagesCard = ({ singlePackage, packages, setPackages }) => {
+const ViewAllPackagesCard = ({ singlePackage }) => {
   const { _id, banner, title, duration, packagePricePerPerson, category } =
     singlePackage;
-  const handleDelete = (_id) => {
+  const [deletePackage] = useDeletePackageMutation();
+  const handleDelete = async (_id) => {
     Swal.fire({
-      title: "Are you sure to Delete?",
+      title: `Are you sure to Delete "${title}" ?`,
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
       confirmButtonText: "Yes, delete it!",
-    }).then((result) => {
+    }).then(async (result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/package/${_id}`, {
-          method: "DELETE",
-        })
-          .then((res) => res.json())
-          .then((data) => {
-            if (data.deletedCount > 0) {
-              Swal.fire(
-                "Deleted!",
-                "This package has been deleted.",
-                "success"
-              );
-              const remaining = packages.filter((sP) => sP._id !== _id);
-              setPackages(remaining);
-            }
-          });
+        try {
+          const result = await deletePackage({ id: _id });
+          if (result.data.deletedCount > 0) {
+            Swal.fire("Deleted!", "This package has been deleted.", "success");
+          }
+        } catch (error) {
+          console.error("error deleting package", error);
+        }
       }
     });
   };
