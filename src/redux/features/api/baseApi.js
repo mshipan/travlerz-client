@@ -53,13 +53,28 @@ const baseApi = createApi({
     }),
     getDestinationById: builder.query({
       query: (id) => `/destination/${id}`,
-      invalidatesTags: ["Destinations"],
+      providesTags: ["Destinations"],
     }),
     addDestination: builder.mutation({
       query: (data) => ({
         url: "/destinations",
         method: "POST",
         body: data,
+      }),
+      invalidatesTags: ["Destinations"],
+    }),
+    updateDestination: builder.mutation({
+      query: ({ id, data }) => ({
+        url: `/destination/${id}`,
+        method: "PUT",
+        body: data,
+      }),
+      invalidatesTags: ["Destinations"],
+    }),
+    deleteDestination: builder.mutation({
+      query: ({ id }) => ({
+        url: `/destination/${id}`,
+        method: "DELETE",
       }),
       invalidatesTags: ["Destinations"],
     }),
@@ -134,6 +149,8 @@ export const {
   useGetAllDestinationsQuery,
   useGetDestinationByIdQuery,
   useAddDestinationMutation,
+  useUpdateDestinationMutation,
+  useDeleteDestinationMutation,
   useGetAllReviewsQuery,
   useGetReviewsByUidQuery,
   useGetAllGuidesQuery,

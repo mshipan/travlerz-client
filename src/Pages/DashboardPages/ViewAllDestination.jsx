@@ -3,7 +3,6 @@ import ViewAllDestinationCard from "../../Components/DashboardComponents/ViewAll
 import { useGetAllDestinationsQuery } from "../../redux/features/api/baseApi";
 
 const ViewAllDestination = () => {
-  // const loadedDestinations = useLoaderData();
   const {
     data: destinations,
     isLoading,
@@ -21,7 +20,7 @@ const ViewAllDestination = () => {
   if (!destinations) {
     return <div>Package not found</div>;
   }
-  // const [destinations, setDestinations] = useState(loadedDestinations);
+
   return (
     <div className="my-16">
       <Helmet>
@@ -37,8 +36,6 @@ const ViewAllDestination = () => {
           <ViewAllDestinationCard
             key={destination._id}
             destination={destination}
-            destinations={destinations}
-            // setDestinations={setDestinations}
           ></ViewAllDestinationCard>
         ))}
       </div>

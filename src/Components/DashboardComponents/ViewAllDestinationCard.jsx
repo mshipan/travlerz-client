@@ -2,39 +2,36 @@ import { BsEye } from "react-icons/bs";
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import { useDeleteDestinationMutation } from "../../redux/features/api/baseApi";
 
-const ViewAllDestinationCard = ({
-  destination,
-  destinations,
-  setDestinations,
-}) => {
+const ViewAllDestinationCard = ({ destination }) => {
   const { _id, banner, title, location } = destination;
-  console.log(destination);
-  const handleDelete = (_id) => {
+  const [deleteDestination] = useDeleteDestinationMutation();
+
+  const handleDelete = async (_id) => {
     Swal.fire({
-      title: "Are you sure to Delete?",
+      title: `Are you sure to Delete ${title} ?`,
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
       confirmButtonText: "Yes, delete it!",
-    }).then((result) => {
+    }).then(async (result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/destination/${_id}`, {
-          method: "DELETE",
-        })
-          .then((res) => res.json())
-          .then((data) => {
-            if (data.deletedCount > 0) {
-              Swal.fire(
-                "Deleted!",
-                "This destination has been deleted.",
-                "success"
-              );
-              const remaining = destinations.filter((sP) => sP._id !== _id);
-              setDestinations(remaining);
-            }
+        try {
+          const result = await deleteDestination({ id: _id });
+          if (result.data.deletedCount > 0) {
+            Swal.fire("Deleted!", `${title} has been deleted.`, "success");
+          }
+        } catch (error) {
+          Swal.fire({
+            position: "center",
+            icon: "error",
+            title: `Error Deleting Destination: ${error}`,
+            showConfirmButton: false,
+            timer: 1500,
           });
+        }
       }
     });
   };

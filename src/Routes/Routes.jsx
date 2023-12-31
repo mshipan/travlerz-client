@@ -28,6 +28,7 @@ import UpdateProfile from "../Pages/DashboardPages/UpdateProfile";
 import AddAGuide from "../Pages/DashboardPages/AddAGuide";
 import ViewAllGuides from "../Pages/DashboardPages/ViewAllGuides";
 import UpdateGuide from "../Pages/DashboardPages/UpdateGuide";
+import UpdateDestination from "../Pages/DashboardPages/UpdateDestination";
 
 const router = createBrowserRouter([
   {
@@ -130,9 +131,7 @@ const router = createBrowserRouter([
 
       {
         path: "update-destination/:id",
-        element: <UpdatePackage></UpdatePackage>,
-        loader: ({ params }) =>
-          fetch(`http://localhost:5000/destination/${params.id}`),
+        element: <UpdateDestination></UpdateDestination>,
       },
       {
         path: "view-bookings",

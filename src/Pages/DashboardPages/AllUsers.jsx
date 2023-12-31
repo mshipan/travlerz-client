@@ -53,7 +53,6 @@ const AllUsers = () => {
                   <AllUsersTable
                     key={index}
                     user={user}
-                    allUsers={allUsers}
                     index={index}
                   ></AllUsersTable>
                 ))}
