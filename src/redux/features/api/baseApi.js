@@ -115,6 +115,13 @@ const baseApi = createApi({
       }),
       invalidatesTags: ["Users"],
     }),
+    deleteUser: builder.mutation({
+      query: ({ id }) => ({
+        url: `/user/${id}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["Users"],
+    }),
   }),
 });
 
@@ -136,6 +143,7 @@ export const {
   useBookTourMutation,
   useGetAllUsersQuery,
   useUpdateUserRoleMutation,
+  useDeleteUserMutation,
 } = baseApi;
 
 export default baseApi;

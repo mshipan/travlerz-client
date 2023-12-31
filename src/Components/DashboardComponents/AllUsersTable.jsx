@@ -1,13 +1,17 @@
 import { useRef } from "react";
 import { FaUserShield, FaUser, FaRegEye, FaRegTrashAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
-import { useUpdateUserRoleMutation } from "../../redux/features/api/baseApi";
-const AllUsersTable = ({ user, index, allUsers }) => {
+import {
+  useDeleteUserMutation,
+  useUpdateUserRoleMutation,
+} from "../../redux/features/api/baseApi";
+const AllUsersTable = ({ user, index }) => {
   const { _id, photo, name, email, phone, role, country, gender, dob } = user;
 
   const modalRef = useRef(null);
 
   const [updateUserRole] = useUpdateUserRoleMutation();
+  const [deleteUser] = useDeleteUserMutation();
 
   const openModal = () => {
     if (modalRef.current) {
@@ -67,27 +71,30 @@ const AllUsersTable = ({ user, index, allUsers }) => {
     }
   };
 
-  const handleDelete = (_id) => {
+  const handleDelete = async (_id) => {
     Swal.fire({
-      title: "Are you sure to Delete?",
+      title: `Are you sure to Delete ${name} ?`,
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
       confirmButtonText: "Yes, delete it!",
-    }).then((result) => {
+    }).then(async (result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/user/${_id}`, {
-          method: "DELETE",
-        })
-          .then((res) => res.json())
-          .then((data) => {
-            if (data.deletedCount > 0) {
-              Swal.fire("Deleted!", "User has been deleted.", "success");
-              const remainingUser = allUsers.filter((aU) => aU._id !== _id);
-              // setAllUsers(remainingUser);
-            }
+        try {
+          const result = await deleteUser({ id: _id });
+          if (result.data.deletedCount > 0) {
+            Swal.fire("Deleted!", `${name} has been deleted.`, "success");
+          }
+        } catch (error) {
+          Swal.fire({
+            position: "center",
+            icon: "error",
+            title: `Error Deleting User: ${error}`,
+            showConfirmButton: false,
+            timer: 1500,
           });
+        }
       }
     });
   };
