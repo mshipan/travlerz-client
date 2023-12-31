@@ -107,6 +107,14 @@ const baseApi = createApi({
       query: () => "/users",
       providesTags: ["Users"],
     }),
+    updateUserRole: builder.mutation({
+      query: ({ id, role }) => ({
+        url: `/user/${id}`,
+        method: "PATCH",
+        body: { role },
+      }),
+      invalidatesTags: ["Users"],
+    }),
   }),
 });
 
@@ -127,6 +135,7 @@ export const {
   useGetBookingsByUidQuery,
   useBookTourMutation,
   useGetAllUsersQuery,
+  useUpdateUserRoleMutation,
 } = baseApi;
 
 export default baseApi;

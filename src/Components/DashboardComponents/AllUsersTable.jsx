@@ -1,10 +1,13 @@
 import { useRef } from "react";
 import { FaUserShield, FaUser, FaRegEye, FaRegTrashAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
-const AllUsersTable = ({ user, index, allUsers, setAllUsers }) => {
+import { useUpdateUserRoleMutation } from "../../redux/features/api/baseApi";
+const AllUsersTable = ({ user, index, allUsers }) => {
   const { _id, photo, name, email, phone, role, country, gender, dob } = user;
 
   const modalRef = useRef(null);
+
+  const [updateUserRole] = useUpdateUserRoleMutation();
 
   const openModal = () => {
     if (modalRef.current) {
@@ -18,63 +21,50 @@ const AllUsersTable = ({ user, index, allUsers, setAllUsers }) => {
     }
   };
 
-  const handleMakeAdmin = (_id) => {
-    fetch(`http://localhost:5000/user/${_id}`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ role: "admin" }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.modifiedCount) {
-          Swal.fire({
-            position: "top-end",
-            icon: "success",
-            title: `${user.name} is an admin now`,
-            showConfirmButton: false,
-            timer: 1500,
-          });
-          const updateUsers = allUsers?.map((user) => {
-            if (user._id === _id) {
-              return { ...user, role: "admin" };
-            }
-            return user;
-          });
-          setAllUsers(updateUsers);
-        }
+  const handleMakeAdmin = async (_id) => {
+    try {
+      const result = await updateUserRole({ id: _id, role: "admin" });
+      if (result.data.modifiedCount) {
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: `${name} is an admin now`,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
+    } catch (error) {
+      Swal.fire({
+        position: "center",
+        icon: "error",
+        title: `Error making Admin: ${error}`,
+        showConfirmButton: false,
+        timer: 1500,
       });
+    }
   };
 
-  const handleMakeUser = (_id) => {
-    fetch(`http://localhost:5000/user/${_id}`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ role: "user" }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        if (data.modifiedCount) {
-          Swal.fire({
-            position: "top-end",
-            icon: "success",
-            title: `${user.name} is an user now`,
-            showConfirmButton: false,
-            timer: 1500,
-          });
-          const updateUsers = allUsers?.map((user) => {
-            if (user._id === _id) {
-              return { ...user, role: "user" };
-            }
-            return user;
-          });
-          setAllUsers(updateUsers);
-        }
+  const handleMakeUser = async (_id) => {
+    try {
+      const result = await updateUserRole({ id: _id, role: "user" });
+      if (result.data.modifiedCount) {
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: `${name} is an user now`,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
+    } catch (error) {
+      Swal.fire({
+        position: "center",
+        icon: "error",
+        title: `Error making Admin: ${error}`,
+        showConfirmButton: false,
+        timer: 1500,
       });
+    }
   };
 
   const handleDelete = (_id) => {
@@ -95,7 +85,7 @@ const AllUsersTable = ({ user, index, allUsers, setAllUsers }) => {
             if (data.deletedCount > 0) {
               Swal.fire("Deleted!", "User has been deleted.", "success");
               const remainingUser = allUsers.filter((aU) => aU._id !== _id);
-              setAllUsers(remainingUser);
+              // setAllUsers(remainingUser);
             }
           });
       }

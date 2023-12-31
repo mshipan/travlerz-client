@@ -33,7 +33,13 @@ const ViewAllPackagesCard = ({ singlePackage }) => {
   };
   return (
     <div className="flex flex-col md:flex-row md:items-start p-3 shadow-xl drop-shadow-2xl rounded-xl border border-blue-200">
-      <img src={banner} alt="Package Banner" className="md:w-80 rounded-xl" />
+      <div className="md:w-[30rem] md:h-48 rounded-xl">
+        <img
+          src={banner}
+          alt="Package Banner"
+          className="md:w-full md:h-full rounded-xl"
+        />
+      </div>
       <div className="flex flex-col md:justify-between md:pl-4 lg:pl-8 py-5 w-full h-full">
         <div>
           <div className="flex items-center justify-between mb-3">

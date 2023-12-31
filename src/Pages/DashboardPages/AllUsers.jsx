@@ -4,9 +4,7 @@ import AllUsersTable from "../../Components/DashboardComponents/AllUsersTable";
 import { useGetAllUsersQuery } from "../../redux/features/api/baseApi";
 
 const AllUsers = () => {
-  // const loggedUsers = useLoaderData();
   const { data: allUsers, isLoading, isError, error } = useGetAllUsersQuery();
-  // const [allUsers, setAllUsers] = useState(loggedUsers);
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -56,7 +54,6 @@ const AllUsers = () => {
                     key={index}
                     user={user}
                     allUsers={allUsers}
-                    // setAllUsers={setAllUsers}
                     index={index}
                   ></AllUsersTable>
                 ))}
