@@ -1,20 +1,15 @@
-import { useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { BsArrowRight } from "react-icons/bs";
 import AllBookingsTable from "../../Components/DashboardComponents/AllBookingsTable";
 import { useGetAllBookingsQuery } from "../../redux/features/api/baseApi";
 
 const ViewAllBookings = () => {
-  // const allBookings = useLoaderData();
-
   const {
     data: allBookings,
     isLoading,
     isError,
     error,
   } = useGetAllBookingsQuery();
-
-  const [bookings, setBookings] = useState(allBookings);
 
   if (isLoading) {
     return <p>Loading...</p>;
@@ -58,8 +53,6 @@ const ViewAllBookings = () => {
                   <AllBookingsTable
                     key={booking._id}
                     booking={booking}
-                    bookings={booking}
-                    setBookings={setBookings}
                     index={index}
                   ></AllBookingsTable>
                 ))}

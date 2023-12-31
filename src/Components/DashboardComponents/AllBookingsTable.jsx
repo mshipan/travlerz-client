@@ -2,8 +2,12 @@ import { useRef } from "react";
 import { FaCheck, FaRegEye, FaRegTrashAlt } from "react-icons/fa";
 import { FaXmark } from "react-icons/fa6";
 import Swal from "sweetalert2";
+import {
+  useDeleteBookingMutation,
+  useUpdateBookingStatusMutation,
+} from "../../redux/features/api/baseApi";
 
-const AllBookingsTable = ({ booking, bookings, setBookings, index }) => {
+const AllBookingsTable = ({ booking, index }) => {
   const {
     _id,
     title,
@@ -29,86 +33,85 @@ const AllBookingsTable = ({ booking, bookings, setBookings, index }) => {
     }
   };
 
-  const handleApprove = (_id) => {
-    fetch(`http://localhost:5000/booking/${_id}`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ status: "approved" }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.modifiedCount) {
-          Swal.fire({
-            position: "top-end",
-            icon: "success",
-            title: "Booking Approved",
-            showConfirmButton: false,
-            timer: 1500,
-          });
-          const updateBookings = bookings?.map((booking) => {
-            if (booking._id === _id) {
-              return { ...booking, status: "approved" };
-            }
-            return booking;
-          });
-          setBookings(updateBookings);
-        }
+  const [updateBookingsStatus] = useUpdateBookingStatusMutation();
+  const [deleteBooking] = useDeleteBookingMutation();
+
+  const handleApprove = async (_id) => {
+    try {
+      const result = await updateBookingsStatus({
+        id: _id,
+        status: "approved",
       });
+      if (result.data.modifiedCount) {
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: `${title} Approved`,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
+    } catch (error) {
+      Swal.fire({
+        position: "center",
+        icon: "error",
+        title: `Error approving booking: ${error}`,
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    }
   };
 
-  const handleDeny = (_id) => {
-    fetch(`http://localhost:5000/booking/${_id}`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ status: "denied" }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        if (data.modifiedCount) {
-          Swal.fire({
-            position: "top-end",
-            icon: "success",
-            title: "Booking Denied",
-            showConfirmButton: false,
-            timer: 1500,
-          });
-          const updateBookings = bookings?.map((booking) => {
-            if (booking._id === _id) {
-              return { ...booking, status: "denied" };
-            }
-            return booking;
-          });
-          setBookings(updateBookings);
-        }
+  const handleDeny = async (_id) => {
+    try {
+      const result = await updateBookingsStatus({
+        id: _id,
+        status: "denied",
       });
+      if (result.data.modifiedCount) {
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: `${title} Denied`,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
+    } catch (error) {
+      Swal.fire({
+        position: "center",
+        icon: "error",
+        title: `Error denying booking: ${error}`,
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    }
   };
 
   const handleDelete = (_id) => {
     Swal.fire({
-      title: "Are you sure to Delete?",
+      title: `Are you sure to Delete ${title} ?`,
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
       confirmButtonText: "Yes, delete it!",
-    }).then((result) => {
+    }).then(async (result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/booking/${_id}`, {
-          method: "DELETE",
-        })
-          .then((res) => res.json())
-          .then((data) => {
-            if (data.deletedCount > 0) {
-              Swal.fire("Deleted!", "Booking has been deleted.", "success");
-              const remainingBooking = bookings.filter((aU) => aU._id !== _id);
-              setBookings(remainingBooking);
-            }
+        try {
+          const result = await deleteBooking({ id: _id });
+          if (result.data.deletedCount > 0) {
+            Swal.fire("Deleted!", `${title} has been deleted.`, "success");
+          }
+        } catch (error) {
+          Swal.fire({
+            position: "center",
+            icon: "error",
+            title: `Error Deleting ${title}: ${error}`,
+            showConfirmButton: false,
+            timer: 1500,
           });
+        }
       }
     });
   };

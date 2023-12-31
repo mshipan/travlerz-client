@@ -107,13 +107,28 @@ const baseApi = createApi({
     }),
     getBookingsByUid: builder.query({
       query: (uid) => `/bookings/${uid}`,
-      invalidatesTags: ["Bookings"],
+      providesTags: ["Bookings"],
     }),
     bookTour: builder.mutation({
       query: (data) => ({
         url: "/bookings",
         method: "POST",
         body: data,
+      }),
+      invalidatesTags: ["Bookings"],
+    }),
+    updateBookingStatus: builder.mutation({
+      query: ({ id, status }) => ({
+        url: `/booking/${id}`,
+        method: "PATCH",
+        body: { status },
+      }),
+      invalidatesTags: ["Bookings"],
+    }),
+    deleteBooking: builder.mutation({
+      query: ({ id }) => ({
+        url: `/booking/${id}`,
+        method: "DELETE",
       }),
       invalidatesTags: ["Bookings"],
     }),
@@ -158,6 +173,8 @@ export const {
   useGetAllBookingsQuery,
   useGetBookingsByUidQuery,
   useBookTourMutation,
+  useUpdateBookingStatusMutation,
+  useDeleteBookingMutation,
   useGetAllUsersQuery,
   useUpdateUserRoleMutation,
   useDeleteUserMutation,
