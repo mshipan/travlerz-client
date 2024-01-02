@@ -1,12 +1,35 @@
 import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
-import { useLoaderData, useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
+import {
+  useGetGuideByIdQuery,
+  useUpdateGuideMutation,
+} from "../../redux/features/api/baseApi";
 
 const UpdateGuide = () => {
-  const singleGuide = useLoaderData();
+  const { id } = useParams();
+  const { register, handleSubmit } = useForm();
+  const navigate = useNavigate();
+  const [updateGuide] = useUpdateGuideMutation();
   const {
-    _id,
+    data: singleGuide,
+    isLoading,
+    isError,
+    error,
+  } = useGetGuideByIdQuery(id);
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (isError) {
+    return <div>Error loading Guide: {error.message}</div>;
+  }
+
+  if (!singleGuide) {
+    return <div>Guide not found</div>;
+  }
+  const {
     name,
     guideImage,
     facebookURL,
@@ -14,29 +37,33 @@ const UpdateGuide = () => {
     twitterURL,
     whatsappURL,
   } = singleGuide;
-  const { register, handleSubmit, reset } = useForm();
-  const navigate = useNavigate();
-  const onSubmit = (data) => {
-    console.log(data);
-    fetch(`http://localhost:5000/guide/${_id}`, {
-      method: "PATCH",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        if (data.modifiedCount > 0) {
-          Swal.fire({
-            title: "Guide Updated Successfully!",
-            text: "Press OK to continue",
-            icon: "success",
-            confirmButtonText: "OK",
-          });
-          reset();
-        }
-        navigate("/dashboard/view-all-guides");
+
+  const onSubmit = async (data) => {
+    try {
+      const result = await updateGuide({
+        id: id,
+        data: data,
       });
+
+      if (result.data.modifiedCount > 0) {
+        Swal.fire({
+          title: `${name} Updated Successfully!`,
+          text: "Press OK to continue",
+          icon: "success",
+          confirmButtonText: "OK",
+        });
+
+        navigate("/dashboard/view-all-guides");
+      }
+    } catch (error) {
+      Swal.fire({
+        position: "center",
+        icon: "error",
+        title: `Error Updating ${name}: ${error}`,
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    }
   };
   return (
     <div className="my-16">
@@ -55,7 +82,10 @@ const UpdateGuide = () => {
         <div className="flex flex-col md:flex-row justify-center md:gap-8 w-full ">
           <div className="w-full md:w-1/2 flex flex-col md:gap-3">
             <div className="form-control">
-              <label htmlFor="name" className="font-barlow font-semibold">
+              <label
+                htmlFor="name"
+                className="font-barlow font-semibold text-white"
+              >
                 Guide Name :{" "}
               </label>
               <input
@@ -68,7 +98,10 @@ const UpdateGuide = () => {
               />
             </div>
             <div className="form-control">
-              <label htmlFor="guideImage" className="font-barlow font-semibold">
+              <label
+                htmlFor="guideImage"
+                className="font-barlow font-semibold text-white"
+              >
                 Guide Image URL :{" "}
               </label>
               <input
@@ -83,7 +116,7 @@ const UpdateGuide = () => {
             <div className="form-control">
               <label
                 htmlFor="facebookURL"
-                className="font-barlow font-semibold"
+                className="font-barlow font-semibold text-white"
               >
                 Facebook URL :{" "}
               </label>
@@ -99,7 +132,7 @@ const UpdateGuide = () => {
             <div className="form-control">
               <label
                 htmlFor="instagramURL"
-                className="font-barlow font-semibold"
+                className="font-barlow font-semibold text-white"
               >
                 Instagram URL :{" "}
               </label>
@@ -113,7 +146,10 @@ const UpdateGuide = () => {
               />
             </div>
             <div className="form-control">
-              <label htmlFor="twitterURL" className="font-barlow font-semibold">
+              <label
+                htmlFor="twitterURL"
+                className="font-barlow font-semibold text-white"
+              >
                 Twitter URL :{" "}
               </label>
               <input
@@ -128,7 +164,7 @@ const UpdateGuide = () => {
             <div className="form-control">
               <label
                 htmlFor="whatsappURL"
-                className="font-barlow font-semibold"
+                className="font-barlow font-semibold text-white"
               >
                 What&apos;s App URL :{" "}
               </label>

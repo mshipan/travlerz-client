@@ -85,11 +85,15 @@ const baseApi = createApi({
     }),
     getReviewsByUid: builder.query({
       query: (uid) => `/reviews/${uid}`,
-      invalidatesTags: ["Reviews"],
+      providesTags: ["Reviews"],
     }),
     //guides
     getAllGuides: builder.query({
       query: () => "/tour-guides",
+      providesTags: ["Guides"],
+    }),
+    getGuideById: builder.query({
+      query: (id) => `/guide/${id}`,
       providesTags: ["Guides"],
     }),
     addGuide: builder.mutation({
@@ -97,6 +101,21 @@ const baseApi = createApi({
         url: "/tour-guides",
         method: "POST",
         body: data,
+      }),
+      invalidatesTags: ["Guides"],
+    }),
+    updateGuide: builder.mutation({
+      query: ({ id, data }) => ({
+        url: `/guide/${id}`,
+        method: "PATCH",
+        body: data,
+      }),
+      invalidatesTags: ["Guides"],
+    }),
+    deleteGuide: builder.mutation({
+      query: ({ id }) => ({
+        url: `/tour-guides/${id}`,
+        method: "DELETE",
       }),
       invalidatesTags: ["Guides"],
     }),
@@ -169,7 +188,10 @@ export const {
   useGetAllReviewsQuery,
   useGetReviewsByUidQuery,
   useGetAllGuidesQuery,
+  useGetGuideByIdQuery,
   useAddGuideMutation,
+  useUpdateGuideMutation,
+  useDeleteGuideMutation,
   useGetAllBookingsQuery,
   useGetBookingsByUidQuery,
   useBookTourMutation,

@@ -8,9 +8,9 @@ import {
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
-import useGuide from "../../Hooks/useGuide";
+import { useDeleteGuideMutation } from "../../redux/features/api/baseApi";
+
 const AllGuidesCard = ({ guide }) => {
-  const [refetch] = useGuide();
   const {
     _id,
     name,
@@ -21,26 +21,31 @@ const AllGuidesCard = ({ guide }) => {
     whatsappURL,
     designation,
   } = guide;
+  const [deleteGuide] = useDeleteGuideMutation();
   const handleDelete = (_id) => {
     Swal.fire({
-      title: "Are you sure to Delete?",
+      title: `Are you sure to Delete ${name} ?`,
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
       confirmButtonText: "Yes, delete it!",
-    }).then((result) => {
+    }).then(async (result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/tour-guides/${_id}`, {
-          method: "DELETE",
-        })
-          .then((res) => res.json())
-          .then((data) => {
-            if (data.deletedCount > 0) {
-              Swal.fire("Deleted!", "Guide has been deleted.", "success");
-            }
-            refetch();
+        try {
+          const result = await deleteGuide({ id: _id });
+          if (result.data.deletedCount > 0) {
+            Swal.fire("Deleted!", `${name} has been deleted.`, "success");
+          }
+        } catch (error) {
+          Swal.fire({
+            position: "center",
+            icon: "error",
+            title: `Error Deleting ${name}: ${error}`,
+            showConfirmButton: false,
+            timer: 1500,
           });
+        }
       }
     });
   };

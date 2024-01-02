@@ -20,7 +20,7 @@ const AddAGuide = () => {
         reset();
       } else {
         Swal.fire({
-          title: "Destination Added Failed!",
+          title: "Guide Added Failed!",
           text: "Press OK to continue",
           icon: "error",
           confirmButtonText: "OK",
