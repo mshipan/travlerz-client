@@ -29,11 +29,13 @@ import AddAGuide from "../Pages/DashboardPages/AddAGuide";
 import ViewAllGuides from "../Pages/DashboardPages/ViewAllGuides";
 import UpdateGuide from "../Pages/DashboardPages/UpdateGuide";
 import UpdateDestination from "../Pages/DashboardPages/UpdateDestination";
+import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayouts></MainLayouts>,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "/",
