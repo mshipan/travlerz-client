@@ -7,7 +7,9 @@ const useReview = () => {
   } = useQuery({
     queryKey: ["reviews"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/reviews");
+      const res = await fetch(
+        "https://travlerz-server-production.up.railway.app/reviews"
+      );
       return res.json();
     },
   });

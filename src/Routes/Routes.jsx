@@ -95,7 +95,9 @@ const router = createBrowserRouter([
         path: "update-profile",
         element: <UpdateProfile></UpdateProfile>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/user/${params.email}`),
+          fetch(
+            `https://travlerz-server-production.up.railway.app/user/${params.email}`
+          ),
       },
       {
         path: "add-a-package",
@@ -163,7 +165,9 @@ const router = createBrowserRouter([
         path: "update-guide/:id",
         element: <UpdateGuide></UpdateGuide>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/guide/${params.id}`),
+          fetch(
+            `https://travlerz-server-production.up.railway.app/guide/${params.id}`
+          ),
       },
     ],
   },

@@ -8,7 +8,7 @@
 
 ## Travlerz Client: https://travlerz.web.app/
 
-## Travlerz Server: http://localhost:5000/
+## Travlerz Server: https://travlerz-server-production.up.railway.app/
 
 ---
 

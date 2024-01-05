@@ -4,7 +4,9 @@ const usePackage = () => {
   const { data: packages = [], isLoading: loading } = useQuery({
     queryKey: ["packages"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/packages");
+      const res = await fetch(
+        "https://travlerz-server-production.up.railway.app/packages"
+      );
       return res.json();
     },
   });

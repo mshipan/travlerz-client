@@ -4,7 +4,9 @@ const useMyReview = (id) => {
   const { data: review = {}, isLoading: loading } = useQuery({
     queryKey: ["review", id],
     queryFn: async () => {
-      const res = await fetch(`http://localhost:5000/reviews/${id}`);
+      const res = await fetch(
+        `https://travlerz-server-production.up.railway.app/reviews/${id}`
+      );
       return res.json();
     },
   });
