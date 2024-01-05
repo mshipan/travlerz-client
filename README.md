@@ -25,10 +25,11 @@
 - In the dashboard page a user can see his/her booked packages and reviews.
 - In this website Admin can make any user admin by default all users role is user here
 
-## Used Package / Technology
+## Used Packages / Technologies
 
 - Tailwind Css, DaisyUI
 - React.js, VITE
+- Redux-Toolkit, RTK Query
 - React Router Dom
 - Swipper.js, React Spinner, React Icons
 - React Hook Form, React Helmet
