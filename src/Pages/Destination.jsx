@@ -29,7 +29,7 @@ const Destination = () => {
         </h1>
       </div>
 
-      <div className="my-20 w-3/5 mx-auto grid grid-cols-3 gap-5">
+      <div className="my-20 w-3/5 mx-auto grid grid-cols-1 md:grid-cols-3 gap-5">
         {allDestinations?.map((destination) => (
           <DestinationCard
             key={destination._id}

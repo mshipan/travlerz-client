@@ -20,7 +20,7 @@ const OurSuccessReport = () => {
               Our Success Report
             </h1>
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-10 md:gap-0 ">
-              <p className="md:max-w-3xl text-sm font-barlow my-5 text-red-500">
+              <p className="md:max-w-3xl text-sm font-barlow my-5 text-white">
                 Experience the power of success with our comprehensive success
                 reports. Gain valuable insights and analytics to measure your
                 achievements and milestones. Our success reports provide a clear

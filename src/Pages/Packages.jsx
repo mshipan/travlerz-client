@@ -27,7 +27,7 @@ const Packages = () => {
           Tour Packages
         </h1>
       </div>
-      <div className="my-20 w-3/5 mx-auto grid grid-cols-3 gap-5">
+      <div className="my-20 md:w-3/5 md:mx-auto grid grid-cols-1 md:grid-cols-3 justify-items-center gap-5">
         {allPackages?.map((singlePackage) => (
           <PackageCard
             key={singlePackage._id}
